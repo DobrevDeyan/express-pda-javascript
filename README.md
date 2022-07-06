@@ -1,2 +1,3 @@
 # SPA-JavaScript
-Single Page Application 
+
+Single Page Application

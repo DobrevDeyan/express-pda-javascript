@@ -28,6 +28,7 @@ function createRecipePreview(recipe) {
 }
 async function toggleRecipePreview(id, preview) {
   const recipe = await getRecipeById(id);
+  const originalPreview = await createRecipePreview(recipe);
   const recipePreview = document.createElement("article");
   recipePreview.innerHTML = `
                 <h2>${recipe.name}</h2>
@@ -51,6 +52,10 @@ async function toggleRecipePreview(id, preview) {
   `;
 
   preview.replaceWith(recipePreview);
+
+  recipePreview.addEventListener("click", () => {
+    recipePreview.replaceWith(originalPreview);
+  });
 }
 
 async function getRecipes() {

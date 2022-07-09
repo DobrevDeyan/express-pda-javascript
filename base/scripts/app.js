@@ -59,13 +59,14 @@ async function toggleRecipePreview(id, preview) {
 }
 
 async function getRecipes() {
-  const recipesURl = `http://localhost:3030/jsonstore/cookbook/recipes`;
+  const recipesURl =
+    "http://localhost:3030/data/recipes?select=_id%2Cname%2Cimg";
   const response = await fetch(recipesURl);
   const data = await response.json();
   return Object.values(data); // return only the required data in array type
 }
 async function getRecipeById(id) {
-  const recipe = `http://localhost:3030/jsonstore/cookbook/details/${id}`;
+  const recipe = `http://localhost:3030/data/recipes/${id}`;
   const response = await fetch(recipe);
   const data = await response.json();
   return data;

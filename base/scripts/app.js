@@ -1,6 +1,13 @@
 window.addEventListener("DOMContentLoaded", start);
 
 async function start() {
+  const token = localStorage.getItem("token");
+  if (token !== null) {
+    document.getElementById("user").style.display = "inline-block";
+  } else {
+    document.getElementById("guest").style.display = "inline-block";
+  }
+
   const main = document.querySelector("main");
   const recipes = await getRecipes();
 

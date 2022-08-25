@@ -1,4 +1,4 @@
-import { html } from "../lib.js"
+import { html } from "../../src/lib.js"
 import { register } from "../api/data.js"
 
 const registerTemplate = (onSubmit) => html` <section id="register">

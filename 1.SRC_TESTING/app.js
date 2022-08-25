@@ -1,4 +1,4 @@
-import { page, render } from "./lib.js"
+import { page, render } from "../src/lib.js"
 import { homePage } from "./views/home.js"
 import { getUserData } from "./util.js"
 import { dashboardPage } from "./views/dashboard.js"

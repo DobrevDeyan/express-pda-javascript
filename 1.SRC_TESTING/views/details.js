@@ -1,4 +1,4 @@
-import { html } from "../lib.js"
+import { html } from "../../src/lib.js"
 import { getShoeById, deleteShoe } from "../api/data.js"
 import { getUserData } from "../util.js"
 

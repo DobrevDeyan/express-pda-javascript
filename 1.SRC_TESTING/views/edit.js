@@ -1,5 +1,5 @@
 import { getShoeById, editShoe } from "../api/data.js"
-import { html } from "../lib.js"
+import { html } from "../../src/lib.js"
 import { getUserData } from "../util.js"
 
 const editShoeTemplate = (shoe, onSubmit) => html`

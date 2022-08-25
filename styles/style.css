@@ -44,6 +44,7 @@ body {
   text-align: center;
   font-size: 2rem;
   font-weight: normal;
+  color: #fff;
 }
 .form {
   display: flex;
@@ -56,9 +57,14 @@ body {
   flex-direction: column;
   gap: 7px;
 }
+/* .input-group:nth-child(1) {
+  margin-bottom: 50px;
+} */
 .input-group label {
   color: white;
   font-weight: lighter;
+  display: flex;
+  justify-content: space-between;
 }
 .input-group input {
   font-size: 1.25rem;
@@ -89,9 +95,11 @@ body {
 }
 .input-group.error .message {
   color: hsl(var(--error-hsl));
+  align-self: center;
 }
 .input-group.success .message {
   color: hsl(var(--success-hsl));
+  align-self: center;
 }
 .login-button {
   padding: 0.5em 1em;

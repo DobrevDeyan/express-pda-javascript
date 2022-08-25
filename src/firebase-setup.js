@@ -29,4 +29,4 @@ getDocs(colRef)
     alert(error.message)
   })
 
-// export { usersData }
+export { usersData }

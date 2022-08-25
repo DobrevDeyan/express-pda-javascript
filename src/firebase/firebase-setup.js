@@ -1,13 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"
 import {
   getFirestore,
-  setDoc,
   getDocs,
-  updateDoc,
-  doc,
   collection,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"
 
+//INITIALIZING FIREBASE
 const firebaseConfig = {
   apiKey: "AIzaSyCRIQJA0DuU10mw29zGWsyp6lfMwvlbtrg",
   authDomain: "shippingproject-1c33a.firebaseapp.com",
@@ -18,36 +16,12 @@ const firebaseConfig = {
 }
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
+// FIREBASE SETUP FOR RETRIEVING ALL USERS DATA
 const querySnapshot = await getDocs(collection(db, "users"))
 let usersData = []
 querySnapshot.forEach((doc) => {
   usersData.push(doc.data())
-  console.log(`${doc.id} => ${doc.data()}`)
-  //   console.log({ ...doc.data() })
-  //   console.log(typeof { ...doc.data() })
+  // console.log({ ...doc.data(), id: doc.id })
 })
-
 const serverData = Array.from(usersData)
 export { serverData }
-
-// const proformaRef = doc(db, "users", "xj9trMyxaNfbFFVWwdlx")
-// await updateDoc(proformaRef, {
-//   "proformas.breadth": "2000",
-// })
-
-// await setDoc(doc(db, "users", ""), {
-//     name: "Los Angeles",
-//     state: "CA",
-//     country: "USA"
-//   });
-
-// try {
-//   const docRef = await addDoc(collection(db, "users"), {
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815,
-//   })
-//   console.log("Document written with ID: ", docRef.id)
-// } catch (e) {
-//   console.error("Error adding document: ", e)
-// }

@@ -1,4 +1,4 @@
-import { html } from "../../src/lib.js"
+import { html } from "../utilities/lib.js"
 import { getAllShoes } from "../api/data.js"
 
 const dashboardTemplate = (shoes) => html`

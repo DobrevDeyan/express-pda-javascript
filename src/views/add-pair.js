@@ -1,5 +1,5 @@
+import { html } from "../utilities/lib.js"
 import { addShoe } from "../api/data.js"
-import { html } from "../../src/lib.js"
 
 const createPostTemplate = (onSubmit) => html`
   <section id="create">

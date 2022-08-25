@@ -1,4 +1,4 @@
-import { html } from "../../src/lib.js"
+import { html } from "../utilities/lib.js"
 import { login } from "../api/data.js"
 
 const loginTemplate = (onSubmit) => html` <section id="login">

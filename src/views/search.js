@@ -1,5 +1,5 @@
+import { html } from "../utilities/lib.js"
 import { getShoeByBrand } from "../api/data.js"
-import { html } from "../../src/lib.js"
 
 const searchTemplate = (onChange, onSearch, shoes = []) => html`
   <section id="search">

@@ -2,10 +2,10 @@
 // import {} from "./firebase/firebase-operations.js"
 import { page, render } from "./utilities/lib.js"
 
-import { homePage } from "./views/home.js"
+import { homePage } from "./views/home-page.js"
+import { loginPage } from "./views/login-page.js"
 // import { getUserData } from "./util.js"
 // import { dashboardPage } from "./views/dashboard.js"
-import { loginPage } from "./views/login.js"
 // import { registerPage } from "./views/register.js"
 // import { logout } from "./api/api.js"
 // import { createPage } from "./views/add-pair.js"

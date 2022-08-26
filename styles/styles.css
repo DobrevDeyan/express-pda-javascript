@@ -1,3 +1,9 @@
 @import url(./style.css);
-@import url(./navigation.css);
 @import url(./login-page.css);
+@import url(./home-page.css);
+@import url(./create-proforma-page.css);
+@import url(./edit-proforma-page.css);
+@import url(./proforma-details-page.css);
+@import url(./register-page.css);
+@import url(./search-page.css);
+@import url(./user-dashboard-page.css);

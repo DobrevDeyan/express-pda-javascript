@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link rel="shortcut icon" href="#" />
+    <title>Document</title>
     <link rel="stylesheet" href="./styles/styles.css" />
     <script type="module" src="./src/app-controller.js"></script>
   </head>
   <body>
-    <div class="full-screen-container">
+    <div id="full-screen-container">
       <header>
         <a id="logo" href="/home"><img id="logo-img" src="" alt="" /></a>
         <nav>
@@ -19,13 +19,11 @@
             <a href="/dashboard">Dashboard</a>
             <a href="/search">Search</a>
           </div>
-
           <div class="user">
             <span> Welcome, {user}</span>
             <a href="/calculator">Calculate PDA</a>
             <a id="logoutButton" href="javascript:void(0)">Logout</a>
           </div>
-
           <div class="guest">
             <a href="/login">Login</a>
             <a href="/register">Register</a>

@@ -1,16 +1,11 @@
-import { validEmailCheck } from "./utilities/email-validation.js"
-import {} from "./firebase/firebase-operations.js"
+// import { validEmailCheck } from "./utilities/email-validation.js"
+// import {} from "./firebase/firebase-operations.js"
 import { page, render } from "./utilities/lib.js"
 
-// EMAIL VALIDATION
-const input = document.getElementById("email")
-input.addEventListener("change", validEmailCheck(input))
-
-// import { page, render } from "../src/lib.js"
-// import { homePage } from "./views/home.js"
+import { homePage } from "./views/home.js"
 // import { getUserData } from "./util.js"
 // import { dashboardPage } from "./views/dashboard.js"
-// import { loginPage } from "./views/login.js"
+import { loginPage } from "./views/login.js"
 // import { registerPage } from "./views/register.js"
 // import { logout } from "./api/api.js"
 // import { createPage } from "./views/add-pair.js"
@@ -18,12 +13,12 @@ input.addEventListener("change", validEmailCheck(input))
 // import { editPage } from "./views/edit.js"
 // import { searchPage } from "./views/search.js"
 
-// const root = document.querySelector("main")
+const root = document.getElementById("site-content")
 // document.getElementById("logoutButton").addEventListener("click", onLogout)
 
-// page(decorateContext)
-// page("/", homePage)
-// page("/login", loginPage)
+page(decorateContext)
+page("/login", loginPage)
+page("/", homePage)
 // page("/register", registerPage)
 // page("/dashboard", dashboardPage)
 // page("/details/:id", detailsPage)
@@ -33,13 +28,13 @@ input.addEventListener("change", validEmailCheck(input))
 
 // // // Initiate app
 // updateUserNav()
-// page.start()
+page.start()
 
-// function decorateContext(ctx, next) {
-//   ctx.render = (content) => render(content, root)
-//   ctx.updateUserNav = updateUserNav
-//   next()
-// }
+function decorateContext(ctx, next) {
+  ctx.render = (content) => render(content, root)
+  //   ctx.updateUserNav = updateUserNav
+  next()
+}
 
 // function onLogout() {
 //   logout()
@@ -57,3 +52,7 @@ input.addEventListener("change", validEmailCheck(input))
 //     document.querySelector(".guest").style.display = "inline-block"
 //   }
 // }
+
+// EMAIL VALIDATION
+// const input = document.getElementById("email")
+// input.addEventListener("change", validEmailCheck(input))

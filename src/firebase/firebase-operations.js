@@ -1,9 +1,9 @@
 import { serverData } from "./firebase-setup.js"
 
-serverData.forEach((usersData) => {
-  console.log(Object.keys(usersData))
-  console.log(Object.values(usersData))
-})
+// serverData.forEach((usersData) => {
+//   console.log(Object.keys(usersData))
+//   console.log(Object.values(usersData))
+// })
 
 export async function createProforma(userId, proforma) {}
 export async function readProformasByUserId(userId) {}

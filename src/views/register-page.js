@@ -1,10 +1,10 @@
 import { html } from "../utilities/lib.js"
-import { register } from "../api/data.js"
+// import { register } from "../api/data.js"
 
-const registerTemplate = (onSubmit) => html` <section id="register">
+const registerTemplate = () => html` <section id="register">
   <div class="form">
     <h2>Register</h2>
-    <form @submit=${onSubmit} class="login-form">
+    <form class="login-form">
       <input type="text" name="email" id="register-email" placeholder="email" />
       <input
         type="password"
@@ -25,25 +25,25 @@ const registerTemplate = (onSubmit) => html` <section id="register">
 </section>`
 
 export function registerPage(ctx) {
-  ctx.render(registerTemplate(onSubmit))
+  ctx.render(registerTemplate())
 
-  async function onSubmit(event) {
-    event.preventDefault()
-    const formData = new FormData(event.target)
+  // async function onSubmit(event) {
+  //   event.preventDefault()
+  //   const formData = new FormData(event.target)
 
-    const email = formData.get("email").trim()
-    const password = formData.get("password").trim()
-    const repass = formData.get("re-password").trim()
+  //   const email = formData.get("email").trim()
+  //   const password = formData.get("password").trim()
+  //   const repass = formData.get("re-password").trim()
 
-    if (email === "" || password === "" || repass === "") {
-      return alert("All fields are required")
-    }
-    if (password !== repass) {
-      return alert("Passwords do not match")
-    }
+  //   if (email === "" || password === "" || repass === "") {
+  //     return alert("All fields are required")
+  //   }
+  //   if (password !== repass) {
+  //     return alert("Passwords do not match")
+  //   }
 
-    await register(email, password)
-    ctx.updateUserNav()
-    ctx.page.redirect("/dashboard")
-  }
+  //   await register(email, password)
+  //   ctx.updateUserNav()
+  //   ctx.page.redirect("/dashboard")
+  // }
 }

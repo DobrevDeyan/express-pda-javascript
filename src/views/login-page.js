@@ -1,7 +1,8 @@
+import { validEmailCheck } from "../utilities/email-validation.js"
 import { html } from "../utilities/lib.js"
 // import { login } from "../api/data.js"
 
-const loginTemplate = () => html` <section id="login">
+const loginTemplate = (onInputChange) => html` <section id="login">
   <div class="login-container">
     <h1 class="login-title">Welcome</h1>
     <form class="form">
@@ -9,7 +10,12 @@ const loginTemplate = () => html` <section id="login">
         <label for="email"
           >Email:<span class="message">Valid email address</span></label
         >
-        <input type="email" name="email" id="email" />
+        <input
+          @change="${onInputChange}"
+          type="email"
+          name="email"
+          id="email"
+        />
       </div>
       <div class="input-group">
         <label for="password"
@@ -22,8 +28,14 @@ const loginTemplate = () => html` <section id="login">
   </div>
 </section>`
 
+// EMAIL VALIDATION
+
 export function loginPage(ctx) {
-  ctx.render(loginTemplate())
+  ctx.render(loginTemplate(onInputChange))
+
+  function onInputChange(event) {
+    console.log(1)
+  }
 
   // async function onSubmit(event) {
   //   event.preventDefault()

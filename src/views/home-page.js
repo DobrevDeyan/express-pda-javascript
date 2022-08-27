@@ -1,7 +1,7 @@
 import { html } from "../utilities/lib.js"
 
 const homeTemplate = () => html` <section id="home">
-  <img src="../../images/Container ship.gif" alt="shipping gif" />
+  <!-- <img src="../../images/Container ship.gif" alt="shipping gif" /> -->
   <h1>Welcome to Express PDA</h1>
   <h2>
     Use a powerful web tool to get instant access to the financial information

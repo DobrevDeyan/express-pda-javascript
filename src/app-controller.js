@@ -1,12 +1,10 @@
-// import { validEmailCheck } from "./utilities/email-validation.js"
-// import {} from "./firebase/firebase-operations.js"
+import {} from "./firebase/firebase-operations.js"
 import { page, render } from "./utilities/lib.js"
-
 import { homePage } from "./views/home-page.js"
 import { loginPage } from "./views/login-page.js"
-// import { getUserData } from "./util.js"
+import { getUserData } from "./utilities/util.js"
 // import { dashboardPage } from "./views/dashboard.js"
-// import { registerPage } from "./views/register.js"
+import { registerPage } from "./views/register-page.js"
 // import { logout } from "./api/api.js"
 // import { createPage } from "./views/add-pair.js"
 // import { detailsPage } from "./views/details.js"
@@ -17,17 +15,17 @@ const root = document.getElementById("site-content")
 // document.getElementById("logoutButton").addEventListener("click", onLogout)
 
 page(decorateContext)
-page("/login", loginPage)
 page("/", homePage)
-// page("/register", registerPage)
+page("/login", loginPage)
+page("/register", registerPage)
 // page("/dashboard", dashboardPage)
 // page("/details/:id", detailsPage)
 // page("/add-pair", createPage)
 // page("/edit/:id", editPage)
 // page("/search", searchPage)
 
-// // // Initiate app
-// updateUserNav()
+// Initiate app
+updateUserNav()
 page.start()
 
 function decorateContext(ctx, next) {
@@ -41,18 +39,14 @@ function decorateContext(ctx, next) {
 //   updateUserNav()
 //   page.redirect("/")
 // }
-// function updateUserNav() {
-//   const userData = getUserData()
+function updateUserNav() {
+  const userData = getUserData()
 
-//   if (userData) {
-//     document.querySelector(".user").style.display = "inline-block"
-//     document.querySelector(".guest").style.display = "none"
-//   } else {
-//     document.querySelector(".user").style.display = "none"
-//     document.querySelector(".guest").style.display = "inline-block"
-//   }
-// }
-
-// EMAIL VALIDATION
-// const input = document.getElementById("email")
-// input.addEventListener("change", validEmailCheck(input))
+  if (userData) {
+    document.querySelector(".user").style.display = "inline-block"
+    document.querySelector(".guest").style.display = "none"
+  } else {
+    document.querySelector(".user").style.display = "none"
+    document.querySelector(".guest").style.display = "inline-block"
+  }
+}

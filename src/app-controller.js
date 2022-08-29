@@ -1,10 +1,11 @@
 import {} from "./firebase/firebase-operations.js"
 import { page, render } from "./utilities/lib.js"
 import { homePage } from "./views/home-page.js"
+import { faqPage } from "./views/faq-page.js"
 import { loginPage } from "./views/login-page.js"
+import { registerPage } from "./views/register-page.js"
 import { getUserData } from "./utilities/util.js"
 // import { dashboardPage } from "./views/dashboard.js"
-import { registerPage } from "./views/register-page.js"
 // import { logout } from "./api/api.js"
 // import { createPage } from "./views/add-pair.js"
 // import { detailsPage } from "./views/details.js"
@@ -16,6 +17,7 @@ const root = document.getElementById("site-content")
 
 page(decorateContext)
 page("/", homePage)
+page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)
 // page("/dashboard", dashboardPage)
@@ -30,10 +32,9 @@ page.start()
 
 function decorateContext(ctx, next) {
   ctx.render = (content) => render(content, root)
-  //   ctx.updateUserNav = updateUserNav
+  // ctx.updateUserNav = updateUserNav
   next()
 }
-
 // function onLogout() {
 //   logout()
 //   updateUserNav()

@@ -1,17 +1,9 @@
-/* main#site-content section#home img {
-  display: block;
-  margin: auto;
-  border-radius: 60px 150px;
-  box-shadow: 0 0 25px hsl(var(--primary-dark-hsl), 0.8);
-  scale: 0.5;
-} */
 /* font-family: "Caveat", cursive;
 font-family: "Montserrat", sans-serif; */
 
 section#home h1 {
   font-family: "Montserrat", sans-serif;
   color: aliceblue;
-  /* font-weight: bold; */
   font-size: 7.5rem;
   margin: 110px 0 20px;
 }
@@ -24,5 +16,4 @@ section#home h2 {
   color: aliceblue;
   font-size: 3rem;
   margin: 0;
-  text-decoration: underline;
 }

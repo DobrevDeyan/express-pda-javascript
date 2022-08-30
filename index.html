@@ -5,13 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ExpressPDA</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <link rel="stylesheet" href="./styles/styles.css" />
     <script type="module" src="./src/app-controller.js"></script>
   </head>
@@ -19,7 +12,6 @@
     <div id="full-screen-container">
       <div class="container">
         <header>
-          <!-- <a id="logo" href="/home"><img id="logo-img" src="" alt="" /></a> -->
           <a href="/" class="logo">
             <svg
               width="140"
@@ -58,6 +50,7 @@
           </a>
           <nav>
             <div class="user">
+              <div id="marker"></div>
               <a href="/">Home</a>
               <a href="/faq">Faq</a>
               <span> Welcome, {Peter}</span>
@@ -67,6 +60,7 @@
               <a id="logoutButton" href="javascript:void(0)">Logout</a>
             </div>
             <div class="guest">
+              <div class="marker"></div>
               <a href="/">Home</a>
               <a href="/faq">Faq</a>
               <a href="/login">Login</a>
@@ -78,14 +72,9 @@
         <footer id="site-footer"></footer>
       </div>
     </div>
-
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
     ></script>
-    <!-- <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script> -->
   </body>
 </html>

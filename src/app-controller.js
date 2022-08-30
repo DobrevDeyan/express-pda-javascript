@@ -17,7 +17,7 @@ const root = document.getElementById("site-content")
 
 page(decorateContext)
 // page("/", homePage)
-page("/", faqPage)
+page("/", homePage)
 page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)
@@ -43,7 +43,6 @@ function decorateContext(ctx, next) {
 // }
 function updateUserNav() {
   const userData = getUserData()
-
   if (userData) {
     document.querySelector(".user").style.display = "inline-block"
     document.querySelector(".guest").style.display = "none"
@@ -51,4 +50,16 @@ function updateUserNav() {
     document.querySelector(".user").style.display = "none"
     document.querySelector(".guest").style.display = "inline-block"
   }
+
+  const marker = document.querySelector(".marker")
+  const items = document.querySelectorAll("nav a")
+  function indicator(e) {
+    marker.style.left = e.offsetLeft + "px"
+    marker.style.width = e.offsetWidth + "px"
+  }
+  items.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      indicator(e.target)
+    })
+  })
 }

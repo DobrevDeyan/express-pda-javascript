@@ -48,7 +48,6 @@ nav span {
   /* color: aliceblue; */
   color: black;
   font-size: 1.5rem;
-  text-transform: uppercase;
 }
 nav a:hover,
 nav span:hover {

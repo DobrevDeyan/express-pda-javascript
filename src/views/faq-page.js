@@ -177,4 +177,25 @@ const faqTemplate = () => html` <section id="faq">
 
 export function faqPage(ctx) {
   ctx.render(faqTemplate())
+
+  document.addEventListener("click", (event) => {
+    // if (!event.target.classList.contains("remove")) return
+    // event.target.parentNode.nextElementSibling.style.maxHeight = "0rem"
+    // event.target.style.display = "none"
+    // event.target.nextElementSibling.style.display = "block"
+    // if (!event.target.classList.contains("add")) return
+    // event.target.parentNode.nextElementSibling.style.maxHeight = "20rem"
+    // event.target.style.display = "none"
+    // event.target.previousElementSibling.style.display = "block"
+
+    if (event.target.classList.contains("remove")) {
+      event.target.parentNode.nextElementSibling.style.maxHeight = "0rem"
+      event.target.style.display = "none"
+      event.target.nextElementSibling.style.display = "block"
+    } else if (event.target.classList.contains("add")) {
+      event.target.parentNode.nextElementSibling.style.maxHeight = "20rem"
+      event.target.style.display = "none"
+      event.target.previousElementSibling.style.display = "block"
+    }
+  })
 }

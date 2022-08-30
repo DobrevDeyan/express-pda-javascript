@@ -1,3 +1,9 @@
+section#login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 140px;
+}
 .login-container {
   --color: hsl(var(--primary-dark-hsl), 0.5);
   background-color: var(--color);
@@ -25,11 +31,17 @@
   flex-direction: column;
   gap: 7px;
 }
-.input-group label {
+.input-group label,
+.form .message,
+.form .message a {
   color: white;
   font-weight: lighter;
   display: flex;
   justify-content: space-between;
+  text-decoration: none;
+}
+form .message a:hover {
+  text-decoration: underline;
 }
 .input-group input {
   font-size: 1.25rem;

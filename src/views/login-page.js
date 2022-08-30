@@ -4,7 +4,7 @@ import { html } from "../utilities/lib.js"
 
 const loginTemplate = (onInputChange) => html` <section id="login">
   <div class="login-container">
-    <h1 class="login-title">Welcome</h1>
+    <h1 class="login-title">Login</h1>
     <form class="form">
       <div class="input-group">
         <label for="email"
@@ -24,6 +24,7 @@ const loginTemplate = (onInputChange) => html` <section id="login">
         <input type="password" name="password" id="password" />
       </div>
       <button type="submit" class="login-button">Login</button>
+      <p class="message">Don't have an account? <a href="/register">Register</a></p>
     </form>
   </div>
 </section>`

@@ -16,7 +16,7 @@ const root = document.getElementById("site-content")
 // document.getElementById("logoutButton").addEventListener("click", onLogout)
 
 page(decorateContext)
-page("/", homePage)
+page("/", faqPage)
 page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)

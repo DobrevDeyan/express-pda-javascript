@@ -1,6 +1,5 @@
 export function validEmailCheck() {
-  // const input = document.getElementById("email")
-  // input.addEventListener("change", validEmailCheck(input))
+  const input = document.getElementById("email")
 
   input.addEventListener("keyup", function (e) {
     if (e.target.value === "") {

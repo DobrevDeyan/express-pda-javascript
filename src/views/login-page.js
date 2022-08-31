@@ -1,8 +1,8 @@
-import { validEmailCheck } from "../utilities/email-validation.js"
 import { html } from "../utilities/lib.js"
+import { validEmailCheck } from "../utilities/email-validation.js"
 // import { login } from "../api/data.js"
 
-const loginTemplate = (onInputChange) => html` <section id="login">
+const loginTemplate = () => html` <section id="login">
   <div class="login-container">
     <h1 class="login-title">Login</h1>
     <form class="form">
@@ -10,21 +10,19 @@ const loginTemplate = (onInputChange) => html` <section id="login">
         <label for="email"
           >Email:<span class="message">Valid email address</span></label
         >
-        <input
-          @change="${onInputChange}"
-          type="email"
-          name="email"
-          id="email"
-        />
+        <input type="email" name="email" id="email" value="skine@abv.bg" />
       </div>
       <div class="input-group">
         <label for="password"
           >Password:<span class="message">Incorrect password</span></label
         >
-        <input type="password" name="password" id="password" />
+        <input type="password" name="password" id="password" value="123456" />
       </div>
       <button type="submit" class="login-button">Login</button>
-      <p class="message">Don't have an account? <a href="/register">Register</a></p>
+      <p class="message">
+        Don't have an account?
+        <a href="/register">Register</a>
+      </p>
     </form>
   </div>
 </section>`
@@ -32,11 +30,19 @@ const loginTemplate = (onInputChange) => html` <section id="login">
 // EMAIL VALIDATION
 
 export function loginPage(ctx) {
-  ctx.render(loginTemplate(onInputChange))
+  ctx.render(loginTemplate())
+  validEmailCheck()
 
-  function onInputChange(event) {
-    console.log(1)
+  const marker = document.querySelector(".marker")
+  function indicator(e) {
+    marker.style.left = "272px"
+    marker.style.width = "113.3px"
   }
+  const link = document.querySelector("p.message a")
+  link.addEventListener("click", (e) => {
+    if (!e.target.href.includes("register")) return
+    indicator(e)
+  })
 
   // async function onSubmit(event) {
   //   event.preventDefault()

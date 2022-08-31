@@ -17,7 +17,7 @@ const root = document.getElementById("site-content")
 
 page(decorateContext)
 // page("/", homePage)
-page("/", homePage)
+page("/", loginPage)
 page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)
@@ -52,7 +52,7 @@ function updateUserNav() {
   }
 
   const marker = document.querySelector(".marker")
-  const items = document.querySelectorAll("nav a")
+  const items = document.querySelectorAll("a")
   function indicator(e) {
     marker.style.left = e.offsetLeft + "px"
     marker.style.width = e.offsetWidth + "px"

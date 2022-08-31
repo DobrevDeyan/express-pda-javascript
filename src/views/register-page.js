@@ -2,7 +2,7 @@ import { html } from "../utilities/lib.js"
 import { validEmailCheck } from "../utilities/email-validation.js"
 // import { register } from "../api/data.js"
 
-const registerTemplate = (onInputChange) => html` <section id="register">
+const registerTemplate = () => html` <section id="register">
   <div class="register-container">
     <h1 class="register-title">Register</h1>
     <form class="form">
@@ -11,7 +11,6 @@ const registerTemplate = (onInputChange) => html` <section id="register">
           >Email:<span class="message">Valid email address</span></label
         >
         <input
-          @change="${onInputChange}"
           type="email"
           name="email"
           id="email"
@@ -37,12 +36,19 @@ const registerTemplate = (onInputChange) => html` <section id="register">
 </section>`
 
 export function registerPage(ctx) {
-  ctx.render(registerTemplate(onInputChange))
+  ctx.render(registerTemplate())
+  validEmailCheck()
 
-  function onInputChange(event) {
-    console.log(1)
+  const marker = document.querySelector(".marker")
+  function indicator(e) {
+    marker.style.left = "172.5px"
+    marker.style.width = "79.75px"
   }
-
+  const link = document.querySelector("p.message a")
+  link.addEventListener("click", (e) => {
+    if (!e.target.href.includes("login")) return
+    indicator(e)
+  })
   // async function onSubmit(event) {
   //   event.preventDefault()
   //   const formData = new FormData(event.target)

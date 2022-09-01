@@ -39,9 +39,15 @@ header {
   align-items: center;
   padding: 1em 0;
 }
-header .logo {
+header .logo,
+nav span,
+nav .separator {
   pointer-events: none;
   cursor: default;
+}
+nav span {
+  color: aliceblue;
+  font-weight: bold;
 }
 nav {
   display: flex;
@@ -55,14 +61,12 @@ nav .user {
 nav a,
 nav span {
   padding: 10px 10px;
-  margin-right: 15px;
+  /* margin-right: 5px; */
   text-decoration: none;
   color: black;
   font-size: 1.3rem;
   position: relative;
   font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
   /* box-shadow: 0px 2px 0px hsl(var(--primary-hsl), 0.4);
   box-shadow: 0px 2px 0px #201f1f; */
   border-radius: 2px;
@@ -81,4 +85,8 @@ nav .user .marker {
   bottom: -10px;
   transition: 0.5s;
   border-radius: 4px;
+}
+nav .separator {
+  margin: 0;
+  padding: 0;
 }

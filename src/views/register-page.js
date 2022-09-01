@@ -46,7 +46,7 @@ export function registerPage(ctx) {
   validEmailCheck()
 
   // HANDLER FOR REGISTER CONTAINER LINK
-  const marker = document.querySelector(".marker")
+  const marker = document.querySelector("nav .guest .marker")
   function indicator(e) {
     marker.style.left = "172.5px"
     marker.style.width = "79.75px"

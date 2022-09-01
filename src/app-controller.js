@@ -7,6 +7,8 @@ import { faqPage } from "./views/faq-page.js"
 import { loginPage } from "./views/login-page.js"
 import { registerPage } from "./views/register-page.js"
 import { dashboardPage } from "./views/user-dashboard-page.js"
+
+// import { logout } from "./api/api.js"
 // import { createPage } from "./views/add-pair.js"
 // import { detailsPage } from "./views/details.js"
 // import { editPage } from "./views/edit.js"
@@ -33,7 +35,6 @@ page.start()
 function decorateContext(ctx, next) {
   ctx.render = (content) => render(content, root)
   ctx.updateUserNav = updateUserNav
-  ctx.loginPage = loginPage
   next()
 }
 function onLogout() {
@@ -41,13 +42,14 @@ function onLogout() {
   updateUserNav()
   page.redirect("/")
 }
+
 function updateUserNav() {
   const userData = getUserData()
   if (userData) {
     document.querySelector(".user").style.display = "inline-block"
     document.querySelector(".guest").style.display = "none"
     document.querySelector(".user span").textContent = userData.email
-    document.querySelector(".user span").style.color = "aliceblue"
+    document.querySelector(".user span").style.color = "alice"
     const target = document.querySelector("nav .user .marker")
     navigationSlider(target)
   } else {

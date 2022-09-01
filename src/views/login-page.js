@@ -1,14 +1,7 @@
 import { html } from "../utilities/lib.js"
 import { validEmailCheck } from "../utilities/email-validation.js"
-// import { setUserData } from "../utilities/util.js"
-import {
-  app,
-  db,
-  serverData,
-  auth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-} from "../firebase/firebase-setup.js"
+import { setUserData } from "../utilities/util.js"
+import { auth, signInWithEmailAndPassword } from "../firebase/firebase-setup.js"
 
 const loginTemplate = (onSubmit) => html` <section id="login">
   <div class="login-container">
@@ -35,12 +28,13 @@ const loginTemplate = (onSubmit) => html` <section id="login">
   </div>
 </section>`
 
-// EMAIL VALIDATION
-
 export function loginPage(ctx) {
+  // RENDER PAGE AND PASS LOGIN FUNCTION
   ctx.render(loginTemplate(onSubmit))
+  // EMAIL VALIDATION INPUT
   validEmailCheck()
 
+  // HANDLER FOR LOGIN CONTAINER LINK
   const marker = document.querySelector(".marker")
   function indicator(e) {
     marker.style.left = "272px"
@@ -52,6 +46,7 @@ export function loginPage(ctx) {
     indicator(e)
   })
 
+  // USER LOGIN FUNCTION
   async function onSubmit(event) {
     event.preventDefault()
     const formData = new FormData(event.target)
@@ -62,33 +57,22 @@ export function loginPage(ctx) {
       return alert("All fields are required")
     }
 
-    const userCredentials = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    )
-    const userData = {
-      id: userCredentials.user.uid,
-      email: userCredentials.user.email,
-      token: userCredentials.user.accessToken,
+    try {
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      const userData = {
+        id: userCredentials.user.uid,
+        email: userCredentials.user.email,
+        token: userCredentials.user.accessToken,
+      }
+      setUserData(userData)
+      ctx.updateUserNav()
+      ctx.page.redirect("/dashboard")
+    } catch (error) {
+      alert(error.message)
     }
-    // console.log(userCredentials.user.uid)
-    // console.log(userCredentials.user.accessToken)
-    // console.log(userCredentials.user)
-    // console.log(userData)
-    sessionStorage.setItem("userData", JSON.stringify(userData))
-    ctx.updateUserNav()
-    ctx.page.redirect("/dashboard")
   }
 }
-
-// export async function login(email, password) {
-//   const result = await post("/users/login", { email, password })
-//   const userData = {
-//     email: result.email,
-//     id: result._id,
-//     token: result.accessToken,
-//   }
-//   setUserData(userData)
-//   return result
-// }

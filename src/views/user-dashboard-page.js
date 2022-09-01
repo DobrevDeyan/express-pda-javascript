@@ -1,9 +1,10 @@
 import { html } from "../utilities/lib.js"
-// import { getAllShoes } from "../api/data.js"
+import { getUserData } from "../utilities/util.js"
 
 const dashboardTemplate = () => html`
   <section id="dashboard">
-    <h2>Collectibles</h2>
+    <h2>Proformas</h2>
+    <h1 style="position: center">Welcome to your Proformas, <span></span>!</h1>
   </section>
 `
 // const proformaTemplate = (shoe) => html`
@@ -16,8 +17,10 @@ const dashboardTemplate = () => html`
 //   </li>
 // `
 export async function dashboardPage(ctx) {
-  // const shoes = await getAllShoes()
   ctx.render(dashboardTemplate())
+
+  const userData = getUserData()
+  document.querySelector("#dashboard h1 span").textContent = userData.email
 }
 
 //  ${shoes.length == 0

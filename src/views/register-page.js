@@ -1,6 +1,10 @@
 import { html } from "../utilities/lib.js"
 import { validEmailCheck } from "../utilities/email-validation.js"
-// import { register } from "../api/data.js"
+import { setUserData } from "../utilities/util.js"
+import {
+  auth,
+  createUserWithEmailAndPassword,
+} from "../firebase/firebase-setup.js"
 
 const registerTemplate = (onSubmit) => html` <section id="register">
   <div class="register-container">
@@ -36,9 +40,12 @@ const registerTemplate = (onSubmit) => html` <section id="register">
 </section>`
 
 export function registerPage(ctx) {
+  // RENDER PAGE AND PASS REGISTER FUNCTION
   ctx.render(registerTemplate(onSubmit))
+  // EMAIL VALIDATION INPUT
   validEmailCheck()
 
+  // HANDLER FOR REGISTER CONTAINER LINK
   const marker = document.querySelector(".marker")
   function indicator(e) {
     marker.style.left = "172.5px"
@@ -49,34 +56,37 @@ export function registerPage(ctx) {
     if (!e.target.href.includes("login")) return
     indicator(e)
   })
+
+  // USER LOGIN FUNCTION
   async function onSubmit(event) {
-    // event.preventDefault()
-    // const formData = new FormData(event.target)
-    // const email = formData.get("email").trim()
-    // const password = formData.get("password").trim()
-    // const repass = formData.get("re-password").trim()
-    // if (email === "" || password === "" || repass === "") {
-    //   return alert("All fields are required")
-    // }
-    // if (password !== repass) {
-    //   return alert("Passwords do not match")
-    // }
-    // await register(email, password)
-    // ctx.updateUserNav()
-    // ctx.page.redirect("/dashboard")
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    const email = formData.get("email").trim()
+    const password = formData.get("password").trim()
+    const repass = formData.get("repass").trim()
+    if (email === "" || password === "" || repass === "") {
+      return alert("All fields are required")
+    }
+    if (password !== repass) {
+      return alert("Passwords do not match")
+    }
+
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      const userData = {
+        id: userCredentials.user.uid,
+        email: userCredentials.user.email,
+        token: userCredentials.user.accessToken,
+      }
+      setUserData(userData)
+      ctx.updateUserNav()
+      ctx.page.redirect("/dashboard")
+    } catch (error) {
+      alert(error.message)
+    }
   }
 }
-
-// export async function register(email, password) {
-//   const result = await post("/users/register", {
-//     email,
-//     password,
-//   })
-//   const userData = {
-//     email: result.email,
-//     id: result._id,
-//     token: result.accessToken,
-//   }
-//   setUserData(userData)
-//   return result
-// }

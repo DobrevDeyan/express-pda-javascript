@@ -4,6 +4,11 @@ import {
   getDocs,
   collection,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"
 
 //INITIALIZING FIREBASE
 const firebaseConfig = {
@@ -16,6 +21,8 @@ const firebaseConfig = {
 }
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
+const auth = getAuth(app)
+
 // FIREBASE SETUP FOR RETRIEVING ALL USERS DATA
 const querySnapshot = await getDocs(collection(db, "users"))
 let usersData = []
@@ -24,4 +31,12 @@ querySnapshot.forEach((doc) => {
   // console.log({ ...doc.data(), id: doc.id })
 })
 const serverData = Array.from(usersData)
-export { serverData }
+
+export {
+  serverData,
+  app,
+  db,
+  auth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+}

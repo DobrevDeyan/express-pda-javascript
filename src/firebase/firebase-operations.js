@@ -1,25 +1,43 @@
-import { serverData } from "./firebase-setup.js"
-
-// serverData.forEach((usersData) => {
-//   console.log(Object.keys(usersData))
-//   console.log(Object.values(usersData))
-// })
+import {
+  serverData,
+  setDoc,
+  doc,
+  db,
+  auth,
+  updateDoc,
+} from "./firebase-setup.js"
+import { getUserData } from "../utilities/util.js"
 
 export async function createProforma(userId, proforma) {}
 export async function readProformasByUserId(userId) {}
 export async function updateProforma(userId, proforma) {}
 export async function deleteProforma(userId, proforma) {}
-export async function setUserProfile() {}
-// const proformaRef = doc(db, "users", "xj9trMyxaNfbFFVWwdlx")
-// await updateDoc(proformaRef, {
-//   "proformas.breadth": "2000",
+export async function writeProforma() {}
+
+// SET NEWLY REGISTERED USER IN FIRESTORE COLLECTION
+// const user = auth.currentUser
+// await setDoc(doc(db, "users", `${user.uid}`), {
+//   email: user.email,
+//   name: user.displayName,
+//   verified: user.emailVerified,
 // })
 
-// await setDoc(doc(db, "users", ""), {
-//     name: "Los Angeles",
-//     state: "CA",
-//     country: "USA"
-//   });
+//
+// const userRef = doc(db, "users", `${user.uid}`)
+// await updateDoc(userRef, {
+//   proformas: [{ grt: 2, loa: 3, nrt: 3 }],
+// })
+
+// await setDoc(doc(db, "users", `${user.uid}`), {
+//   email: user.email,
+//   name: user.displayName,
+//   verified: user.emailVerified,
+// })
+
+// serverData.forEach((usersData) => {
+//   console.log(Object.keys(usersData))
+//   console.log(Object.values(usersData))
+// })
 
 // try {
 //   const docRef = await addDoc(collection(db, "users"), {
@@ -32,25 +50,7 @@ export async function setUserProfile() {}
 //   console.error("Error adding document: ", e)
 // }
 
-// SetUserData(user: any) {
-//     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-//       `users/${user.uid}`
-//     );
-//     const userData: User = {
-//       uid: user.uid,
-//       email: user.email,
-//       displayName: user.displayName,
-//       photoURL: user.photoURL,
-//       emailVerified: user.emailVerified,
-//     };
-//     return userRef.set(userData, {
-//       merge: true,
-//     });
-//   }
-
-
-// EXPORT 
-
+// EXPORT
 
 // import { Injectable } from '@angular/core';
 // import { doc, setDoc, getFirestore } from 'firebase/firestore';
@@ -107,8 +107,7 @@ export async function setUserProfile() {}
 //   }
 // }
 
-
-// IMPORT  
+// IMPORT
 
 // import { Injectable } from '@angular/core';
 // import {

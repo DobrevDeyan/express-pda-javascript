@@ -4986,3 +4986,9 @@ export class ProformaCalculatorService {
       this.computedProforma.varnaWest.marpol
   }
 }
+
+
+
+
+
+

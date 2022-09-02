@@ -45,7 +45,7 @@ nav .separator {
   pointer-events: none;
   cursor: default;
 }
-nav span {
+nav .user span {
   color: aliceblue;
   font-weight: bold;
 }

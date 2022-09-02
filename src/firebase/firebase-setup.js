@@ -3,6 +3,9 @@ import {
   getFirestore,
   getDocs,
   collection,
+  setDoc,
+  doc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"
 import {
   getAuth,
@@ -35,9 +38,12 @@ const serverData = Array.from(usersData)
 
 export {
   serverData,
+  setDoc,
+  doc,
   getAuth,
   app,
   db,
+  updateDoc,
   auth,
   onAuthStateChanged,
   signInWithEmailAndPassword,

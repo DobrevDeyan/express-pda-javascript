@@ -1,0 +1,66 @@
+.main-intro p {
+  display: inline-block;
+  margin: 3em 0;
+}
+
+input[type="number"] {
+  width: 8em;
+  margin: 10px 0;
+}
+
+label {
+  font-weight: bold;
+}
+
+.main-intro button {
+  font-weight: bold;
+  margin-top: 50px;
+  font-size: 1.2em;
+  width: 12em;
+  height: 2.5em;
+  background-color: #e58e26;
+  border: 1px solid #e58e26;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 #fa983a inset;
+  margin-bottom: 30px;
+}
+
+/* GENERAL TABLE */
+
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+table {
+  border: 1px solid #333;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+td,
+th {
+  width: 200px;
+  height: 30px;
+  background-color: lightgray;
+  border: 2px solid #333;
+  text-transform: uppercase;
+}
+
+td[colspan="2"] {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+th[scope="col"] {
+  background-color: black;
+  color: white;
+}
+
+.useful-info p {
+  margin: 0;
+  margin-bottom: 3em;
+}

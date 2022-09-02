@@ -5,7 +5,6 @@ import {
   auth,
   createUserWithEmailAndPassword,
 } from "../firebase/firebase-setup.js"
-import { setUserProfile } from "../firebase/firebase-operations.js"
 
 const registerTemplate = (onSubmit) => html` <section id="register">
   <div class="register-container">
@@ -84,8 +83,6 @@ export function registerPage(ctx) {
         token: userCredentials.user.accessToken,
       }
 
-      // SET USER DATA SCHEMA IN FIRESTORE
-      setUserProfile()
       // SET TO SESSION STORAGE
       setUserData(userData)
       ctx.updateUserNav()

@@ -5,6 +5,7 @@ import {
   auth,
   createUserWithEmailAndPassword,
 } from "../firebase/firebase-setup.js"
+import { setUserProfile } from "../firebase/firebase-operations.js"
 
 const registerTemplate = (onSubmit) => html` <section id="register">
   <div class="register-container">
@@ -48,8 +49,8 @@ export function registerPage(ctx) {
   // HANDLER FOR REGISTER CONTAINER LINK
   const marker = document.querySelector("nav .guest .marker")
   function indicator(e) {
-    marker.style.left = "172.5px"
-    marker.style.width = "79.75px"
+    marker.style.left = "125.5px"
+    marker.style.width = "62.5px"
   }
   const link = document.querySelector("p.message a")
   link.addEventListener("click", (e) => {
@@ -82,6 +83,10 @@ export function registerPage(ctx) {
         email: userCredentials.user.email,
         token: userCredentials.user.accessToken,
       }
+
+      // SET USER DATA SCHEMA IN FIRESTORE
+      setUserProfile()
+      // SET TO SESSION STORAGE
       setUserData(userData)
       ctx.updateUserNav()
       ctx.page.redirect("/dashboard")

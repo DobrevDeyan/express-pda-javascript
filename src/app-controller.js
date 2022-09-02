@@ -1,15 +1,15 @@
 import {} from "./firebase/firebase-operations.js"
 import { page, render, navigationSlider } from "./utilities/lib.js"
-import { onAuthStateChanged, auth } from "./firebase/firebase-setup.js"
+import { onAuthStateChanged, auth, getAuth } from "./firebase/firebase-setup.js"
 import { setUserData, getUserData, clearUserData } from "./utilities/util.js"
 import { homePage } from "./views/home-page.js"
 import { faqPage } from "./views/faq-page.js"
 import { loginPage } from "./views/login-page.js"
 import { registerPage } from "./views/register-page.js"
 import { dashboardPage } from "./views/user-dashboard-page.js"
+import { createPdaPage } from "./views/create-pda-page.js"
 
 // import { logout } from "./api/api.js"
-// import { createPage } from "./views/add-pair.js"
 // import { detailsPage } from "./views/details.js"
 // import { editPage } from "./views/edit.js"
 // import { searchPage } from "./views/search.js"
@@ -23,8 +23,8 @@ page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)
 page("/dashboard", dashboardPage)
+page("/create-pda", createPdaPage)
 // page("/details/:id", detailsPage)
-// page("/add-pair", createPage)
 // page("/edit/:id", editPage)
 // page("/search", searchPage)
 
@@ -37,10 +37,13 @@ function decorateContext(ctx, next) {
   ctx.updateUserNav = updateUserNav
   next()
 }
+
 function onLogout() {
-  sessionStorage.clear()
-  updateUserNav()
-  page.redirect("/")
+  auth.signOut().then(() => {
+    sessionStorage.clear()
+    updateUserNav()
+    page.redirect("/")
+  })
 }
 
 function updateUserNav() {
@@ -59,3 +62,16 @@ function updateUserNav() {
     navigationSlider(target)
   }
 }
+
+// // const auth = getAuth()
+// const user = auth.currentUser
+
+// if (user) {
+//   // User is signed in, see docs for a list of available properties
+//   // https://firebase.google.com/docs/reference/js/firebase.User
+//   // ...
+//   console.log("User is logged", user.uid)
+// } else {
+//   // No user is signed in.
+//   console.log("User is not logged")
+// }

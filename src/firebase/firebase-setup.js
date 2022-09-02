@@ -35,6 +35,7 @@ const serverData = Array.from(usersData)
 
 export {
   serverData,
+  getAuth,
   app,
   db,
   auth,

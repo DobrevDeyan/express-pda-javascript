@@ -37,14 +37,14 @@ querySnapshot.forEach((doc) => {
 const serverData = Array.from(usersData)
 
 export {
-  serverData,
-  setDoc,
-  doc,
-  getAuth,
   app,
   db,
+  doc,
+  setDoc,
   updateDoc,
+  serverData,
   auth,
+  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,

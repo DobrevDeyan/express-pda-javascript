@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/DobrevDeyan/SPA-JavaScript#readme",
   "dependencies": {
+    "connect-history-api-fallback": "^2.0.0",
     "firebase": "^9.9.3",
     "firebase-admin": "^11.0.1",
     "lit-html": "^1.4.1",

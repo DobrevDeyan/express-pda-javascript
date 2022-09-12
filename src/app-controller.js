@@ -1,4 +1,3 @@
-import {} from "./firebase/firebase-operations.js"
 import { page, render, navigationSlider } from "./utilities/lib.js"
 import { onAuthStateChanged, auth, getAuth } from "./firebase/firebase-setup.js"
 import { setUserData, getUserData, clearUserData } from "./utilities/util.js"
@@ -27,7 +26,7 @@ page("/create-pda", createPdaPage)
 // page("/details/:id", detailsPage)
 // page("/edit/:id", editPage)
 // page("/search", searchPage)
-
+page.redirect("*", homePage)
 // Initiate app
 updateUserNav()
 page.start()

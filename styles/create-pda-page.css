@@ -141,12 +141,6 @@ td.text-right {
 /* Google fonts - Open Sans */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 /* colors */
-/* body */
-body {
-  /* background: rgba(0, 0, 0, 0.9); */
-  /* font-family: "Open Sans", sans-serif; */
-}
-
 /* links */
 .nfl a,
 .mlb a,
@@ -188,22 +182,33 @@ body {
   color: #c33d17;
 }
 
+section#create-pda {
+  margin-top: 140px;
+}
+
 /* wrapper */
 .wrapper {
   width: 100%;
   max-width: 1000px;
   margin: 20px auto 100px auto;
-  /* padding: 0; */
-  background: rgba(255, 255, 255, 0.1);
+  padding: 0;
+  /* background: rgba(255, 255, 255, 0.1); */
   color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   position: relative;
+  --color: hsl(var(--primary-dark-hsl), 0.5);
+  background-color: var(--color);
+  box-shadow: 0 0 25px var(--color);
+  border-radius: 15px;
+  color: aliceblue;
 }
 
 /* lists */
 .row ul {
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .row ul li {
@@ -212,7 +217,7 @@ body {
   font-weight: normal;
   list-style: none;
   display: inline-block;
-  width: 20%;
+  /* width: 20%; */
   box-sizing: border-box;
 }
 @media only screen and (max-width: 767px) and (min-width: 480px) {
@@ -228,6 +233,11 @@ body {
 
 .title ul li {
   padding: 35px 33px;
+}
+
+.title .port-name {
+  font-size: 16px;
+  color: blue;
 }
 
 .row ul li {
@@ -261,25 +271,17 @@ body {
 }
 
 .title {
-  padding: 25px 20px 5px 0;
+  padding: 25px 20px 5px 20px;
   height: 75px;
   font-size: 16;
   background-color: rgba(255, 255, 255, 0.1);
-  border-left: 3px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: row;
   text-align: center;
-  text-decoration: none;
+  justify-content: space-around;
 }
-.title ul {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-}
-
-.title:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-left: 3px solid rgba(255, 255, 255, 0.1);
+.title li {
+  list-style: none;
 }
 
 @media only screen and (max-width: 767px) {
@@ -291,89 +293,27 @@ body {
 .nfl {
   border-left: 3px solid #1c616c;
 }
-
 .nfl:hover {
   border-left: 3px solid rgb(79, 192, 210);
 }
-
 .mlb {
   border-left: 3px solid #1d6e4b;
 }
-
 .mlb:hover {
   border-left: 3px solid rgb(82, 210, 154);
 }
-
 .nhl {
   border-left: 3px solid rgba(157, 121, 25, 0.7);
 }
-
 .nhl:hover {
   border-left: 3px solid rgba(231, 196, 104, 0.7);
 }
-
 .pga {
   border-left: 3px solid #952f12;
 }
-
 .pga:hover {
   border-left: 3px solid rgb(235, 118, 85);
 }
-
-/* row one - fadeIn */
-/* .row-fadeIn-wrapper {
-  opacity: 0;
-  font-size: 0;
-  height: 0;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.2s ease-out;
-  animation: fadeIn 0.4s ease-out 2s 1 alternate;
-  animation-fill-mode: forwards;
-}
-
-.row-fadeIn-wrapper:hover {
-  height: 35px;
-}
-@media only screen and (max-width: 767px) {
-  .row-fadeIn-wrapper:hover {
-    height: 55px;
-  }
-}
-@media only screen and (max-width: 359px) {
-  .row-fadeIn-wrapper:hover {
-    height: 75px;
-  }
-} */
-
-/* .fadeIn {
-  padding: 20px 0;
-  font-size: 0;
-  position: absolute;
-  transition: all 0.2s ease-out;
-  width: 100%;
-}
-
-.fadeIn:hover {
-  background-color: rgba(26, 26, 26, 0.9);
-} */
-
-/* row two - fadeOut */
-/* .row-fadeOut-wrapper {
-  font-size: 0;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.2s ease-out;
-  animation: fadeOut 0.4s ease-out 8s 1 alternate;
-  animation-fill-mode: forwards;
-  opacity: 1;
-  height: 65px;
-}
-
-.row-fadeOut-wrapper:hover {
-  height: 100px;
-} */
-
 /* update content */
 .update-row {
   animation: update 0.5s ease-out 12s 1 alternate;
@@ -396,7 +336,6 @@ body {
   animation: update2 4s ease-out 13s 1 alternate;
   animation-fill-mode: forwards;
 }
-
 /* more content */
 ul.more-content li {
   position: relative;
@@ -414,7 +353,6 @@ ul.more-content li {
     font-size: 11px;
   }
 }
-
 @media only screen and (max-width: 767px) {
   .small {
     display: none;

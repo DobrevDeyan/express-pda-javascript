@@ -2,7 +2,7 @@ import { html } from "../utilities/lib.js"
 
 const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
-    <!-- <main>
+    <main>
       <h1>Proforma Disbursement Account Calculator Port of Varna</h1>
       <p>
         Please follow the below input fields and provide exact particulars basis
@@ -61,25 +61,20 @@ const createPdaTemplate = (onSubmit) => html`
         type="button"
         value="Calculate"
         onclick="calc()"
-      /> -->
+      />
 
-    <section class="wrapper">
-      <!-- Row title -->
-      <div class="title">
-        <li>Sport</li>
-        <li>Entry</li>
-        <li>Max</li>
-        <li>Time</li>
-      </div>
-      <!-- Row 1 - fadeIn -->
-      <!-- <section class="row-fadeIn-wrapper">
-        <article class="row fadeIn nfl">
+      <div class="wrapper">
+        <!-- Row title -->
+        <div class="title">
+          <li class="port-name">Port Varna East</li>
+          <li>Service</li>
+          <li>Price in EUR</li>
+        </div>
+        <!-- Row 5 -->
+        <article class="row mlb">
           <ul>
-            <li><a href="#">NFL</a><span class="small">(fadeIn)</span></li>
-            <li>$50</li>
-            <li>12</li>
-            <li>48</li>
-            <li>2:00ET</li>
+            <li>tonnage dues</li>
+            <li id="ve-result-tonnage-dues">10000</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -89,16 +84,11 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-      </section> -->
-      <!-- Row 2 - fadeOut -->
-      <!-- <section class="row-fadeOut-wrapper">
-        <article class="row nfl">
+        <!-- Row 6 -->
+        <article class="row mlb">
           <ul>
-            <li><a href="#">NFL</a><span class="small">(fadeOut)</span></li>
-            <li>$5</li>
-            <li>45</li>
-            <li>100</li>
-            <li>3:00ET</li>
+            <li>berth dues</li>
+            <li id="ve-result-berth-dues">2000</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -108,9 +98,190 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-      </section> -->
-      <!-- Row 3 -->
-      <article class="row nfl">
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>pilotage In</li>
+            <li id="ve-result-pilotage-in">32323</li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>pilotage out</li>
+            <li id="ve-result-pilotage-out">2121</li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>towage in</li>
+            <li id="ve-result-towage-in">010100</li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>towage out</li>
+            <li id="ve-result-towage-out">2312</li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>mooring</li>
+            <li id="ve-result-mooring"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>unmooring</li>
+            <li id="ve-result-unmooring"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>channel dues</li>
+            <li id="ve-result-channel-dues"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>light dues</li>
+            <li id="ve-result-light-dues"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>sailing permission</li>
+            <li id="ve-result-sailing-permission"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>marpol 73/78 fee</li>
+            <li id="ve-result-marpol-fee"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>cargo plan verification</li>
+            <li id="ve-cargo-plan-verification"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>laying of oil booms</li>
+            <li id="ve-oilbooming"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- Row 6 -->
+        <article class="row mlb">
+          <ul>
+            <li>total:</li>
+            <li id="ve-result-total-cost"></li>
+          </ul>
+          <ul class="more-content">
+            <li>
+              This 1665-player contest boasts a $300,000.00 prize pool and pays
+              out the top 300 finishing positions. First place wins $100,000.00.
+              Good luck!
+            </li>
+          </ul>
+        </article>
+        <!-- <article class="row nhl">
         <ul>
           <li><a href="#">NHL</a></li>
           <li>$50</li>
@@ -126,14 +297,14 @@ const createPdaTemplate = (onSubmit) => html`
           </li>
         </ul>
       </article>
-      <!-- Row 4 -->
-      <article class="row mlb update-row">
+
+      <article class="row pga">
         <ul>
-          <li><a href="#">MLB</a><span class="small">(update)</span></li>
-          <li>$10</li>
-          <li><span class="update1">1</span><span class="update2">2</span></li>
-          <li>10</li>
-          <li>1:00ET</li>
+          <li><a href="#">PGA</a></li>
+          <li>$50</li>
+          <li>12</li>
+          <li>48</li>
+          <li>11:00ET</li>
         </ul>
         <ul class="more-content">
           <li>
@@ -143,7 +314,6 @@ const createPdaTemplate = (onSubmit) => html`
           </li>
         </ul>
       </article>
-      <!-- Row 5 -->
       <article class="row mlb">
         <ul>
           <li><a href="#">MLB</a></li>
@@ -159,112 +329,10 @@ const createPdaTemplate = (onSubmit) => html`
             Good luck!
           </li>
         </ul>
-      </article>
-      <!-- Row 6 -->
-      <article class="row nhl">
-        <ul>
-          <li><a href="#">NHL</a></li>
-          <li>$50</li>
-          <li>12</li>
-          <li>48</li>
-          <li>12:00ET</li>
-        </ul>
-        <ul class="more-content">
-          <li>
-            This 1665-player contest boasts a $300,000.00 prize pool and pays
-            out the top 300 finishing positions. First place wins $100,000.00.
-            Good luck!
-          </li>
-        </ul>
-      </article>
-      <!-- Row 7 -->
-      <article class="row nhl">
-        <ul>
-          <li><a href="#">NHL</a></li>
-          <li>$50</li>
-          <li>12</li>
-          <li>48</li>
-          <li>12:00ET</li>
-        </ul>
-        <ul class="more-content">
-          <li>
-            This 1665-player contest boasts a $300,000.00 prize pool and pays
-            out the top 300 finishing positions. First place wins $100,000.00.
-            Good luck!
-          </li>
-        </ul>
-      </article>
-      <!-- Row 8 -->
-      <article class="row pga">
-        <ul>
-          <li><a href="#">PGA</a></li>
-          <li>$50</li>
-          <li>12</li>
-          <li>48</li>
-          <li>11:00ET</li>
-        </ul>
-        <ul class="more-content">
-          <li>
-            This 1665-player contest boasts a $300,000.00 prize pool and pays
-            out the top 300 finishing positions. First place wins $100,000.00.
-            Good luck!
-          </li>
-        </ul>
-      </article>
-      <!-- Row 9 -->
-      <article class="row pga">
-        <ul>
-          <li><a href="#">PGA</a></li>
-          <li>$50</li>
-          <li>12</li>
-          <li>48</li>
-          <li>11:00ET</li>
-        </ul>
-        <ul class="more-content">
-          <li>
-            This 1665-player contest boasts a $300,000.00 prize pool and pays
-            out the top 300 finishing positions. First place wins $100,000.00.
-            Good luck!
-          </li>
-        </ul>
-      </article>
-      <!-- Row 10 -->
-      <article class="row pga">
-        <ul>
-          <li><a href="#">PGA</a></li>
-          <li>$50</li>
-          <li>12</li>
-          <li>48</li>
-          <li>11:00ET</li>
-        </ul>
-        <ul class="more-content">
-          <li>
-            This 1665-player contest boasts a $300,000.00 prize pool and pays
-            out the top 300 finishing positions. First place wins $100,000.00.
-            Good luck!
-          </li>
-        </ul>
-      </article>
-      <!-- Row 11 -->
-      <article class="row mlb">
-        <ul>
-          <li><a href="#">MLB</a></li>
-          <li>$10</li>
-          <li>1</li>
-          <li>10</li>
-          <li>1:00ET</li>
-        </ul>
-        <ul class="more-content">
-          <li>
-            This 1665-player contest boasts a $300,000.00 prize pool and pays
-            out the top 300 finishing positions. First place wins $100,000.00.
-            Good luck!
-          </li>
-        </ul>
-      </article>
-    </section>
+      </article> -->
+      </div>
 
-    <!-- <div class="table-title">
+      <!-- <div class="table-title">
         <h3>Port Varna East</h3>
       </div>
       <table class="table-fill">
@@ -341,7 +409,7 @@ const createPdaTemplate = (onSubmit) => html`
           </tr>
         </tbody>
       </table> -->
-    <!-- <div class="useful-info">
+      <div class="table-info">
         <p>
           Dear Customers, Kindly be guided that the provided expenses are up to
           date with currently in force tariffs from local providers.<br />
@@ -350,8 +418,8 @@ const createPdaTemplate = (onSubmit) => html`
           information about specific inquiries, do not hesitate to
           <a href="contact_us.html">contact us</a> or subscribe.
         </p>
-      </div> -->
-    <!-- </main> -->
+      </div>
+    </main>
   </section>
 `
 export function createPdaPage(ctx) {

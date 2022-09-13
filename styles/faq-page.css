@@ -85,6 +85,7 @@ section#faq .faq-container .accordion-item:target .answer {
 section#faq .faq-container .accordion-item:target .accordion-link ion-icon.add,
 section#faq .faq-container .accordion-link ion-icon.remove {
   display: none;
+  transition: 2s ease-in-out;
 }
 section#faq
   .faq-container

@@ -3,22 +3,31 @@ import { html } from "../utilities/lib.js"
 const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
     <main>
-      <h1>Proforma Disbursement Account Calculator Port of Varna</h1>
-      <p>
-        Please follow the below input fields and provide exact particulars basis
-        ships valid certificates
-      </p>
       <div class="form-wrapper">
+        <p>
+          Please follow the below input fields and provide exact particulars
+          basis ships valid certificates
+        </p>
+        <fieldset>
+          <legend>port-terminal</legend>
+          <select id="terminal" name="terminal">
+            <option value="Varna East" id="tanker">Varna East</option>
+            <option value="Varna West" id="other">Varna West</option>
+            <!-- <option value="Container" id="container">Container</option>
+            <option value="Passenger" id="passenger">Passenger</option>
+            <option value="Docking-repairs" id="docking-repairs">
+              Docking/Repairs
+            </option> -->
+          </select>
+        </fieldset>
         <fieldset>
           <legend>vessel type</legend>
           <select id="vesseltype" name="vessel-type">
             <option value="Other" id="other">Other</option>
+            <option value="Bulk carrier" id="bulk-carrier">Bulk carrier</option>
             <option value="Tanker" id="tanker">Tanker</option>
             <option value="Container" id="container">Container</option>
             <option value="Passenger" id="passenger">Passenger</option>
-            <option value="Docking-repairs" id="docking-repairs">
-              Docking/Repairs
-            </option>
             <option value="Navy" id="navy">Navy</option>
           </select>
         </fieldset>
@@ -28,6 +37,9 @@ const createPdaTemplate = (onSubmit) => html`
             <option value="Other">Other</option>
             <option value="Loading" id="loading">Loading</option>
             <option value="Discharging" id="discharging">Discharging</option>
+            <option value="Docking-repairs" id="docking-repairs">
+              Docking/Repairs
+            </option>
           </select>
         </fieldset>
         <fieldset>
@@ -44,7 +56,6 @@ const createPdaTemplate = (onSubmit) => html`
               DG cargo in/out
             </option>
             <option value="Overtime" id="overtime">Overtime</option>
-            <option value="Discharging" id="discharging">Discharging</option>
           </select>
         </fieldset>
         <form class="right">
@@ -55,25 +66,35 @@ const createPdaTemplate = (onSubmit) => html`
           <label for="name">Hours at berth:</label><br />
           <input type="number" id="hours_at_berth" /><br />
         </form>
+        <input
+          class="caclbutton"
+          type="button"
+          value="Calculate"
+          onclick="calc()"
+        />
+        <div class="table-info">
+          <p>
+            Dear Customers, Kindly be guided that the provided expenses are up
+            to date with currently in force tariffs from local providers.<br />
+            Basis the type of operation, cargo and taking into account local
+            compliances, the provided values can be subject to change. For more
+            information about specific inquiries, do not hesitate to
+            <a href="contact_us.html">contact us</a> or subscribe.
+          </p>
+        </div>
       </div>
-      <input
-        class="caclbutton"
-        type="button"
-        value="Calculate"
-        onclick="calc()"
-      />
 
-      <div class="wrapper">
+      <div class="table-wrapper">
         <!-- Row title -->
         <div class="title">
-          <li class="port-name">Port Varna East</li>
           <li>Service</li>
+          <li class="port-name">Port Varna East</li>
           <li>Price in EUR</li>
         </div>
         <!-- Row 5 -->
         <article class="row mlb">
           <ul>
-            <li>tonnage dues</li>
+            <li>Tonnage dues</li>
             <li id="ve-result-tonnage-dues">10000</li>
           </ul>
           <ul class="more-content">
@@ -87,7 +108,7 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>berth dues</li>
+            <li>Berth dues</li>
             <li id="ve-result-berth-dues">2000</li>
           </ul>
           <ul class="more-content">
@@ -101,7 +122,7 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>pilotage In</li>
+            <li>Pilotage In</li>
             <li id="ve-result-pilotage-in">32323</li>
           </ul>
           <ul class="more-content">
@@ -116,7 +137,7 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>pilotage out</li>
+            <li>Pilotage out</li>
             <li id="ve-result-pilotage-out">2121</li>
           </ul>
           <ul class="more-content">
@@ -130,7 +151,7 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>towage in</li>
+            <li>Towage in</li>
             <li id="ve-result-towage-in">010100</li>
           </ul>
           <ul class="more-content">
@@ -144,7 +165,7 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>towage out</li>
+            <li>Towage out</li>
             <li id="ve-result-towage-out">2312</li>
           </ul>
           <ul class="more-content">
@@ -158,8 +179,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>mooring</li>
-            <li id="ve-result-mooring"></li>
+            <li>Mooring</li>
+            <li id="ve-result-mooring">1111</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -172,8 +193,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>unmooring</li>
-            <li id="ve-result-unmooring"></li>
+            <li>Unmooring</li>
+            <li id="ve-result-unmooring">111</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -186,8 +207,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>channel dues</li>
-            <li id="ve-result-channel-dues"></li>
+            <li>Channel dues</li>
+            <li id="ve-result-channel-dues">222</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -200,8 +221,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>light dues</li>
-            <li id="ve-result-light-dues"></li>
+            <li>Light dues</li>
+            <li id="ve-result-light-dues">333</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -214,8 +235,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>sailing permission</li>
-            <li id="ve-result-sailing-permission"></li>
+            <li>Sailing permission</li>
+            <li id="ve-result-sailing-permission">444</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -228,8 +249,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>marpol 73/78 fee</li>
-            <li id="ve-result-marpol-fee"></li>
+            <li>Marpol 73/78 fee</li>
+            <li id="ve-result-marpol-fee">2222</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -242,8 +263,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>cargo plan verification</li>
-            <li id="ve-cargo-plan-verification"></li>
+            <li>Cargo plan verification</li>
+            <li id="ve-cargo-plan-verification">2313</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -256,8 +277,8 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>laying of oil booms</li>
-            <li id="ve-oilbooming"></li>
+            <li>Laying of oil booms</li>
+            <li id="ve-oilbooming">32312</li>
           </ul>
           <ul class="more-content">
             <li>
@@ -270,14 +291,13 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row 6 -->
         <article class="row mlb">
           <ul>
-            <li>total:</li>
-            <li id="ve-result-total-cost"></li>
+            <li>Total:</li>
+            <li id="ve-result-total-cost">3213</li>
           </ul>
           <ul class="more-content">
-            <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+            <li class="export-file">
+              <a href="#">Export as PDF</a>
+              <a href="#">Share as PDF</a>
             </li>
           </ul>
         </article>
@@ -409,16 +429,6 @@ const createPdaTemplate = (onSubmit) => html`
           </tr>
         </tbody>
       </table> -->
-      <div class="table-info">
-        <p>
-          Dear Customers, Kindly be guided that the provided expenses are up to
-          date with currently in force tariffs from local providers.<br />
-          Basis the type of operation, cargo and taking into account local
-          compliances, the provided values can be subject to change. For more
-          information about specific inquiries, do not hesitate to
-          <a href="contact_us.html">contact us</a> or subscribe.
-        </p>
-      </div>
     </main>
   </section>
 `

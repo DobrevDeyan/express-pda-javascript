@@ -1,196 +1,16 @@
-/* @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
-
-body {
-  background-color: #3e94ec;
-  font-family: "Roboto", helvetica, arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
-}
-
-div.table-title {
-  display: block;
-  margin: auto;
-
-  padding: 5px;
-  width: 100%;
-}
-
-.table-title h3 {
-  color: #fafafa;
-  font-size: 30px;
-  font-weight: 400;
-  font-style: normal;
-  font-family: "Roboto", helvetica, arial, sans-serif;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-}
-
-.table-fill {
-  background: white;
-  border-radius: 3px;
-  border-collapse: collapse;
-  height: 320px;
-  margin: auto;
-  padding: 5px;
-  width: 100%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  animation: float 5s infinite;
-}
-
-th {
-  color: #d5dde5;
-  background: #1b1e24;
-  border-bottom: 4px solid #9ea7af;
-  border-right: 1px solid #343a45;
-  font-size: 23px;
-  font-weight: 100;
-  padding: 24px;
-  text-align: left;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  vertical-align: middle;
-}
-
-th:first-child {
-  border-top-left-radius: 3px;
-}
-
-th:last-child {
-  border-top-right-radius: 3px;
-  border-right: none;
-}
-
-tr {
-  border-top: 1px solid #c1c3d1;
-  border-bottom: 1px solid #c1c3d1;
-  color: #666b85;
-  font-size: 16px;
-  font-weight: normal;
-  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
-}
-
-tr:hover td {
-  background: #4e5066;
-  color: #ffffff;
-  border-top: 1px solid #22262e;
-}
-
-tr:first-child {
-  border-top: none;
-}
-
-tr:last-child {
-  border-bottom: none;
-}
-
-tr:nth-child(odd) td {
-  background: #ebebeb;
-}
-
-tr:nth-child(odd):hover td {
-  background: #4e5066;
-}
-
-tr:last-child td:first-child {
-  border-bottom-left-radius: 3px;
-}
-
-tr:last-child td:last-child {
-  border-bottom-right-radius: 3px;
-}
-
-td {
-  background: #ffffff;
-  padding: 20px;
-  text-align: left;
-  vertical-align: middle;
-  font-weight: 300;
-  font-size: 18px;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid #c1c3d1;
-}
-
-td:last-child {
-  border-right: 0px;
-}
-
-th.text-left {
-  text-align: left;
-}
-
-th.text-center {
-  text-align: center;
-}
-
-th.text-right {
-  text-align: right;
-}
-
-td.text-left {
-  text-align: left;
-}
-
-td.text-center {
-  text-align: center;
-}
-
-td.text-right {
-  text-align: right;
-} */
-
-/* Google fonts - Open Sans */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-/* colors */
-/* links */
-.nfl a,
-.mlb a,
-.nhl a,
-.pga a {
-  text-decoration: none;
-  transition: color 0.2s ease-out;
-}
-
-.nfl a {
-  color: rgb(79, 192, 210);
-}
-
-.nfl a:hover {
-  color: #268695;
-}
-
-.mlb a {
-  color: rgb(82, 210, 154);
-}
-
-.mlb a:hover {
-  color: #279766;
-}
-
-.nhl a {
-  color: rgba(231, 196, 104, 0.7);
-}
-
-.nhl a:hover {
-  color: rgba(201, 154, 32, 0.7);
-}
-
-.pga a {
-  color: rgb(235, 118, 85);
-}
-
-.pga a:hover {
-  color: #c33d17;
-}
-
 section#create-pda {
   margin-top: 140px;
 }
-
-/* wrapper */
-.wrapper {
+/* form-wrapper */
+.form-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+/* table-wrapper */
+.table-wrapper {
   width: 100%;
-  max-width: 1000px;
-  margin: 20px auto 100px auto;
+  max-width: 800px;
+  margin: 120px auto 0 auto;
   padding: 0;
   /* background: rgba(255, 255, 255, 0.1); */
   color: rgba(255, 255, 255, 0.9);
@@ -202,15 +22,13 @@ section#create-pda {
   border-radius: 15px;
   color: aliceblue;
 }
-
 /* lists */
 .row ul {
-  margin: 0;
+  margin: 0px;
   padding: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-
 .row ul li {
   margin: 0;
   font-size: 16px;
@@ -230,20 +48,17 @@ section#create-pda {
     font-size: 13px;
   }
 }
-
 .title ul li {
   padding: 35px 33px;
 }
-
 .title .port-name {
   font-size: 16px;
-  color: blue;
+  color: aliceblue;
+  text-transform: uppercase;
 }
-
 .row ul li {
   padding: 5px 10px;
 }
-
 /* rows */
 .row {
   padding: 20px 0;
@@ -254,7 +69,6 @@ section#create-pda {
   transition: all 0.2s ease-out;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .row:hover {
   background-color: rgba(26, 26, 26, 0.9);
   height: 110px;
@@ -269,25 +83,37 @@ section#create-pda {
     height: 105px;
   }
 }
-
 .title {
-  padding: 25px 20px 5px 20px;
   height: 75px;
-  font-size: 16;
   background-color: rgba(255, 255, 255, 0.1);
   display: flex;
-  flex-direction: row;
-  text-align: center;
   justify-content: space-around;
+  align-items: center;
 }
 .title li {
   list-style: none;
+}
+.title li:nth-child(2) {
+  border: 1px solid aliceblue;
+  font-weight: bold;
+  padding: 5px;
+  align-self: left;
+  border-radius: 4px;
 }
 
 @media only screen and (max-width: 767px) {
   .title-hide {
     display: none;
   }
+}
+ul.more-content li.export-file {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  font-size: 16px;
+}
+.table-info p {
+  margin: 0;
 }
 
 .nfl {
@@ -318,7 +144,6 @@ section#create-pda {
 .update-row {
   animation: update 0.5s ease-out 12s 1 alternate;
 }
-
 .update1 {
   position: absolute;
   top: 25px;
@@ -327,7 +152,6 @@ section#create-pda {
   animation: update1 1s ease-out 12s 1 alternate;
   animation-fill-mode: forwards;
 }
-
 .update2 {
   position: absolute;
   top: 25px;
@@ -358,6 +182,40 @@ ul.more-content li {
     display: none;
   }
 }
+/* colors */
+/* links */
+.nfl a,
+.mlb a,
+.nhl a,
+.pga a {
+  text-decoration: none;
+  transition: color 0.2s ease-out;
+}
+.nfl a {
+  color: rgb(79, 192, 210);
+}
+.nfl a:hover {
+  color: #268695;
+}
+.mlb a {
+  color: rgb(82, 210, 154);
+}
+.mlb a:hover {
+  color: #279766;
+}
+.nhl a {
+  color: rgba(231, 196, 104, 0.7);
+}
+.nhl a:hover {
+  color: rgba(201, 154, 32, 0.7);
+}
+.pga a {
+  color: rgb(235, 118, 85);
+}
+.pga a:hover {
+  color: #c33d17;
+}
+
 /* keyframe animations */
 @keyframes fadeIn {
   from {

@@ -17,7 +17,7 @@ const root = document.getElementById("site-content")
 document.getElementById("logoutButton").addEventListener("click", onLogout)
 
 page(decorateContext)
-// page("/", homePage)  
+// page("/", homePage)
 page("/", createPdaPage)
 page("/faq", faqPage)
 page("/login", loginPage)
@@ -62,16 +62,3 @@ function updateUserNav() {
     navigationSlider(target)
   }
 }
-
-// // const auth = getAuth()
-// const user = auth.currentUser
-
-// if (user) {
-//   // User is signed in, see docs for a list of available properties
-//   // https://firebase.google.com/docs/reference/js/firebase.User
-//   // ...
-//   console.log("User is logged", user.uid)
-// } else {
-//   // No user is signed in.
-//   console.log("User is not logged")
-// }

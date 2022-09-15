@@ -6,6 +6,9 @@ section#create-pda {
   display: flex;
   justify-content: space-evenly;
 }
+.pda-conditions {
+  padding: 0px 60px;
+}
 .col-1 fieldset {
   border: none;
   margin: 0;
@@ -14,6 +17,12 @@ section#create-pda {
 .col-1 {
   margin-bottom: 20px;
 }
+.col-1 legend {
+  margin: 4px 0;
+}
+.col-2 br {
+  margin: 4px 0;
+}
 .col-3 {
   display: flex;
   flex-direction: column;
@@ -21,15 +30,28 @@ section#create-pda {
 }
 .col-3 input {
   align-self: center;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
 }
-
+.table-info p {
+  margin: 0;
+  font-size: 16px;
+  max-width: 350px;
+  letter-spacing: 0.5px;
+}
+.table-info p:nth-child(1) {
+  margin-bottom: 20px;
+}
 input,
-select,
+select {
+  width: 140px;
+  height: 25px;
+  border-radius: 5px;
+}
 hr {
   width: 140px;
-  border-radius: 3px;
-}
-hr {
+
   color: hsl(var(--primary-dark-hsl), 1);
 }
 legend,
@@ -142,10 +164,6 @@ ul.more-content li.export-file {
   justify-content: space-around;
   /* align-items: center; */
   font-size: 16px;
-}
-.table-info p {
-  margin: 0;
-  max-width: 300px;
 }
 
 .nfl {

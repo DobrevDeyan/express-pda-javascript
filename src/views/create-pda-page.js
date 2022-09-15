@@ -4,83 +4,95 @@ const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
     <main>
       <div class="form-wrapper">
-        <p>
-          Please follow the below input fields and provide exact particulars
-          basis ships valid certificates
-        </p>
-        <fieldset>
-          <legend>port-terminal</legend>
-          <select id="terminal" name="terminal">
-            <option value="Varna East" id="tanker">Varna East</option>
-            <option value="Varna West" id="other">Varna West</option>
-            <!-- <option value="Container" id="container">Container</option>
+        <form class="pda-conditions">
+          <div class="col-1">
+            <fieldset>
+              <legend>Terminal</legend>
+              <select id="terminal" name="terminal">
+                <option value="Other"></option>
+                <option value="Varna East" id="tanker">Varna East</option>
+                <option value="Varna West" id="other">Varna West</option>
+                <!-- <option value="Container" id="container">Container</option>
             <option value="Passenger" id="passenger">Passenger</option>
             <option value="Docking-repairs" id="docking-repairs">
               Docking/Repairs
             </option> -->
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend>vessel type</legend>
-          <select id="vesseltype" name="vessel-type">
-            <option value="Other" id="other">Other</option>
-            <option value="Bulk carrier" id="bulk-carrier">Bulk carrier</option>
-            <option value="Tanker" id="tanker">Tanker</option>
-            <option value="Container" id="container">Container</option>
-            <option value="Passenger" id="passenger">Passenger</option>
-            <option value="Navy" id="navy">Navy</option>
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend>operations</legend>
-          <select id="operations" name="operations">
-            <option value="Other">Other</option>
-            <option value="Loading" id="loading">Loading</option>
-            <option value="Discharging" id="discharging">Discharging</option>
-            <option value="Docking-repairs" id="docking-repairs">
-              Docking/Repairs
-            </option>
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend>special conditions</legend>
-          <select id="conditions" name="conditions">
-            <option value="Other">Other</option>
-            <option value="DG cargo inward" id="dg-cargo-in">
-              DG cargo inward
-            </option>
-            <option value="DG cargo outward" id="dg-cargo-out">
-              DG cargo outward
-            </option>
-            <option value="DG cargo in/out" id="dg-cargo-in-out">
-              DG cargo in/out
-            </option>
-            <option value="Overtime" id="overtime">Overtime</option>
-          </select>
-        </fieldset>
-        <form class="right">
-          <label for="name">GT/RGT:</label><br />
-          <input type="number" id="gross_tonnage" /><br />
-          <label for="name">LOA:</label><br />
-          <input type="number" id="length_over_all" /><br />
-          <label for="name">Hours at berth:</label><br />
-          <input type="number" id="hours_at_berth" /><br />
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Ship type</legend>
+              <select id="vesseltype" name="vessel-type">
+                <option value="Other" id="other">Other</option>
+                <option value="Bulk carrier" id="bulk-carrier">
+                  Bulk carrier
+                </option>
+                <option value="Tanker" id="tanker">Tanker</option>
+                <option value="Container" id="container">Container</option>
+                <option value="Passenger" id="passenger">Passenger</option>
+                <option value="Navy" id="navy">Navy</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Operation</legend>
+              <select id="operations" name="operations">
+                <option value="Other">Other</option>
+                <option value="Loading" id="loading">Loading</option>
+                <option value="Discharging" id="discharging">
+                  Discharging
+                </option>
+                <option value="Docking-repairs" id="docking-repairs">
+                  Docking/Repairs
+                </option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Condition</legend>
+              <select id="conditions" name="conditions">
+                <option value="Other">Other</option>
+                <option value="DG cargo inward" id="dg-cargo-in">
+                  DG cargo inward
+                </option>
+                <option value="DG cargo outward" id="dg-cargo-out">
+                  DG cargo outward
+                </option>
+                <option value="DG cargo in/out" id="dg-cargo-in-out">
+                  DG cargo in/out
+                </option>
+                <option value="Overtime" id="overtime">Overtime</option>
+              </select>
+            </fieldset>
+          </div>
+          <hr />
+          <div class="col-2">
+            <label for="name">Gt/Rgt:</label><br />
+            <input type="number" id="gross_tonnage" /><br />
+            <label for="name">Loa:</label><br />
+            <input type="number" id="length_over_all" /><br />
+            <label for="name">Hours:</label><br />
+            <input type="number" id="hours_at_berth" /><br />
+          </div>
         </form>
-        <input
-          class="caclbutton"
-          type="button"
-          value="Calculate"
-          onclick="calc()"
-        />
-        <div class="table-info">
-          <p>
-            Dear Customers, Kindly be guided that the provided expenses are up
-            to date with currently in force tariffs from local providers.<br />
-            Basis the type of operation, cargo and taking into account local
-            compliances, the provided values can be subject to change. For more
-            information about specific inquiries, do not hesitate to
-            <a href="contact_us.html">contact us</a> or subscribe.
-          </p>
+        <div class="col-3">
+          <div class="table-info">
+            <p>
+              Dear Customers, Kindly be guided that the provided expenses are up
+              to date with currently in force tariffs from local providers.<br />
+              Basis the type of operation, cargo and taking into account local
+              compliances, the provided values can be subject to change. For
+              more information about specific inquiries, do not hesitate to
+              <a href="#">contact us</a> or subscribe.
+            </p>
+            <p>
+              Please follow the below input fields and provide exact particulars
+              basis ships valid certificates
+            </p>
+          </div>
+          <input
+            class="calculateButton"
+            type="button"
+            value="Calculate"
+            onclick="calculatePDA()"
+          />
         </div>
       </div>
 

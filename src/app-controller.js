@@ -27,7 +27,7 @@ page("/create-pda", createPdaPage)
 // page("/details/:id", detailsPage)
 // page("/edit/:id", editPage)
 // page("/search", searchPage)
-page.redirect("*", homePage)
+
 // Initiate app
 updateUserNav()
 page.start()

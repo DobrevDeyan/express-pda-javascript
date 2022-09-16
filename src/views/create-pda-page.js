@@ -1,5 +1,8 @@
 import { html } from "../utilities/lib.js"
-import { calculateProforma } from "../calculator/pda-calculator.js"
+import {
+  calculateProforma,
+  generatedVarnaEastProforma,
+} from "../calculator/pda-calculator.js"
 
 const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
@@ -45,7 +48,7 @@ const createPdaTemplate = (onSubmit) => html`
             <fieldset>
               <legend>Condition</legend>
               <select id="conditions" name="conditions">
-                <option></option>
+                <option>None</option>
                 <option value="DG cargo inward" id="dg-cargo-in">
                   DG cargo inward
                 </option>
@@ -330,6 +333,7 @@ export function createPdaPage(ctx) {
       return alert("Please fill all the required fields")
     } else {
       await calculateProforma(pdaData)
+      console.log(generatedVarnaEastProforma)
     }
     // ctx.page.redirect("/dashboard")
   }

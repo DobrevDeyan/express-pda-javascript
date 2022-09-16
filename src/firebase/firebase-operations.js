@@ -11,12 +11,56 @@ import {
   calculateProforma,
   generatedVarnaEastProforma,
 } from "../calculator/pda-calculator.js"
+// import { pdaData } from "../views/edit-proforma-page.js"
+// await calculateProforma(pdaData)
+// console.log(generatedVarnaEastProforma)
+const user = JSON.parse(sessionStorage.userData)
 
-export async function createProforma(userId, proforma) {}
-export async function readProformasByUserId(userId) {}
-export async function updateProforma(userId, proforma) {}
-export async function deleteProforma(userId, proforma) {}
-export async function writeProforma() {}
+export async function createProforma(pdaData, generatedVarnaEastProforma) {
+  console.log(user.id)
+  console.log(auth)
+  console.log(pdaData)
+  console.log(generatedVarnaEastProforma)
+
+  let docName =
+    user.id +
+    pdaData.terminal +
+    pdaData.type +
+    pdaData.operation +
+    pdaData.condition +
+    pdaData.grt +
+    pdaData.loa +
+    pdaData.hours
+
+  let hashedDocName = createDocName(docName)
+
+  await setDoc(doc(db, "proformas", hashedDocName), {
+    ...generatedVarnaEastProforma,
+  })
+
+  // Hashing function for avoiding duplicate pda entries in db
+  function createDocName(string) {
+    var a = 1,
+      c = 0,
+      h,
+      o
+    if (string) {
+      a = 0
+      for (h = string.length - 1; h >= 0; h--) {
+        o = string.charCodeAt(h)
+        a = ((a << 6) & 268435455) + o + (o << 14)
+        c = a & 266338304
+        a = c !== 0 ? a ^ (c >> 21) : a
+      }
+    }
+    return String(a)
+  }
+}
+
+// export async function readProformasByUserId(userId) {}
+// export async function updateProforma(userId, proforma) {}
+// export async function deleteProforma(userId, proforma) {}
+// export async function writeProforma() {}
 
 // SET NEWLY REGISTERED USER IN FIRESTORE COLLECTION
 // const user = auth.currentUser
@@ -54,61 +98,6 @@ export async function writeProforma() {}
 //   console.error("Error adding document: ", e)
 // }
 
-// EXPORT
-
-// import { Injectable } from '@angular/core';
-// import { doc, setDoc, getFirestore } from 'firebase/firestore';
-// import { AuthService } from '../services/auth.service';
-// import { Proforma } from '../interfaces/proforma';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class ExportUserProformasService {
-//   constructor(public authService: AuthService) {
-//     this.authService = authService;
-//   }
-
-//   async exportProforma(options: Proforma) {
-//     let docName =
-//       this.authService.userData.uid +
-//       options.vesselType +
-//       options.operations +
-//       options.specialState +
-//       options.grossTonnage +
-//       options.lengthOverall +
-//       options.hoursAtBerth;
-
-//     let db = getFirestore();
-//     let hashedDocName = this.createDocName(docName);
-
-//     await setDoc(doc(db, 'proformas', hashedDocName), {
-//       vesselType: options.vesselType,
-//       operations: options.operations,
-//       specialState: options.specialState,
-//       grossTonnage: options.grossTonnage,
-//       lengthOverall: options.lengthOverall,
-//       hoursAtBerth: options.hoursAtBerth,
-//       uid: this.authService.userData.uid,
-//     });
-//   }
-
-//   createDocName(s: string) {
-//     var a = 1,
-//       c = 0,
-//       h,
-//       o;
-//     if (s) {
-//       a = 0;
-//       for (h = s.length - 1; h >= 0; h--) {
-//         o = s.charCodeAt(h);
-//         a = ((a << 6) & 268435455) + o + (o << 14);
-//         c = a & 266338304;
-//         a = c !== 0 ? a ^ (c >> 21) : a;
-//       }
-//     }
-//     return String(a);
-//   }
 // }
 
 // IMPORT
@@ -127,14 +116,6 @@ export async function writeProforma() {}
 //   deleteDoc,
 // } from 'firebase/firestore';
 // import { AuthService } from '../services/auth.service';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class ImportUserProformasService {
-//   constructor(public authService: AuthService) {
-//     this.authService = authService;
-//   }
 
 //   async getProformas() {
 //     let db = getFirestore();

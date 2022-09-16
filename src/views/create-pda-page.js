@@ -3,6 +3,7 @@ import {
   calculateProforma,
   generatedVarnaEastProforma,
 } from "../calculator/pda-calculator.js"
+import { createProforma } from "../firebase/firebase-operations.js"
 
 const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
@@ -320,7 +321,8 @@ export function createPdaPage(ctx) {
     } else {
       await calculateProforma(pdaData)
       onRender(generatedVarnaEastProforma)
-      // ctx.page.redirect("/dashboard")
+      await createProforma(pdaData, generatedVarnaEastProforma)
+      ctx.page.redirect("/dashboard")
     }
   }
 }

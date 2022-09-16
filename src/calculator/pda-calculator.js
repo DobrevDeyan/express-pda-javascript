@@ -1431,18 +1431,18 @@ export async function calculateProforma(pdaData) {
   // =============== Gargo plan dues ================= // For future implementation
 
   if (pdaData.operation == "Loading" && pdaData.type === "Container") {
-    generatedVarnaEastProforma.cargoPlan = 50
-  } else if (pdaData.operation == "Loading" && pdaData.condition == "None") {
-    generatedVarnaEastProforma.cargoPlan = 500
+    generatedVarnaEastProforma.cargoPlanDues = 50
+  } else if (pdaData.operation == "Loading") {
+    generatedVarnaEastProforma.cargoPlanDues = 500
   } else {
-    generatedVarnaEastProforma.cargoPlan = 0
+    generatedVarnaEastProforma.cargoPlanDues = 0
   }
 
   // =============== Booming dues ================= // For future implementation
 
-  // generatedVarnaEastProforma.booming = Math.round(
-  //   100 + pdaData.loa * 2.5 * 0.15 * pdaData.hours
-  // );
+  generatedVarnaEastProforma.oilBoomingDues = Math.round(
+    100 + pdaData.loa * 2.5 * 0.15 * pdaData.hours
+  )
 
   generatedVarnaEastProforma.totalDues =
     generatedVarnaEastProforma.tonnageDues +
@@ -1455,6 +1455,8 @@ export async function calculateProforma(pdaData) {
     generatedVarnaEastProforma.unmooringDues +
     generatedVarnaEastProforma.channelDues +
     generatedVarnaEastProforma.lightDues +
+    generatedVarnaEastProforma.cargoPlanDues +
+    generatedVarnaEastProforma.oilBoomingDues +
     generatedVarnaEastProforma.sailingPermissionDues +
     generatedVarnaEastProforma.marpolDues
 }
@@ -1472,6 +1474,8 @@ export const generatedVarnaEastProforma = {
   unmooringDues: 0,
   channelDues: 0,
   lightDues: 0,
+  cargoPlanDues: 0,
+  oilBoomingDues: 0,
   sailingPermissionDues: 0,
   marpolDues: 0,
   totalDues: 0,

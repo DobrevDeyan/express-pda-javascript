@@ -96,20 +96,19 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- Row title -->
         <div class="title">
           <li>Service</li>
-          <li class="port-name">Port Varna East</li>
+          <li id="port-name"></li>
           <li>Price in EUR</li>
         </div>
         <!-- Row Tonnage dues -->
         <article class="row mlb">
           <ul>
             <li>Tonnage dues</li>
-            <li id="ve-result-tonnage-dues">10000</li>
+            <li id="result-tonnage-dues"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's gross tonnage * 0.55 plus additional multiplication with
+              coefficient depending on vessel type.
             </li>
           </ul>
         </article>
@@ -117,13 +116,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Berth dues</li>
-            <li id="ve-result-berth-dues">2000</li>
+            <li id="result-berth-dues"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's loa * hours at berth * 0.1 plus additional multiplication
+              with coefficient depending on vessel type.
             </li>
           </ul>
         </article>
@@ -131,13 +129,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Pilotage In</li>
-            <li id="ve-result-pilotage-in">32323</li>
+            <li id="result-pilotage-in"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's grt coefficient * 0.9, grt coefficient is assigned as per
+              provider's tariff based ot vessel's gross tonnage.
             </li>
           </ul>
         </article>
@@ -146,13 +143,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Pilotage out</li>
-            <li id="ve-result-pilotage-out">2121</li>
+            <li id="result-pilotage-out"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's grt coefficient * 0.9, grt coefficient is assigned as per
+              provider's tariff based ot vessel's gross tonnage.
             </li>
           </ul>
         </article>
@@ -160,13 +156,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Towage in</li>
-            <li id="ve-result-towage-in">010100</li>
+            <li id="result-towage-in"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's grt coefficient * 0.5, grt coefficient is assigned as per
+              provider's tariff based ot vessel's gross tonnage.
             </li>
           </ul>
         </article>
@@ -174,13 +169,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Towage out</li>
-            <li id="ve-result-towage-out">2312</li>
+            <li id="result-towage-out"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's grt coefficient * 0.5, grt coefficient is assigned as per
+              provider's tariff based ot vessel's gross tonnage.
             </li>
           </ul>
         </article>
@@ -188,13 +182,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Mooring</li>
-            <li id="ve-result-mooring">1111</li>
+            <li id="result-mooring"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Price is assigned as per provider's tariff based ot vessel's gross
+              tonnage.
             </li>
           </ul>
         </article>
@@ -202,13 +195,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Unmooring</li>
-            <li id="ve-result-unmooring">111</li>
+            <li id="result-unmooring"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Price is assigned as per provider's tariff based ot vessel's gross
+              tonnage.
             </li>
           </ul>
         </article>
@@ -216,13 +208,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Channel dues</li>
-            <li id="ve-result-channel-dues">222</li>
+            <li id="result-channel-dues"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's grt * 0.04 plus additional multiplication with
+              coefficient depending on vessel type.
             </li>
           </ul>
         </article>
@@ -230,13 +221,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Light dues</li>
-            <li id="ve-result-light-dues">333</li>
+            <li id="result-light-dues"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Price is assigned as per provider's tariff based ot vessel's gross
+              tonnage.
             </li>
           </ul>
         </article>
@@ -244,13 +234,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Sailing permission</li>
-            <li id="ve-result-sailing-permission">444</li>
+            <li id="result-sailing-permission"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Price is assigned as per provider's tariff based ot vessel's gross
+              tonnage.
             </li>
           </ul>
         </article>
@@ -258,13 +247,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Marpol 73/78 fee</li>
-            <li id="ve-result-marpol-fee">2222</li>
+            <li id="result-marpol-fee"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Price is assigned as per provider's tariff based ot vessel's gross
+              tonnage.
             </li>
           </ul>
         </article>
@@ -272,13 +260,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Cargo plan verification</li>
-            <li id="ve-cargo-plan-verification">2313</li>
+            <li id="cargo-plan-verification"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Price is assigned as per provider's tariff based ot vessel's gross
+              tonnage and type of operations.
             </li>
           </ul>
         </article>
@@ -286,13 +273,12 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Laying of oil booms</li>
-            <li id="ve-oilbooming">32312</li>
+            <li id="result-oil-booming"></li>
           </ul>
           <ul class="more-content">
             <li>
-              This 1665-player contest boasts a $300,000.00 prize pool and pays
-              out the top 300 finishing positions. First place wins $100,000.00.
-              Good luck!
+              Vessel's loa * 2.5 * 0.15 * hours at berth + 100 coefficient *
+              0.5.
             </li>
           </ul>
         </article>
@@ -300,7 +286,7 @@ const createPdaTemplate = (onSubmit) => html`
         <article class="row mlb">
           <ul>
             <li>Total:</li>
-            <li id="ve-result-total-cost">3213</li>
+            <li id="result-total-cost"></li>
           </ul>
           <ul class="more-content">
             <li class="export-file">
@@ -333,8 +319,30 @@ export function createPdaPage(ctx) {
       return alert("Please fill all the required fields")
     } else {
       await calculateProforma(pdaData)
-      console.log(generatedVarnaEastProforma)
+      onRender(generatedVarnaEastProforma)
+      // ctx.page.redirect("/dashboard")
     }
-    // ctx.page.redirect("/dashboard")
   }
+}
+
+function onRender(pda) {
+  document.getElementById("port-name").textContent = pda.terminal
+  document.getElementById("result-tonnage-dues").textContent = pda.tonnageDues
+  document.getElementById("result-berth-dues").textContent = pda.berthDues
+  document.getElementById("result-pilotage-in").textContent = pda.pilotageInDues
+  document.getElementById("result-pilotage-out").textContent =
+    pda.pilotageOutDues
+  document.getElementById("result-towage-in").textContent = pda.towageInDues
+  document.getElementById("result-towage-out").textContent = pda.towageOutDues
+  document.getElementById("result-mooring").textContent = pda.mooringDues
+  document.getElementById("result-unmooring").textContent = pda.unmooringDues
+  document.getElementById("result-channel-dues").textContent = pda.channelDues
+  document.getElementById("result-light-dues").textContent = pda.lightDues
+  document.getElementById("cargo-plan-verification").textContent =
+    pda.cargoPlanDues
+  document.getElementById("result-oil-booming").textContent = pda.oilBoomingDues
+  document.getElementById("result-sailing-permission").textContent =
+    pda.sailingPermissionDues
+  document.getElementById("result-marpol-fee").textContent = pda.marpolDues
+  document.getElementById("result-total-cost").textContent = pda.totalDues
 }

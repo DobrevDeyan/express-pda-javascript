@@ -1,44 +1,8 @@
-export class ProformaCalculatorService {
-  // computedProforma = {
-  //   varnaEast: {
-  //     tonnageDues: 0,
-  //     berthDues: 0,
-  //     pilotageIn: 0,
-  //     pilotageOut: 0,
-  //     towageIn: 0,
-  //     towageOut: 0,
-  //     mooring: 0,
-  //     unmooring: 0,
-  //     channelDues: 0,
-  //     lightDues: 0,
-  //     sailingPermission: 0,
-  //     marpol: 0,
-  //     total: 0,
-  //   },
-  //   varnaWest: {
-  //     tonnageDues: 0,
-  //     berthDues: 0,
-  //     pilotageIn: 0,
-  //     pilotageOut: 0,
-  //     towageIn: 0,
-  //     towageOut: 0,
-  //     mooring: 0,
-  //     unmooring: 0,
-  //     channelDues: 0,
-  //     lightDues: 0,
-  //     sailingPermission: 0,
-  //     marpol: 0,
-  //     total: 0,
-  //   },
-  // }
-  // constructor() {}
-}
-
 export async function calculateProforma(pdaData) {
   // ============================== VARNA EAST FORMULAS ============================== //
   // ===============  Tonnage dues ================= //
 
-  console.log(pdaData)
+  // console.log(pdaData)
 
   if (pdaData.type === "Tanker") {
     this.computedProforma.varnaEast.tonnageDues = Math.round(
@@ -1495,4 +1459,23 @@ export async function calculateProforma(pdaData) {
     this.computedProforma.varnaEast.lightDues +
     this.computedProforma.varnaEast.sailingPermission +
     this.computedProforma.varnaEast.marpol
+}
+export const generatedProforma = {
+  computedProforma: {
+    timestamp: "",
+    terminal: "",
+    tonnageDues: 0,
+    berthDues: 0,
+    pilotageIn: 0,
+    pilotageOut: 0,
+    towageIn: 0,
+    towageOut: 0,
+    mooring: 0,
+    unmooring: 0,
+    channelDues: 0,
+    lightDues: 0,
+    sailingPermission: 0,
+    marpol: 0,
+    total: 0,
+  },
 }

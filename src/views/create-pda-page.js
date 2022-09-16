@@ -14,16 +14,11 @@ const createPdaTemplate = (onSubmit) => html`
                 <option></option>
                 <option value="Varna East" id="tanker">Varna East</option>
                 <option value="Varna West" id="other">Varna West</option>
-                <!-- <option value="Container" id="container">Container</option>
-            <option value="Passenger" id="passenger">Passenger</option>
-            <option value="Docking-repairs" id="docking-repairs">
-              Docking/Repairs
-            </option> -->
               </select>
             </fieldset>
             <fieldset>
               <legend>Ship type</legend>
-              <select id="vesseltype" name="vessel-type">
+              <select id="vessel-type" name="vessel-type">
                 <option></option>
                 <option value="Bulk carrier" id="bulk-carrier">
                   Bulk carrier
@@ -101,7 +96,7 @@ const createPdaTemplate = (onSubmit) => html`
           <li class="port-name">Port Varna East</li>
           <li>Price in EUR</li>
         </div>
-        <!-- Row 5 -->
+        <!-- Row Tonnage dues -->
         <article class="row mlb">
           <ul>
             <li>Tonnage dues</li>
@@ -115,7 +110,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Berth dues -->
         <article class="row mlb">
           <ul>
             <li>Berth dues</li>
@@ -129,7 +124,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Pilotage in dues -->
         <article class="row mlb">
           <ul>
             <li>Pilotage In</li>
@@ -144,7 +139,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
 
-        <!-- Row 6 -->
+        <!-- Row Pilotage out dues -->
         <article class="row mlb">
           <ul>
             <li>Pilotage out</li>
@@ -158,7 +153,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Towage in dues -->
         <article class="row mlb">
           <ul>
             <li>Towage in</li>
@@ -172,7 +167,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Towage out dues -->
         <article class="row mlb">
           <ul>
             <li>Towage out</li>
@@ -186,7 +181,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Mooring dues -->
         <article class="row mlb">
           <ul>
             <li>Mooring</li>
@@ -200,7 +195,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Unmooring dues -->
         <article class="row mlb">
           <ul>
             <li>Unmooring</li>
@@ -214,7 +209,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Channel dues -->
         <article class="row mlb">
           <ul>
             <li>Channel dues</li>
@@ -228,7 +223,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Light dues -->
         <article class="row mlb">
           <ul>
             <li>Light dues</li>
@@ -242,7 +237,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Sailing permission dues -->
         <article class="row mlb">
           <ul>
             <li>Sailing permission</li>
@@ -256,7 +251,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Marpol dues -->
         <article class="row mlb">
           <ul>
             <li>Marpol 73/78 fee</li>
@@ -270,7 +265,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Cargo plan dues -->
         <article class="row mlb">
           <ul>
             <li>Cargo plan verification</li>
@@ -284,7 +279,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Oil booming dues -->
         <article class="row mlb">
           <ul>
             <li>Laying of oil booms</li>
@@ -298,7 +293,7 @@ const createPdaTemplate = (onSubmit) => html`
             </li>
           </ul>
         </article>
-        <!-- Row 6 -->
+        <!-- Row Total cost -->
         <article class="row mlb">
           <ul>
             <li>Total:</li>
@@ -333,17 +328,9 @@ export function createPdaPage(ctx) {
     const pdaData = { terminal, type, operation, condition, grt, loa, hours }
     if (Object.values(pdaData).some((x) => !x)) {
       return alert("Please fill all the required fields")
+    } else {
+      await calculateProforma(pdaData)
     }
-    calculateProforma(pdaData)
-    // await calculateProforma({
-    //   terminal,
-    //   type,
-    //   operation,
-    //   condition,
-    //   grt,
-    //   loa,
-    //   hours,
-    // })
     // ctx.page.redirect("/dashboard")
   }
 }

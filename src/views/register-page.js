@@ -75,7 +75,7 @@ export function registerPage(ctx) {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       )
       const userData = {
         id: userCredentials.user.uid,

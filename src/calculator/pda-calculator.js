@@ -5,6 +5,15 @@ export async function calculateProforma(pdaData) {
   if ((pdaData.terminal = "Varna East")) {
     generatedVarnaEastProforma.terminal = pdaData.terminal
   }
+  generatedVarnaEastProforma.terminal = pdaData.terminal
+  generatedVarnaEastProforma.type = pdaData.type
+  generatedVarnaEastProforma.operation = pdaData.operation
+  generatedVarnaEastProforma.condition = pdaData.condition
+  generatedVarnaEastProforma.grt = pdaData.grt
+  generatedVarnaEastProforma.loa = pdaData.loa
+  generatedVarnaEastProforma.hours = pdaData.hours
+
+  // ===============
 
   if (pdaData.type === "Tanker") {
     generatedVarnaEastProforma.tonnageDues = Math.round(
@@ -1462,6 +1471,13 @@ export async function calculateProforma(pdaData) {
 }
 
 export const generatedVarnaEastProforma = {
+  terminal: "",
+  type: "",
+  operation: "",
+  condition: "",
+  grt: 0,
+  loa: 0,
+  hours: 0,
   timestamp: "",
   terminal: "",
   tonnageDues: 0,

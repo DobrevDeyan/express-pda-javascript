@@ -322,7 +322,7 @@ export function createPdaPage(ctx) {
       await calculateProforma(pdaData)
       onRender(generatedVarnaEastProforma)
       await createProforma(pdaData, generatedVarnaEastProforma)
-      ctx.page.redirect("/dashboard")
+      // ctx.page.redirect("/dashboard")
     }
   }
 }

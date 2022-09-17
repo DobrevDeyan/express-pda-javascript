@@ -1,10 +1,16 @@
 import { html } from "../utilities/lib.js"
 import { getUserData } from "../utilities/util.js"
+import { readProformasByUserId } from "../firebase/firebase-operations.js"
 
-const dashboardTemplate = () => html`
+const dashboardTemplate = (generateUserProformas) => html`
   <section id="dashboard">
     <h2>Proformas</h2>
-    <h1 style="position: center">Welcome to your Proformas, <span></span>!</h1>
+    <h1>Welcome to your Proformas, <span></span>!</h1>
+    <button @click="${generateUserProformas}" type="button" class="button">
+      <!-- {{ toggleProformaHistory ? "Close history" : "View history" }} -->
+      Generate
+    </button>
+    <p id="displayStoredProformas"></p>
   </section>
 `
 // const proformaTemplate = (shoe) => html`
@@ -17,14 +23,18 @@ const dashboardTemplate = () => html`
 //   </li>
 // `
 export async function dashboardPage(ctx) {
-  ctx.render(dashboardTemplate())
+  ctx.render(dashboardTemplate(generateUserProformas))
 
   const userData = getUserData()
+
+  async function generateUserProformas(event) {
+    event.preventDefault()
+    await readProformasByUserId(userData.id)
+  }
   document.querySelector("#dashboard h1 span").textContent = userData.email
 }
-
-//  ${shoes.length == 0
+// <!-- ${shoes.length == 0
 //   ? html`<h2>There are no items added yet.</h2> `
 //   : html` <ul class="card-wrapper">
 //       ${shoes.map(shoeTemplate)}
-//     </ul>`}
+//     </ul>`} -->

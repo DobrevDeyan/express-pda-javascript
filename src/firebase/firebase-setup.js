@@ -6,6 +6,7 @@ import {
   setDoc,
   doc,
   updateDoc,
+  deleteDoc,
   query,
   where,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"
@@ -38,19 +39,24 @@ querySnapshot.forEach((doc) => {
 })
 
 // Must be moved to and id inserted when creating users profile to begin with
-async function updateUserProfile() {
-  const userData = getUserData()
-  const userRef = doc(db, "users", `${userData.id}`)
-  await updateDoc(userRef, {})
-  // return userRef.setDoc(newData, {
-  //   merge: true,
-  // })
-}
-// updateUserProfile()
 
-// const userData = getUserData()
-// const userRef = doc(db, "users", `${userData.id}`)
-// await updateDoc(userRef, { uid: userData.id })
+//working
+const userData = getUserData()
+const userRef = doc(db, "users", `${userData.id}`)
+await updateDoc(userRef, { uid: userData.id })
+//working
+
+// async function updateUserProfile() {
+//   const userData = getUserData()
+//   const userRef = doc(db, "users", `${userData.id}`)
+//   await updateDoc(userRef, {
+
+//   })
+// return userRef.setDoc(newData, {
+//   merge: true,
+// })
+// }
+// updateUserProfile()
 
 const serverData = Array.from(usersData)
 
@@ -64,6 +70,7 @@ export {
   where,
   collection,
   updateDoc,
+  deleteDoc,
   serverData,
   auth,
   getAuth,

@@ -1,40 +1,70 @@
 import { html } from "../utilities/lib.js"
 import { getUserData } from "../utilities/util.js"
-import { readProformasByUserId } from "../firebase/firebase-operations.js"
+import {
+  readProformasByUserId,
+  updateProforma,
+  deleteProforma,
+} from "../firebase/firebase-operations.js"
 
 const dashboardTemplate = (generateUserProformas) => html`
   <section id="dashboard">
     <h2>Proformas</h2>
-    <h1>Welcome to your Proformas, <span></span>!</h1>
     <button @click="${generateUserProformas}" type="button" class="button">
-      <!-- {{ toggleProformaHistory ? "Close history" : "View history" }} -->
-      Generate
+      Generate all listings
     </button>
     <p id="displayStoredProformas"></p>
   </section>
 `
-// const proformaTemplate = (shoe) => html`
-//   <li class="card">
-//     <img src="${shoe.imageUrl}" alt="eminem" />
-//     <p><strong>Brand: </strong><span class="brand">${shoe.brand}</span></p>
-//     <p><strong>Model: </strong><span class="model">${shoe.model}</span></p>
-//     <p><strong>Value:</strong><span class="value">${shoe.value}</span>$</p>
-//     <a class="details-btn" href="/details/${shoe._id}">Details</a>
-//   </li>
-// `
+
 export async function dashboardPage(ctx) {
   ctx.render(dashboardTemplate(generateUserProformas))
 
-  const userData = getUserData()
-
-  async function generateUserProformas(event) {
-    event.preventDefault()
-    await readProformasByUserId(userData.id)
+  async function generateUserProformas() {
+    const userData = getUserData()
+    const userProformas = await readProformasByUserId(userData.id)
+    userProformas.forEach((proforma) => {
+      renderProformas(proforma)
+    })
   }
-  document.querySelector("#dashboard h1 span").textContent = userData.email
+
+  function renderProformas(doc) {
+    const storedProformas = document.querySelector("#displayStoredProformas")
+    //Imports user proformas and renders them to the DOM
+    let ul = document.createElement("ul")
+    let type = document.createElement("li")
+    let tonnage = document.createElement("li")
+    let hours = document.createElement("li")
+    let length = document.createElement("li")
+    let operations = document.createElement("li")
+    let state = document.createElement("li")
+    let deleteButton = document.createElement("button")
+    deleteButton.textContent = "Delete"
+    deleteButton.classList.add("remove-proforma")
+    ul.style.border = "2px solid white"
+    ul.style.borderRadius = "10px"
+    ul.style.margin = "10px 0"
+    ul.style.minWidth = "100%"
+    ul.style.padding = "15px 15px"
+    ul.style.display = "flex"
+    type.style.marginRight = "20px"
+    tonnage.style.marginRight = "20px"
+    hours.style.marginRight = "20px"
+    length.style.marginRight = "20px"
+    operations.style.marginRight = "20px"
+    state.style.marginRight = "20px"
+    type.textContent = "Vessel type: " + doc.data().type + "; "
+    operations.textContent = "Operations type: " + doc.data().operation + "; "
+    state.textContent = "Special state: " + doc.data().condition + "; "
+    tonnage.textContent = "Gross Tonnage: " + doc.data().grt + "; "
+    length.textContent = "Length over all: " + doc.data().loa + "; "
+    hours.textContent = "Hours at berth: " + doc.data().hours + "; "
+    ul.appendChild(type)
+    ul.appendChild(operations)
+    ul.appendChild(state)
+    ul.appendChild(tonnage)
+    ul.appendChild(length)
+    ul.appendChild(hours)
+    storedProformas.appendChild(ul)
+    ul.appendChild(deleteButton)
+  }
 }
-// <!-- ${shoes.length == 0
-//   ? html`<h2>There are no items added yet.</h2> `
-//   : html` <ul class="card-wrapper">
-//       ${shoes.map(shoeTemplate)}
-//     </ul>`} -->

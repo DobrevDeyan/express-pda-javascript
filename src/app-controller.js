@@ -1,5 +1,5 @@
 import { page, render, navigationSlider } from "./utilities/lib.js"
-import { onAuthStateChanged, auth, getAuth } from "./firebase/firebase-setup.js"
+import { onAuthStateChanged, auth } from "./firebase/firebase-setup.js"
 import { setUserData, getUserData, clearUserData } from "./utilities/util.js"
 import { homePage } from "./views/home-page.js"
 import { faqPage } from "./views/faq-page.js"

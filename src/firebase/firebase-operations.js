@@ -9,6 +9,7 @@ import {
   query,
   collection,
   where,
+  auth,
 } from "./firebase-setup.js"
 
 export async function createProforma(pdaData, generatedVarnaEastProforma) {
@@ -55,6 +56,7 @@ export async function readProformasByUserId(userId) {
   return querySnapshot
 }
 export async function updateProforma(userId, proforma) {}
+
 export async function deleteProforma(proformaId) {
   deleteButton.addEventListener("click", deleteProforma(doc.data().proformaId))
 
@@ -72,7 +74,7 @@ export async function deleteProforma(proformaId) {
 }
 
 // SET NEWLY REGISTERED USER IN FIRESTORE COLLECTION
-// const user = auth.currentUser
+
 // await setDoc(doc(db, "users", `${user.uid}`), {
 //   email: user.email,
 //   name: user.displayName,
@@ -91,72 +93,10 @@ export async function deleteProforma(proformaId) {
 //   verified: user.emailVerified,
 // })
 
-// serverData.forEach((usersData) => {
-//   console.log(Object.keys(usersData))
-//   console.log(Object.values(usersData))
-// })
+// Must be moved to and id inserted when creating users profile to begin with
 
-// try {
-//   const docRef = await addDoc(collection(db, "users"), {
-//     first: "Ada",
-//     last: "Lovelace",
-//     born: 1815,
-//   })
-//   console.log("Document written with ID: ", docRef.id)
-// } catch (e) {
-//   console.error("Error adding document: ", e)
-// }
-
-// }
-
-// IMPORT
-
-// import { Injectable } from '@angular/core';
-// import {
-//   doc,
-//   setDoc,
-//   getFirestore,
-//   getDocs,
-//   collection,
-//   query,
-//   where,
-//   updateDoc,
-//   deleteField,
-//   deleteDoc,
-// } from 'firebase/firestore';
-// import { AuthService } from '../services/auth.service';
-
-// document.addEventListener('click', async (e) => {
-//   if (e.classList.contains('proforma-delete')) {
-//     let proformaIdToDelete = e.target.dataset.proformaId
-//     // Deletes a proforma from the DB with ID = proformaIdToDelete
-//     await deleteProforma(proformaIdToDelete)
-//     // Fetch the new list from DB and print it
-//     // DONT MANUALLY DELETE DOM NODES
-//     renderList()
-//   }
-// })
-
-//Delete individual proforma entry: removing it from the DOM; removing it from DB
-// let db = getFirestore();
-// const storedProformas = document.querySelector('#displayStoredProformas');
-// const q = query(
-//   collection(db, 'proformas'),
-//   where('uid', '==', this.authService.userData.uid)
-// );
-// const querySnapshot = await getDocs(q);
-// querySnapshot.forEach((doc) => {
-//   // console.log(doc);
-// });
-
-// await deleteDoc(doc(db, 'cities', 'DC'));
-
-//   await deleteDoc(doc(db, 'proformas', hashedDocName), {
-//     vesselType: options.vesselType,
-//     operations: options.operations,
-//     specialState: options.specialState,
-//     grossTonnage: options.grossTonnage,
-//     lengthOverall: options.lengthOverall,
-//     hoursAtBerth: options.hoursAtBerth,
-//     uid: this.authService.userData.uid,
-//   });
+//working
+// const userData = getUserData()
+// const userRef = doc(db, "users", `${userData.id}`)
+// await updateDoc(userRef, { uid: userData.id })
+//working

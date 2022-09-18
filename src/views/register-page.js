@@ -5,7 +5,7 @@ import {
   auth,
   createUserWithEmailAndPassword,
 } from "../firebase/firebase-setup.js"
-
+import { setUserInDatabase } from "../firebase/firebase-authentication.js"
 const registerTemplate = (onSubmit) => html` <section id="register">
   <div class="register-container">
     <h1 class="register-title">Register</h1>
@@ -39,7 +39,7 @@ const registerTemplate = (onSubmit) => html` <section id="register">
   </div>
 </section>`
 
-export function registerPage(ctx) {
+export async function registerPage(ctx) {
   // RENDER PAGE AND PASS REGISTER FUNCTION
   ctx.render(registerTemplate(onSubmit))
   // EMAIL VALIDATION INPUT
@@ -57,7 +57,7 @@ export function registerPage(ctx) {
     indicator(e)
   })
 
-  // USER LOGIN FUNCTION
+  // USER REGISTER FUNCTION
   async function onSubmit(event) {
     event.preventDefault()
     const formData = new FormData(event.target)
@@ -72,19 +72,22 @@ export function registerPage(ctx) {
     }
 
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
+      const registerUser = await createUserWithEmailAndPassword(
         auth,
         email,
-        password,
+        password
       )
       const userData = {
-        id: userCredentials.user.uid,
-        email: userCredentials.user.email,
-        token: userCredentials.user.accessToken,
+        id: registerUser.user.uid,
+        email: registerUser.user.email,
+        token: registerUser.user.accessToken,
       }
 
-      // SET TO SESSION STORAGE
+      // SET USER TO SESSION STORAGE
       setUserData(userData)
+      // SET USER TO FIRESTORE DB
+      setUserInDatabase(registerUser)
+
       ctx.updateUserNav()
       ctx.page.redirect("/dashboard")
     } catch (error) {

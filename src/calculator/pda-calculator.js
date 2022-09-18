@@ -1478,7 +1478,6 @@ export const generatedVarnaEastProforma = {
   grt: 0,
   loa: 0,
   hours: 0,
-  timestamp: "",
   terminal: "",
   tonnageDues: 0,
   berthDues: 0,

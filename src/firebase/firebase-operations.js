@@ -3,6 +3,7 @@ import {
   doc,
   db,
   updateDoc,
+  serverTimestamp,
   deleteDoc,
   getDocs,
   query,
@@ -28,6 +29,7 @@ export async function createProforma(pdaData, generatedVarnaEastProforma) {
   await setDoc(doc(db, "proformas", proformaId), {
     ...generatedVarnaEastProforma,
     proformaId,
+    created: serverTimestamp(),
   })
   // Hashing function for avoiding duplicate pda entries in db
   function createDocName(string) {

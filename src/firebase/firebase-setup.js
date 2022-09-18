@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"
 import {
   getFirestore,
   getDocs,
@@ -9,14 +9,22 @@ import {
   deleteDoc,
   query,
   where,
-} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"
+  serverTimestamp,
+} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
+
+// import {
+//   getFunctions,
+//   httpsCallable,
+// } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-functions.js"
+// console.log(getFunctions, httpsCallable)
+
 import { getUserData } from "../utilities/util.js"
 import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"
+} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 
 //INITIALIZING FIREBASE
 const firebaseConfig = {
@@ -46,16 +54,15 @@ const userRef = doc(db, "users", `${userData.id}`)
 await updateDoc(userRef, { uid: userData.id })
 //working
 
-// async function updateUserProfile() {
-//   const userData = getUserData()
-//   const userRef = doc(db, "users", `${userData.id}`)
-//   await updateDoc(userRef, {
-
-//   })
-// return userRef.setDoc(newData, {
-//   merge: true,
-// })
-// }
+async function updateUserProfile() {
+  const userData = getUserData()
+  const userRef = doc(db, "proformas", `${userData.id}`)
+  await updateDoc(userRef, { timestamp: serverTimestamp() })
+  // await updateDoc(userRef, {})
+  // return userRef.setDoc(newData, {
+  //   merge: true,
+  // })
+}
 // updateUserProfile()
 
 const serverData = Array.from(usersData)
@@ -70,6 +77,7 @@ export {
   where,
   collection,
   updateDoc,
+  serverTimestamp,
   deleteDoc,
   serverData,
   auth,

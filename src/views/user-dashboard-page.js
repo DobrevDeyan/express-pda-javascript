@@ -27,7 +27,7 @@ export async function dashboardPage(ctx) {
     })
   }
 
-  function renderProformas(doc) {
+  function renderProformas(proforma) {
     const storedProformas = document.querySelector("#displayStoredProformas")
     //Imports user proformas and renders them to the DOM
     let ul = document.createElement("ul")
@@ -52,12 +52,13 @@ export async function dashboardPage(ctx) {
     length.style.marginRight = "20px"
     operations.style.marginRight = "20px"
     state.style.marginRight = "20px"
-    type.textContent = "Vessel type: " + doc.data().type + "; "
-    operations.textContent = "Operations type: " + doc.data().operation + "; "
-    state.textContent = "Special state: " + doc.data().condition + "; "
-    tonnage.textContent = "Gross Tonnage: " + doc.data().grt + "; "
-    length.textContent = "Length over all: " + doc.data().loa + "; "
-    hours.textContent = "Hours at berth: " + doc.data().hours + "; "
+    type.textContent = "Vessel type: " + proforma.data().type + "; "
+    operations.textContent =
+      "Operations type: " + proforma.data().operation + "; "
+    state.textContent = "Special state: " + proforma.data().condition + "; "
+    tonnage.textContent = "Gross Tonnage: " + proforma.data().grt + "; "
+    length.textContent = "Length over all: " + proforma.data().loa + "; "
+    hours.textContent = "Hours at berth: " + proforma.data().hours + "; "
     ul.appendChild(type)
     ul.appendChild(operations)
     ul.appendChild(state)

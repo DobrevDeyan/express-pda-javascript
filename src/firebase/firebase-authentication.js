@@ -1,4 +1,5 @@
 import { setDoc, doc, db } from "./firebase-setup.js"
+
 export async function setUserInDatabase(registeredUser) {
   await setDoc(doc(db, "users", `${registeredUser.user.uid}`), {
     email: registeredUser.user.email,

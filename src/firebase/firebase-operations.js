@@ -9,11 +9,10 @@ import {
   query,
   collection,
   where,
-  auth,
 } from "./firebase-setup.js"
 
 export async function createProforma(pdaData, generatedVarnaEastProforma) {
-  const user = JSON.parse(sessionStorage.userData) // Issue here must see
+  const user = JSON.parse(sessionStorage.userData)
 
   generatedVarnaEastProforma.id = user.id
   let docName =
@@ -52,11 +51,8 @@ export async function createProforma(pdaData, generatedVarnaEastProforma) {
 }
 export async function readProformasByUserId(userId) {
   const q = query(collection(db, "proformas"), where("id", "==", userId))
-  const querySnapshot = await getDocs(q)
-  return querySnapshot
+  return await getDocs(q)
 }
-export async function updateProforma(userId, proforma) {}
-
 export async function deleteProforma(proformaId) {
   deleteButton.addEventListener("click", deleteProforma(doc.data().proformaId))
 
@@ -72,6 +68,7 @@ export async function deleteProforma(proformaId) {
     }
   }
 }
+export async function updateProforma(userId, proforma) {}
 
 // SET NEWLY REGISTERED USER IN FIRESTORE COLLECTION
 

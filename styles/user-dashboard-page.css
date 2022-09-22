@@ -1,0 +1,32 @@
+section#dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 140px;
+}
+section#dashboard .dashboard-container {
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  --color: hsl(var(--primary-dark-hsl), 0.5);
+  background-color: var(--color);
+  box-shadow: 0 0 25px var(--color);
+  border-radius: 20px;
+  color: aliceblue;
+}
+.dashboard-title {
+  margin: 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #fff;
+  padding: 40px 0;
+}
+/* section#dashboard .dashboard-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+} */m

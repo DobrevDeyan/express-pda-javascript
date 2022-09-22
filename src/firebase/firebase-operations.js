@@ -54,8 +54,6 @@ export async function readProformasByUserId(userId) {
   return await getDocs(q)
 }
 export async function deleteProforma(proformaId) {
-  deleteButton.addEventListener("click", deleteProforma(doc.data().proformaId))
-
   let confirmation = window.confirm(
     "Are you sure you want to delete the document ?"
   )
@@ -69,31 +67,3 @@ export async function deleteProforma(proformaId) {
   }
 }
 export async function updateProforma(userId, proforma) {}
-
-// SET NEWLY REGISTERED USER IN FIRESTORE COLLECTION
-
-// await setDoc(doc(db, "users", `${user.uid}`), {
-//   email: user.email,
-//   name: user.displayName,
-//   verified: user.emailVerified,
-// })
-
-//
-// const userRef = doc(db, "users", `${user.uid}`)
-// await updateDoc(userRef, {
-//   proformas: [{ grt: 2, loa: 3, nrt: 3 }],
-// })
-
-// await setDoc(doc(db, "users", `${user.uid}`), {
-//   email: user.email,
-//   name: user.displayName,
-//   verified: user.emailVerified,
-// })
-
-// Must be moved to and id inserted when creating users profile to begin with
-
-//working
-// const userData = getUserData()
-// const userRef = doc(db, "users", `${userData.id}`)
-// await updateDoc(userRef, { uid: userData.id })
-//working

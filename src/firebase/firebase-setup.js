@@ -12,7 +12,6 @@ import {
   serverTimestamp,
   addDoc,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
-import { getUserData } from "../utilities/util.js"
 import {
   getAuth,
   onAuthStateChanged,

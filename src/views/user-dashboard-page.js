@@ -8,11 +8,17 @@ import {
 
 const dashboardTemplate = (generateUserProformas) => html`
   <section id="dashboard">
-    <h2>Proformas</h2>
-    <button @click="${generateUserProformas}" type="button" class="button">
-      Generate all listings
-    </button>
-    <p id="displayStoredProformas"></p>
+    <div class="dashboard-container">
+      <h1 class="dashboard-title">Proformas</h1>
+      <button
+        @click="${generateUserProformas}"
+        type="button"
+        class="generate-btn"
+      >
+        Generate PDAs
+      </button>
+      <div id="displayStoredProformas"></div>
+    </div>
   </section>
 `
 
@@ -22,9 +28,12 @@ export async function dashboardPage(ctx) {
   async function generateUserProformas() {
     const userData = getUserData()
     const userProformas = await readProformasByUserId(userData.id)
+
     userProformas.forEach((proforma) => {
       renderProformas(proforma)
     })
+
+    document.querySelector(".generate-btn").disabled = true
   }
 
   function renderProformas(proforma) {
@@ -39,7 +48,13 @@ export async function dashboardPage(ctx) {
     let state = document.createElement("li")
     let deleteButton = document.createElement("button")
     deleteButton.textContent = "Delete"
-    deleteButton.classList.add("remove-proforma")
+    deleteButton.classList.add(`${proforma.data().proformaId}`)
+    window.addEventListener("click", (event) => {
+      if (event.target.classList.contains(`${proforma.data().proformaId}`)) {
+        deleteProforma(proforma.data().proformaId)
+      }
+    })
+
     ul.style.border = "2px solid white"
     ul.style.borderRadius = "10px"
     ul.style.margin = "10px 0"
@@ -65,7 +80,7 @@ export async function dashboardPage(ctx) {
     ul.appendChild(tonnage)
     ul.appendChild(length)
     ul.appendChild(hours)
-    storedProformas.appendChild(ul)
     ul.appendChild(deleteButton)
+    storedProformas.appendChild(ul)
   }
 }

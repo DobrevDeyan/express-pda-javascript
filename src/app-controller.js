@@ -18,7 +18,7 @@ document.getElementById("logoutButton").addEventListener("click", onLogout)
 
 page(decorateContext)
 // page("/", homePage)
-page("/", dashboardPage)
+page("/", createPdaPage)
 page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)
@@ -51,8 +51,8 @@ function updateUserNav() {
   if (userData) {
     document.querySelector(".user").style.display = "inline-block"
     document.querySelector(".guest").style.display = "none"
-    document.querySelector(".user span").textContent = userData.email
-    document.querySelector(".user span").style.color = "alice"
+    // document.querySelector(".user span").textContent = userData.email
+    // document.querySelector(".user span").style.color = "alice"
     const target = document.querySelector("nav .user .marker")
     navigationSlider(target)
   } else {

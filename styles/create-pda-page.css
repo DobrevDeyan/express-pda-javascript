@@ -31,16 +31,21 @@ section#create-pda .pda-container {
   gap: 20px;
 } */
 
-/* section#create-pda {
-  margin-top: 140px;
-} */
 /* form-wrapper */
-.form-wrapper {
+/* .form-wrapper {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .pda-conditions {
   padding: 0px 60px;
+} */
+.form-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  padding: 25px;
+  /* min-width: 350px; */
 }
 .col-1 fieldset {
   border: none;
@@ -48,7 +53,19 @@ section#create-pda .pda-container {
   padding: 0;
 }
 .col-1 {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 320px;
+}
+.form-wrapper .login-button {
+  /* width: 50px;
+  height: 50px; */
+  display: inline-block;
+  max-height: 50px;
+}
+.col-2 {
+  /* float: right; */
 }
 .col-1 legend {
   margin: 4px 0;
@@ -74,24 +91,27 @@ section#create-pda .pda-container {
   letter-spacing: 0.5px;
 }
 .table-info p:nth-child(1) {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
-.pda-conditions input,
-.pda-conditions select {
+.col-1 input,
+.col-1 select {
   width: 140px;
   height: 25px;
   border-radius: 5px;
 }
-hr {
-  width: 140px;
-
-  color: hsl(var(--primary-dark-hsl), 1);
+form select:invalid {
+  color: gray;
+}
+form select option:first-child {
+  color: gray;
+}
+form select:invalid option:not(:first-child) {
+  color: black;
 }
 .pda-conditions legend,
 .pda-conditions label {
   text-transform: lowercase;
 }
-
 /* table-wrapper */
 .table-wrapper {
   width: 100%;

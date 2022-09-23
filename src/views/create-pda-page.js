@@ -10,98 +10,115 @@ const createPdaTemplate = (onSubmit) => html`
     <main>
       <div class="pda-container">
         <h1 class="dashboard-title">Generate PDA</h1>
-        <div class="form-wrapper">
-          <form @submit="${onSubmit}" class="pda-conditions">
-            <hr />
-            <div class="col-1">
-              <fieldset>
-                <legend>Terminal</legend>
-                <select id="terminal" name="terminal">
-                  <option></option>
-                  <option value="Varna East" id="tanker">Varna East</option>
-                  <option value="Varna West" id="other">Varna West</option>
-                </select>
-              </fieldset>
-              <fieldset>
-                <legend>Ship type</legend>
-                <select id="vessel-type" name="vessel-type">
-                  <option></option>
-                  <option value="Bulk carrier" id="bulk-carrier">
-                    Bulk carrier
-                  </option>
-                  <option value="Tanker" id="tanker">Tanker</option>
-                  <option value="Container" id="container">Container</option>
-                  <option value="Passenger" id="passenger">Passenger</option>
-                  <option value="Navy" id="navy">Navy</option>
-                </select>
-              </fieldset>
-              <fieldset>
-                <legend>Operation</legend>
-                <select id="operations" name="operations">
-                  <option></option>
-                  <option value="Loading" id="loading">Loading</option>
-                  <option value="Discharging" id="discharging">
-                    Discharging
-                  </option>
-                  <option value="Docking-repairs" id="docking-repairs">
-                    Docking/Repairs
-                  </option>
-                </select>
-              </fieldset>
-              <fieldset>
-                <legend>Condition</legend>
-                <select id="conditions" name="conditions">
-                  <option>None</option>
-                  <option value="DG cargo inward" id="dg-cargo-in">
-                    DG cargo inward
-                  </option>
-                  <option value="DG cargo outward" id="dg-cargo-out">
-                    DG cargo outward
-                  </option>
-                  <option value="DG cargo in/out" id="dg-cargo-in-out">
-                    DG cargo in/out
-                  </option>
-                  <option value="Overtime" id="overtime">Overtime</option>
-                </select>
-              </fieldset>
-            </div>
-            <hr />
-            <div class="col-2">
-              <label for="name">Gt/Rgt:</label><br />
-              <input type="number" id="gross_tonnage" name="grt" /><br />
-              <label for="name">Loa:</label><br />
-              <input type="number" id="length_over_all" name="loa" /><br />
-              <label for="name">Hours:</label><br />
-              <input type="number" id="hours_at_berth" name="hours" /><br />
-            </div>
-            <button type="submit" class="login-button">Calculate</button>
+        <!-- <div class="form-wrapper"> -->
+        <form @submit="${onSubmit}" class="form-wrapper">
+          <div class="col-1">
+            <fieldset>
+              <!-- <legend>Terminal</legend> -->
+              <select id="terminal" name="terminal" required>
+                <option>Designated facility</option>
+                <option value="Varna East" id="tanker">Varna East</option>
+                <option value="Varna West" id="other">Varna West</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <!-- <legend>Ship type</legend> -->
+              <select id="vessel-type" name="vessel-type" required>
+                <option>Ship Type</option>
+                <option value="Bulk carrier" id="bulk-carrier">
+                  Bulk carrier
+                </option>
+                <option value="Tanker" id="tanker">Tanker</option>
+                <option value="Container" id="container">Container</option>
+                <option value="Passenger" id="passenger">Passenger</option>
+                <option value="Navy" id="navy">Navy</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <!-- <legend>Operation</legend> -->
+              <select id="operations" name="operations" required>
+                <option>Select activity</option>
+                <option value="Loading" id="loading">Loading</option>
+                <option value="Discharging" id="discharging">
+                  Discharging
+                </option>
+                <option value="Docking-repairs" id="docking-repairs">
+                  Docking/Repairs
+                </option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <!-- <legend>Condition</legend> -->
+              <select id="conditions" name="conditions" required>
+                <option>None</option>
+                <option value="DG cargo inward" id="dg-cargo-in">
+                  DG cargo inward
+                </option>
+                <option value="DG cargo outward" id="dg-cargo-out">
+                  DG cargo outward
+                </option>
+                <option value="DG cargo in/out" id="dg-cargo-in-out">
+                  DG cargo in/out
+                </option>
+                <option value="Overtime" id="overtime">Overtime</option>
+              </select>
+            </fieldset>
+            <!-- <label for="name">Gt/Rgt:</label><br /> -->
 
-            <div class="col-3">
-              <div class="table-info">
-                <p>
-                  Dear Customers, <br /><br />
-                  kindly be guided that the provided expenses are up to date
-                  with currently in force tariffs from local providers.<br /><br />
-                  Basis the type of operation, cargo and taking into account
-                  local compliances, the provided values can be subject to
-                  change. For more information about specific inquiries, do not
-                  hesitate to contact us.
-                </p>
-                <p>
-                  Please follow the below input fields and provide exact
-                  particulars basis ships valid certificates
-                </p>
-              </div>
+            <input
+              type="number"
+              id="gross_tonnage"
+              name="grt"
+              placeholder="Gross tonnage"
+            />
+            <!-- <label for="name">Loa:</label><br /> -->
+            <input
+              type="number"
+              id="length_over_all"
+              name="loa"
+              placeholder="Length over all "
+            />
+            <!-- <label for="name">Hours:</label><br /> -->
+            <input
+              type="number"
+              id="hours_at_berth"
+              name="hours"
+              placeholder="Hours at berth"
+            />
+            <button type="submit" class="login-button">Calculate</button>
+          </div>
+          <!-- <div class="col-2"> -->
+
+          <!-- </div> -->
+
+          <div class="col-2">
+            <div class="table-info">
+              <p>
+                Dear Customers, <br />
+                <br />
+                Kindly be guided that the provided expenses are up to date with
+                currently in force tariffs from local providers.<br /><br />
+                Basis the type of operation, cargo and taking into account local
+                compliances, the provided values can be subject to change. For
+                more information about specific inquiries, do not hesitate to
+                contact us.
+              </p>
+              <br />
+              <p>
+                Please follow the below input fields and provide exact
+                particulars basis ships valid certificates.
+              </p>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
+        <!-- </div> -->
       </div>
 
       <div class="table-wrapper">
         <!-- Row title -->
         <div class="title">
           <li>Service</li>
-          <li id="port-name"></li>
+          <li id="port-name">Port Name</li>
           <li>Price in EUR</li>
         </div>
         <!-- Row Tonnage dues -->

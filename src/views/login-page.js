@@ -37,8 +37,8 @@ export function loginPage(ctx) {
   // HANDLER FOR LOGIN CONTAINER LINK
   const marker = document.querySelector("nav .guest .marker")
   function indicator(e) {
-    marker.style.left = "190px"
-    marker.style.width = "86.3px"
+    marker.style.left = "164px"
+    marker.style.width = "73px"
   }
   const link = document.querySelector("p.message a")
   link.addEventListener("click", (e) => {

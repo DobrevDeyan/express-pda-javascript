@@ -1,12 +1,12 @@
 section#create-pda {
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   margin-top: 140px;
+  padding-bottom: 140px;
 }
 section#create-pda .pda-container {
   width: 100%;
-  /* max-width: 1200px; */
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
   --color: hsl(var(--primary-dark-hsl), 0.5);
@@ -27,29 +27,11 @@ main {
   color: #fff;
   padding: 40px 0;
 }
-/* section#create-pda .p-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 20px;
-} */
-
-/* form-wrapper */
-/* .form-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.pda-conditions {
-  padding: 0px 60px;
-} */
 .form-wrapper {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
   padding: 25px;
-  /* min-width: 350px; */
 }
 .col-1 fieldset {
   border: none;
@@ -58,35 +40,8 @@ main {
 }
 .col-1 {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  min-height: 320px;
-}
-.form-wrapper .login-button {
-  /* width: 50px;
-  height: 50px; */
-  display: inline-block;
-  max-height: 50px;
-}
-.col-2 {
-  /* float: right; */
-}
-.col-1 legend {
-  margin: 4px 0;
-}
-.col-2 br {
-  margin: 4px 0;
-}
-.col-3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.col-3 input {
-  align-self: center;
-  height: 50px;
-  font-size: 20px;
-  cursor: pointer;
+  gap: 17px;
 }
 .table-info p {
   margin: 0;
@@ -94,14 +49,18 @@ main {
   max-width: 350px;
   letter-spacing: 0.5px;
 }
-.table-info p:nth-child(1) {
-  /* margin-bottom: 20px; */
-}
 .col-1 input,
-.col-1 select {
+.col-1 select,
+.col-1 button {
   width: 140px;
   height: 25px;
   border-radius: 5px;
+}
+.col-1 button.calculate {
+  color: red;
+}
+.col-1 button.reset {
+  color: green;
 }
 form select:invalid {
   color: gray;
@@ -122,7 +81,6 @@ form select:invalid option:not(:first-child) {
   max-width: 800px;
   margin: 120px auto 0 auto;
   padding: 0;
-  /* background: rgba(255, 255, 255, 0.1); */
   color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   position: relative;
@@ -131,17 +89,40 @@ form select:invalid option:not(:first-child) {
   box-shadow: 0 0 25px var(--color);
   border-radius: 15px;
   color: aliceblue;
-  display: none;
-  animation: fadeIn 1.5s;
+  opacity: 0;
+  z-index: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: all 0.9s ease;
 }
-@keyframes fadeIn {
+.inactive {
+  animation: fadeOut 1.5s ease-out;
+}
+@keyframes fadeOut {
   0% {
-    opacity: 0.2;
-  }
-  100% {
     opacity: 1;
   }
+  100% {
+    opacity: 0;
+  }
 }
+.remove {
+  display: none;
+}
+.active {
+  display: block;
+  opacity: 1;
+  animation: slideSection 1.5s ease-out;
+}
+@keyframes slideSection {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
 /* LOADING ANIMATION */
 .lds-roller {
   position: relative;

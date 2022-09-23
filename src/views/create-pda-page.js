@@ -64,7 +64,8 @@ const createPdaTemplate = (onSubmit) => html`
               </select>
             </fieldset>
             <!-- <label for="name">Gt/Rgt:</label><br /> -->
-
+          </div>
+          <div class="col-1">
             <input
               type="number"
               id="gross_tonnage"
@@ -85,32 +86,24 @@ const createPdaTemplate = (onSubmit) => html`
               name="hours"
               placeholder="Hours at berth"
             />
-            <button type="submit" class="login-button">Calculate</button>
-          </div>
-          <!-- <div class="col-2"> -->
-
-          <!-- </div> -->
-
-          <div class="col-2">
-            <div class="table-info">
-              <p>
-                Dear Customers, <br />
-                <br />
-                Kindly be guided that the provided expenses are up to date with
-                currently in force tariffs from local providers.<br /><br />
-                Basis the type of operation, cargo and taking into account local
-                compliances, the provided values can be subject to change. For
-                more information about specific inquiries, do not hesitate to
-                contact us.
-              </p>
-              <br />
-              <p>
-                Please follow the below input fields and provide exact
-                particulars basis ships valid certificates.
-              </p>
-            </div>
+            <button type="submit" class="calculate">Generate</button>
+            <button type="button" class="reset">Reset</button>
           </div>
         </form>
+        <div class="table-info">
+          <p>
+            Dear Customers, kindly be guided that the provided expenses are up
+            to date with currently in force tariffs from local providers.<br /><br />
+            Basis the type of operation, cargo and taking into account local
+            compliances, the provided values can be subject to change. For more
+            information about specific inquiries, do not hesitate to contact us.
+          </p>
+          <br />
+          <p>
+            Please follow the below input fields and provide exact particulars
+            basis ships valid certificates.
+          </p>
+        </div>
         <!-- </div> -->
       </div>
 
@@ -354,24 +347,32 @@ export function createPdaPage(ctx) {
       await calculateProforma(pdaData)
       onRender(generatedVarnaEastProforma)
       await createProforma(pdaData, generatedVarnaEastProforma)
-      // ctx.page.redirect("/dashboard")
     }
 
-    // RESET USER INPUTS
     setTimeout(() => {
-      const options = document.getElementsByTagName("select")
-      Array.from(options).forEach((option) => {
-        option.selectedIndex = 0
-        option.style.color = "gray"
-      })
-      const inputs = document.getElementsByTagName("input")
-      Array.from(inputs).forEach((input) => {
-        input.value = input.defaultValue
-      })
-      document.querySelector(".table-wrapper").style.display = "block"
       document.querySelector(".lds-roller").style.display = "none"
+      document.querySelector(".table-wrapper").classList.add("active")
     }, 1500)
   }
+  // RESET USER INPUTS
+  window.addEventListener("click", (event) => {
+    if (event.target.classList.contains("reset")) {
+      setTimeout(() => {
+        const options = document.getElementsByTagName("select")
+        Array.from(options).forEach((option) => {
+          option.selectedIndex = 0
+          option.style.color = "gray"
+        })
+        const inputs = document.getElementsByTagName("input")
+        Array.from(inputs).forEach((input) => {
+          input.value = input.defaultValue
+        })
+        document.querySelector(".table-wrapper").classList.add("inactive")
+        document.querySelector(".table-wrapper").classList.add("remove")
+        document.querySelector(".table-wrapper").classList.remove("active")
+      }, 100)
+    }
+  })
 }
 
 function onRender(pda) {

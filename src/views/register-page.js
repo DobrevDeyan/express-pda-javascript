@@ -48,8 +48,8 @@ export async function registerPage(ctx) {
   // HANDLER FOR REGISTER CONTAINER LINK
   const marker = document.querySelector("nav .guest .marker")
   function indicator(e) {
-    marker.style.left = "125.5px"
-    marker.style.width = "62.5px"
+    marker.style.left = "108px"
+    marker.style.width = "54px"
   }
   const link = document.querySelector("p.message a")
   link.addEventListener("click", (e) => {

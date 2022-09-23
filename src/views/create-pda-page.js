@@ -114,6 +114,16 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- </div> -->
       </div>
 
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div class="table-wrapper">
         <!-- Row title -->
         <div class="title">
@@ -327,6 +337,7 @@ export function createPdaPage(ctx) {
 
   async function onSubmit(event) {
     event.preventDefault()
+    document.querySelector(".lds-roller").style.display = "inline-block"
     const formData = new FormData(event.target)
 
     const terminal = formData.get("terminal").trim()
@@ -345,6 +356,21 @@ export function createPdaPage(ctx) {
       await createProforma(pdaData, generatedVarnaEastProforma)
       // ctx.page.redirect("/dashboard")
     }
+
+    // RESET USER INPUTS
+    setTimeout(() => {
+      const options = document.getElementsByTagName("select")
+      Array.from(options).forEach((option) => {
+        option.selectedIndex = 0
+        option.style.color = "gray"
+      })
+      const inputs = document.getElementsByTagName("input")
+      Array.from(inputs).forEach((input) => {
+        input.value = input.defaultValue
+      })
+      document.querySelector(".table-wrapper").style.display = "block"
+      document.querySelector(".lds-roller").style.display = "none"
+    }, 1500)
   }
 }
 

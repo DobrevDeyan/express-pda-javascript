@@ -6,6 +6,7 @@ export async function calculateProforma(pdaData) {
     generatedVarnaEastProforma.terminal = pdaData.terminal
   }
   generatedVarnaEastProforma.terminal = pdaData.terminal
+  generatedVarnaEastProforma.company = pdaData.company
   generatedVarnaEastProforma.type = pdaData.type
   generatedVarnaEastProforma.operation = pdaData.operation
   generatedVarnaEastProforma.condition = pdaData.condition
@@ -1471,6 +1472,7 @@ export async function calculateProforma(pdaData) {
 }
 
 export const generatedVarnaEastProforma = {
+  company: "",
   terminal: "",
   type: "",
   operation: "",

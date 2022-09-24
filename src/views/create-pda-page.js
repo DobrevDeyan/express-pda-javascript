@@ -343,7 +343,17 @@ export function createPdaPage(ctx) {
     const grt = formData.get("grt").trim()
     const loa = formData.get("loa").trim()
     const hours = formData.get("hours").trim()
-    const pdaData = { terminal, type, operation, condition, grt, loa, hours }
+    const company = formData.get("company").trim()
+    const pdaData = {
+      company,
+      terminal,
+      type,
+      operation,
+      condition,
+      grt,
+      loa,
+      hours,
+    }
     if (Object.values(pdaData).some((x) => !x)) {
       return alert("Please fill all the required fields")
     } else {
@@ -380,6 +390,7 @@ export function createPdaPage(ctx) {
 
 function onRender(pda) {
   document.getElementById("port-name").textContent = pda.terminal
+  document.getElementById("company-name").textContent = pda.company
   document.getElementById("result-tonnage-dues").textContent = pda.tonnageDues
   document.getElementById("result-berth-dues").textContent = pda.berthDues
   document.getElementById("result-pilotage-in").textContent = pda.pilotageInDues

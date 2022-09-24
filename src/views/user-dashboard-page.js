@@ -29,16 +29,16 @@ export async function dashboardPage(ctx) {
   async function generateUserProformas() {
     const userData = getUserData()
     const userProformas = await readProformasByUserId(userData.id)
-
     userProformas.forEach((proforma) => {
       renderProformas(proforma)
     })
-
     document.querySelector(".generate-btn").disabled = true
   }
+
   function renderProformas(proforma) {
-    const storedProformas = document.querySelector("#display-stored-proformas")
     //Imports user proformas and renders them to the DOM
+    const storedProformas = document.querySelector("#display-stored-proformas")
+    // ELEMENTS
     let ul = document.createElement("ul")
     let type = document.createElement("li")
     let tonnage = document.createElement("li")
@@ -48,6 +48,9 @@ export async function dashboardPage(ctx) {
     let state = document.createElement("li")
     let facility = document.createElement("li")
     let total = document.createElement("li")
+    // let total = document.createElement("li") 
+
+    // DIV WRAPPERS
     let col1 = document.createElement("div")
     col1.classList.add("col-1")
     let col2 = document.createElement("div")
@@ -57,18 +60,21 @@ export async function dashboardPage(ctx) {
     let details = document.createElement("div")
     details.classList.add("details")
 
+    // BUTTONS CONTROL
     let deleteButton = document.createElement("button")
     deleteButton.textContent = "Delete"
     deleteButton.classList.add(`${proforma.data().proformaId}`)
-    let expandButton = document.createElement("button")
-    expandButton.textContent = "Expand"
-    expandButton.classList.add("expand")
+    // let expandButton = document.createElement("button")
+    // expandButton.textContent = "Expand"
+    // expandButton.classList.add("expand")
     window.addEventListener("click", (event) => {
       if (event.target.classList.contains(`${proforma.data().proformaId}`)) {
         deleteProforma(proforma.data().proformaId)
         event.target.parentNode.remove()
       }
     })
+
+    // POPULATE DATA
     facility.textContent = "Facility: " + proforma.data().terminal
     type.textContent = "Vessel type: " + proforma.data().type
     operations.textContent = "Operations type: " + proforma.data().operation
@@ -77,6 +83,8 @@ export async function dashboardPage(ctx) {
     length.textContent = "Length over all: " + proforma.data().loa
     hours.textContent = "Hours at berth: " + proforma.data().hours
     total.textContent = "Total in Euro: " + proforma.data().totalDues
+
+    // APPEND ELEMENTS TO DOM
     col1.appendChild(facility)
     col1.appendChild(type)
     col1.appendChild(operations)

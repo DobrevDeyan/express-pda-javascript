@@ -18,7 +18,7 @@ const dashboardTemplate = (generateUserProformas) => html`
       </button>
     </div>
     <div class="proformas-container">
-      <div id="displayStoredProformas"></div>
+      <div id="display-stored-proformas"></div>
     </div>
   </section>
 `
@@ -36,9 +36,8 @@ export async function dashboardPage(ctx) {
 
     document.querySelector(".generate-btn").disabled = true
   }
-
   function renderProformas(proforma) {
-    const storedProformas = document.querySelector("#displayStoredProformas")
+    const storedProformas = document.querySelector("#display-stored-proformas")
     //Imports user proformas and renders them to the DOM
     let ul = document.createElement("ul")
     let type = document.createElement("li")
@@ -53,6 +52,10 @@ export async function dashboardPage(ctx) {
     col1.classList.add("col-1")
     let col2 = document.createElement("div")
     col2.classList.add("col-2")
+    let item = document.createElement("div")
+    item.classList.add("accordion-item")
+    let details = document.createElement("div")
+    details.classList.add("details")
 
     let deleteButton = document.createElement("button")
     deleteButton.textContent = "Delete"
@@ -78,14 +81,15 @@ export async function dashboardPage(ctx) {
     col1.appendChild(type)
     col1.appendChild(operations)
     col1.appendChild(state)
+    col1.appendChild(deleteButton)
     col2.appendChild(tonnage)
     col2.appendChild(length)
     col2.appendChild(hours)
     col2.appendChild(total)
-    ul.appendChild(col1)
-    ul.appendChild(col2)
-    ul.appendChild(deleteButton)
-    ul.appendChild(expandButton)
-    storedProformas.appendChild(ul)
+    col2.appendChild(expandButton)
+    details.appendChild(ul)
+    item.appendChild(col1)
+    item.appendChild(col2)
+    storedProformas.appendChild(item)
   }
 }

@@ -28,6 +28,12 @@ section#dashboard .dashboard-container button {
   align-self: center;
   margin-bottom: 20px;
 }
+section#dashboard .proformas-container button {
+  width: 140px;
+  height: 25px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
 section#dashboard .dashboard-container .dashboard-title {
   margin: 0;
   text-align: center;
@@ -36,9 +42,9 @@ section#dashboard .dashboard-container .dashboard-title {
   color: #fff;
   padding: 40px 0;
 }
-section#dashboard .dashboard-container #displayStoredProformas {
+section#dashboard .proformas-container #display-stored-proformas {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   gap: 20px;
@@ -54,6 +60,8 @@ section#dashboard .proformas-container ul {
   margin-bottom: 1rem;
   /* padding: 0 1rem; */
   box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
 }
 section#dashboard .proformas-container ul li {
   margin-right: 20px;
@@ -62,5 +70,86 @@ section#dashboard .proformas-container ul li {
 .col-2 {
   display: flex;
   flex-direction: column;
-  gap: 17px;
+  gap: 10px;
 }
+
+section#faq .proformas-container .accordion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  padding: 15px 25px;
+}
+
+section#dashboard .proformas-container .accordion-item {
+  background-color: #283042;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  padding: 15px 25px;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* section#dashboard .proformas-container .accordion-link {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  background-color: #283042;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+section#dashboard .proformas-container .accordion-link ion-icon {
+  color: #e7d5ff;
+  padding: 0.5rem;
+}
+section#dashboard .proformas-container .details {
+  overflow: hidden;
+  max-height: 0;
+  position: relative;
+  transition: max-height 650ms;
+}
+section#dashboard .proformas-container .details::before {
+  content: "";
+  position: absolute;
+  width: 0.3rem;
+  height: 90%;
+  background-color: black;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+section#dashboard .proformas-container .details p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0rem 1rem;
+}
+section#dashboard .proformas-container .accordion-item:target .details {
+  max-height: 20rem;
+}
+section#dashboard
+  .proformas-container
+  .accordion-item:target
+  .accordion-link
+  ion-icon.add,
+section#dashboard .proformas-container .accordion-link ion-icon.remove {
+  display: none;
+  transition: 2s ease-in-out;
+}
+section#dashboard
+  .proformas-container
+  .accordion-item:target
+  .accordion-link
+  ion-icon.remove {
+  display: block;
+} */

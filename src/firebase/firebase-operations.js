@@ -9,6 +9,8 @@ import {
   query,
   collection,
   where,
+  orderBy,
+  limit,
 } from "./firebase-setup.js"
 
 export async function createProforma(pdaData, generatedVarnaEastProforma) {
@@ -31,6 +33,7 @@ export async function createProforma(pdaData, generatedVarnaEastProforma) {
     proformaId,
     created: serverTimestamp(),
   })
+
   // Hashing function for avoiding duplicate pda entries in db
   function createDocName(string) {
     var a = 1,
@@ -50,8 +53,15 @@ export async function createProforma(pdaData, generatedVarnaEastProforma) {
   }
 }
 export async function readProformasByUserId(userId) {
-  const q = query(collection(db, "proformas"), where("id", "==", userId))
+  const q = query(
+    collection(db, "proformas"),
+    where("id", "==", userId),
+    orderBy("created", "desc")
+    // limit(1)
+  )
   return await getDocs(q)
+  // const q = query(collection(db, "proformas"), where("id", "==", userId))
+  // return await getDocs(q)
 }
 export async function deleteProforma(proformaId) {
   let confirmation = window.confirm(

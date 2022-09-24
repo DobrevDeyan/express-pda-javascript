@@ -57,6 +57,11 @@ main {
   height: 25px;
   border-radius: 5px;
 }
+button.calculate {
+  background-color: gray;
+}
+button.reset {
+}
 form select:invalid {
   color: gray;
 }

@@ -13,6 +13,7 @@ export async function calculateProforma(pdaData) {
   generatedVarnaEastProforma.grt = pdaData.grt
   generatedVarnaEastProforma.loa = pdaData.loa
   generatedVarnaEastProforma.hours = pdaData.hours
+  generatedVarnaEastProforma.vessel = pdaData.vessel
 
   // ===============
 
@@ -1472,6 +1473,7 @@ export async function calculateProforma(pdaData) {
 }
 
 export const generatedVarnaEastProforma = {
+  vessel: "",
   company: "",
   terminal: "",
   type: "",

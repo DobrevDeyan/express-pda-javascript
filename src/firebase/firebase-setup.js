@@ -11,6 +11,8 @@ import {
   where,
   serverTimestamp,
   addDoc,
+  orderBy,
+  limit,
 } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 import {
   getAuth,
@@ -38,8 +40,10 @@ export {
   doc,
   setDoc,
   getDocs,
+  orderBy,
   query,
   where,
+  limit,
   collection,
   updateDoc,
   addDoc,
@@ -50,3 +54,5 @@ export {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 }
+
+// import { query, where, orderBy, limit } from "firebase/firestore"

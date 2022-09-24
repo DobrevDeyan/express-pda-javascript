@@ -70,6 +70,12 @@ const createPdaTemplate = (onSubmit) => html`
               name="company"
               placeholder="Company name"
             />
+            <input
+              type="text"
+              id="vessel-name"
+              name="vessel"
+              placeholder="Vessel name"
+            />
           </div>
           <div class="col-1">
             <input
@@ -344,8 +350,10 @@ export function createPdaPage(ctx) {
     const loa = formData.get("loa").trim()
     const hours = formData.get("hours").trim()
     const company = formData.get("company").trim()
+    const vessel = formData.get("vessel").trim()
     const pdaData = {
       company,
+      vessel,
       terminal,
       type,
       operation,
@@ -409,4 +417,5 @@ function onRender(pda) {
     pda.sailingPermissionDues
   document.getElementById("result-marpol-fee").textContent = pda.marpolDues
   document.getElementById("result-total-cost").textContent = pda.totalDues
+  document.getElementById("vessel-name").textContent = pda.vessel
 }

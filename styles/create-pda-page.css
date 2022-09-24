@@ -6,7 +6,7 @@ section#create-pda {
 }
 section#create-pda .pda-container {
   width: 100%;
-  max-width: 1100px;
+  /* max-width: 1100px; */
   margin: 0 auto;
   padding: 0 1.5rem;
   --color: hsl(var(--primary-dark-hsl), 0.5);
@@ -31,7 +31,7 @@ main {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  padding: 25px;
+  padding: 15px 25px;
 }
 .col-1 fieldset {
   border: none;
@@ -44,10 +44,11 @@ main {
   gap: 17px;
 }
 .table-info p {
-  margin: 0;
-  font-size: 16px;
-  max-width: 350px;
-  letter-spacing: 0.5px;
+  min-width: 100%;
+  opacity: 0.6;
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
 }
 .col-1 input,
 .col-1 select,
@@ -57,10 +58,10 @@ main {
   border-radius: 5px;
 }
 .col-1 button.calculate {
-  color: red;
+  /* color: red; */
 }
 .col-1 button.reset {
-  color: green;
+  /* color: green; */
 }
 form select:invalid {
   color: gray;
@@ -71,10 +72,10 @@ form select option:first-child {
 form select:invalid option:not(:first-child) {
   color: black;
 }
-.pda-conditions legend,
+/* .pda-conditions legend,
 .pda-conditions label {
   text-transform: lowercase;
-}
+} */
 /* table-wrapper */
 .table-wrapper {
   width: 100%;
@@ -89,30 +90,19 @@ form select:invalid option:not(:first-child) {
   box-shadow: 0 0 25px var(--color);
   border-radius: 15px;
   color: aliceblue;
-  opacity: 0;
+  opacity: 1;
   z-index: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: all 0.9s ease;
-}
-.inactive {
-  animation: fadeOut 1.5s ease-out;
-}
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-.remove {
-  display: none;
+  transition: opacity 1s;
 }
 .active {
   display: block;
   opacity: 1;
   animation: slideSection 1.5s ease-out;
+}
+.inactive {
+  display: none;
 }
 @keyframes slideSection {
   0% {

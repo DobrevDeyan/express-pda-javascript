@@ -64,6 +64,12 @@ const createPdaTemplate = (onSubmit) => html`
               </select>
             </fieldset>
             <!-- <label for="name">Gt/Rgt:</label><br /> -->
+            <input
+              type="text"
+              id="company-name"
+              name="company"
+              placeholder="Company name"
+            />
           </div>
           <div class="col-1">
             <input
@@ -93,15 +99,12 @@ const createPdaTemplate = (onSubmit) => html`
         <div class="table-info">
           <p>
             Dear Customers, kindly be guided that the provided expenses are up
-            to date with currently in force tariffs from local providers.<br /><br />
-            Basis the type of operation, cargo and taking into account local
+            to date with currently in force tariffs from local providers. Basis
+            the type of operation, cargo and taking into account local
             compliances, the provided values can be subject to change. For more
             information about specific inquiries, do not hesitate to contact us.
-          </p>
-          <br />
-          <p>
-            Please follow the below input fields and provide exact particulars
-            basis ships valid certificates.
+            Please fill all the required input fields and provide exact
+            particulars basis ships valid certificates.
           </p>
         </div>
         <!-- </div> -->
@@ -117,7 +120,7 @@ const createPdaTemplate = (onSubmit) => html`
         <div></div>
         <div></div>
       </div>
-      <div class="table-wrapper">
+      <div class="table-wrapper inactive">
         <!-- Row title -->
         <div class="title">
           <li>Service</li>
@@ -351,26 +354,29 @@ export function createPdaPage(ctx) {
 
     setTimeout(() => {
       document.querySelector(".lds-roller").style.display = "none"
+      document.querySelector(".table-wrapper").classList.remove("inactive")
       document.querySelector(".table-wrapper").classList.add("active")
     }, 1500)
   }
   // RESET USER INPUTS
   window.addEventListener("click", (event) => {
     if (event.target.classList.contains("reset")) {
+      const options = document.getElementsByTagName("select")
+      Array.from(options).forEach((option) => {
+        option.selectedIndex = 0
+        option.style.color = "gray"
+      })
+      const inputs = document.getElementsByTagName("input")
+      Array.from(inputs).forEach((input) => {
+        input.value = input.defaultValue
+      })
+      // document.querySelector(".table-wrapper").classList.add("inactive")
+      // document.querySelector(".table-wrapper").classList.remove("active")
+      // document.querySelector(".table-wrapper").classList.add("remove")
+      document.querySelector(".table-wrapper").style.opacity = "0"
       setTimeout(() => {
-        const options = document.getElementsByTagName("select")
-        Array.from(options).forEach((option) => {
-          option.selectedIndex = 0
-          option.style.color = "gray"
-        })
-        const inputs = document.getElementsByTagName("input")
-        Array.from(inputs).forEach((input) => {
-          input.value = input.defaultValue
-        })
-        document.querySelector(".table-wrapper").classList.add("inactive")
-        document.querySelector(".table-wrapper").classList.add("remove")
-        document.querySelector(".table-wrapper").classList.remove("active")
-      }, 100)
+        document.querySelector(".table-wrapper").remove()
+      }, 1000)
     }
   })
 }

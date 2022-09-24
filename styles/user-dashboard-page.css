@@ -1,10 +1,11 @@
 section#dashboard {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   margin-top: 140px;
 }
-section#dashboard .dashboard-container {
+section#dashboard .dashboard-container,
+section#dashboard .proformas-container {
   width: 100%;
   /* max-width: 1200px; */
   margin: 0 auto;
@@ -14,8 +15,20 @@ section#dashboard .dashboard-container {
   box-shadow: 0 0 25px var(--color);
   border-radius: 20px;
   color: aliceblue;
+  display: flex;
+  flex-direction: column;
 }
-.dashboard-title {
+section#dashboard .proformas-container {
+  margin-top: 30px;
+}
+section#dashboard .dashboard-container button {
+  width: 140px;
+  height: 25px;
+  border-radius: 5px;
+  align-self: center;
+  margin-bottom: 20px;
+}
+section#dashboard .dashboard-container .dashboard-title {
   margin: 0;
   text-align: center;
   font-size: 1.5rem;
@@ -23,10 +36,31 @@ section#dashboard .dashboard-container {
   color: #fff;
   padding: 40px 0;
 }
-/* section#dashboard .dashboard-container {
+section#dashboard .dashboard-container #displayStoredProformas {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
   gap: 20px;
-} */
+  padding: 15px 25px;
+}
+section#dashboard .proformas-container ul {
+  min-width: 100%;
+  display: flex;
+  padding: 25px;
+  list-style: none;
+  background-color: #283042;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
+  /* padding: 0 1rem; */
+  box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
+}
+section#dashboard .proformas-container ul li {
+  margin-right: 20px;
+}
+.col-1,
+.col-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}

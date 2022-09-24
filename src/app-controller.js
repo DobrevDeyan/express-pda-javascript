@@ -7,6 +7,7 @@ import { loginPage } from "./views/login-page.js"
 import { registerPage } from "./views/register-page.js"
 import { dashboardPage } from "./views/user-dashboard-page.js"
 import { createPdaPage } from "./views/create-pda-page.js"
+import { profilePage } from "./views/profile-page.js"
 
 // import { logout } from "./api/api.js"
 // import { detailsPage } from "./views/details.js"
@@ -18,15 +19,15 @@ document.getElementById("logoutButton").addEventListener("click", onLogout)
 
 page(decorateContext)
 // page("/", homePage)
-page("/", createPdaPage)
+page("/", dashboardPage)
 page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)
 page("/dashboard", dashboardPage)
 page("/create-pda", createPdaPage)
+page("/profile", profilePage)
 // page("/details/:id", detailsPage)
 // page("/edit/:id", editPage)
-// page("/search", searchPage)
 
 // Initiate app
 updateUserNav()

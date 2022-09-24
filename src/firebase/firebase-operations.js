@@ -60,9 +60,9 @@ export async function deleteProforma(proformaId) {
   if (confirmation) {
     try {
       await deleteDoc(doc(db, "proformas", proformaId))
-      alert("Entry successfully deleted.")
+      // alert("Entry successfully deleted.")
     } catch (error) {
-      alert("Error deleting document")
+      // alert("Error deleting document")
     }
   }
 }

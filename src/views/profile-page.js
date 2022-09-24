@@ -1,5 +1,5 @@
 import { html } from "../utilities/lib.js"
-import { getShoeByBrand } from "../api/data.js"
+// import { getShoeByBrand } from "../api/data.js"
 
 const searchTemplate = (onChange, onSearch, shoes = []) => html`
   <section id="search">
@@ -34,29 +34,21 @@ const searchTemplate = (onChange, onSearch, shoes = []) => html`
     </div>
   </section>
 `
-const shoeTemplate = (shoe) => html`
-  <li class="card">
-    <img src="${shoe.imageUrl}" alt="eminem" />
-    <p><strong>Brand: </strong><span class="brand">${shoe.brand}</span></p>
-    <p><strong>Model: </strong><span class="model">${shoe.model}</span></p>
-    <p><strong>Value:</strong><span class="value">${shoe.value}</span>$</p>
-    <a class="details-btn" href="/details/${shoe._id}">Details</a>
-  </li>
-`
 
-export async function searchPage(ctx) {
+export async function profilePage(ctx) {
+  ctx.render(searchTemplate())
   let currentSearch = ""
 
-  const onSearchChange = (event) => {
-    currentSearch = event.target.value
-  }
-  const onSearchClick = () => {
-    let brand = currentSearch
+  // const onSearchChange = (event) => {
+  //   currentSearch = event.target.value
+  // }
+  // const onSearchClick = () => {
+  //   let brand = currentSearch
 
-    getShoeByBrand(brand).then((shoes) => {
-      ctx.render(searchTemplate(onSearchChange, onSearchClick, shoes))
-    })
-  }
+  //   getShoeByBrand(brand).then((shoes) => {
+  //     ctx.render(searchTemplate(onSearchChange, onSearchClick, shoes))
+  //   })
+  // }
 
-  ctx.render(searchTemplate(onSearchChange, onSearchClick))
+  // ctx.render(searchTemplate(onSearchChange, onSearchClick))
 }

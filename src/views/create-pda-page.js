@@ -9,7 +9,7 @@ const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
     <main>
       <div class="pda-container">
-        <h1 class="dashboard-title">Generate PDA</h1>
+        <h1 class="pda-title">Generate PDA</h1>
         <!-- <div class="form-wrapper"> -->
         <form @submit="${onSubmit}" class="form-wrapper">
           <div class="col-1">
@@ -370,9 +370,6 @@ export function createPdaPage(ctx) {
       Array.from(inputs).forEach((input) => {
         input.value = input.defaultValue
       })
-      // document.querySelector(".table-wrapper").classList.add("inactive")
-      // document.querySelector(".table-wrapper").classList.remove("active")
-      // document.querySelector(".table-wrapper").classList.add("remove")
       document.querySelector(".table-wrapper").style.opacity = "0"
       setTimeout(() => {
         document.querySelector(".table-wrapper").remove()

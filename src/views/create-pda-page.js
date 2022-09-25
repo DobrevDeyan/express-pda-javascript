@@ -12,7 +12,7 @@ const createPdaTemplate = (onSubmit) => html`
         <h1 class="pda-title">Generate PDA</h1>
         <!-- <div class="form-wrapper"> -->
         <form @submit="${onSubmit}" class="form-wrapper">
-          <div class="col-1">
+          <div class="col-5">
             <fieldset>
               <!-- <legend>Terminal</legend> -->
               <select id="terminal" name="terminal" required>
@@ -77,7 +77,7 @@ const createPdaTemplate = (onSubmit) => html`
               placeholder="Vessel name"
             />
           </div>
-          <div class="col-1">
+          <div class="col-5">
             <input
               type="number"
               id="gross_tonnage"
@@ -373,7 +373,7 @@ export function createPdaPage(ctx) {
     setTimeout(() => {
       document.querySelector(".lds-roller").style.display = "none"
       document.querySelector(".table-wrapper").classList.remove("inactive")
-      document.querySelector(".table-wrapper").classList.add("active")
+      document.querySelector(".table-wrapper").classList.add("active-table")
     }, 1500)
   }
   // RESET USER INPUTS

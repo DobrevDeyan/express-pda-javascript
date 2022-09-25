@@ -17,6 +17,16 @@ const dashboardTemplate = (generateUserProformas) => html`
         Generate PDAs
       </button>
     </div>
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div class="proformas-container">
       <div id="display-stored-proformas"></div>
     </div>
@@ -33,6 +43,22 @@ export async function dashboardPage(ctx) {
       renderProformas(proforma)
     })
     document.querySelector(".generate-btn").disabled = true
+    document.querySelector(".lds-roller").style.display = "inline-block"
+    setTimeout(() => {
+      document.querySelector(".lds-roller").style.display = "none"
+      document.querySelector(".proformas-container").style.opacity = "1"
+      document
+        .querySelector(".proformas-container")
+        .classList.add("active-proformas")
+    }, 1500)
+
+    // document.querySelector(".proformas-container").style.opacity = "1"
+    // document.querySelector(".proformas-container").classList.add("active")
+
+    // document.querySelector(".table-wrapper").style.opacity = "0"
+    // setTimeout(() => {
+    // document.querySelector(".proformas-container").remove()
+    // }, 1000)
   }
 
   function renderProformas(proforma) {
@@ -86,10 +112,9 @@ export async function dashboardPage(ctx) {
     sailingPermissionDues.textContent =
       "Sailing permission: " + proforma.data().sailingPermissionDues
     marpolDues.textContent = "Marpol dues: " + proforma.data().marpolDues
-
     total.textContent = "Total in Euro: " + proforma.data().totalDues
     company.textContent = "Company name: " + proforma.data().company
-    created.textContent = "Created at: " + proforma.data().created.toDate()
+    created.textContent = proforma.data().created.toDate().toUTCString()
     type.textContent = "Vessel type: " + proforma.data().type
     operations.textContent = "Operations type: " + proforma.data().operation
     condition.textContent = "Special state: " + proforma.data().condition
@@ -98,7 +123,7 @@ export async function dashboardPage(ctx) {
     hours.textContent = "Hours at berth: " + proforma.data().hours
     terminal.textContent = "Facility: " + proforma.data().terminal
     condition.textContent = "Condition: " + proforma.data().condition
-    vesselName.textContent = "Vessel: " + proforma.data().vesselName
+    vesselName.textContent = "Vessel: " + proforma.data().vessel
     // BUTTON CONTROL
     let deleteButton = document.createElement("button")
     deleteButton.textContent = "Delete"
@@ -106,7 +131,8 @@ export async function dashboardPage(ctx) {
     window.addEventListener("click", (event) => {
       if (event.target.classList.contains(`${proforma.data().proformaId}`)) {
         deleteProforma(proforma.data().proformaId)
-        event.target.parentNode.remove()
+        console.log(event.target)
+        event.target.parentNode.parentNode.remove()
       }
     })
     // DIV WRAPPERS

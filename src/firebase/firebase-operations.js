@@ -76,4 +76,3 @@ export async function deleteProforma(proformaId) {
     }
   }
 }
-export async function updateProforma(userId, proforma) {}

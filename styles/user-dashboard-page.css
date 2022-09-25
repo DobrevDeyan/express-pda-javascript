@@ -27,12 +27,12 @@ section#dashboard .proformas-container {
   display: block;
   padding: 1.5rem;
   opacity: 1;
-  animation: slideSection 1.5s ease-out;
+  animation: slideSection1 1.5s ease-out;
 }
 .inactive {
   display: none;
 }
-@keyframes slideSection {
+@keyframes slideSection1 {
   0% {
     transform: translateX(-100%);
   }

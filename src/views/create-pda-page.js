@@ -324,8 +324,8 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
           <ul class="more-content">
             <li class="export-file">
-              <a href="#">Export as PDF</a>
-              <a href="#">Share as PDF</a>
+              <a class="export-document" href="#">Export as PDF</a>
+              <a class="share-document" href="#">Share as PDF</a>
             </li>
           </ul>
         </article>
@@ -394,6 +394,10 @@ export function createPdaPage(ctx) {
       }, 1000)
     }
   })
+
+  document
+    .querySelector(".export-document")
+    .addEventListener("click", generatePdf)
 }
 
 function onRender(pda) {
@@ -418,4 +422,7 @@ function onRender(pda) {
   document.getElementById("result-marpol-fee").textContent = pda.marpolDues
   document.getElementById("result-total-cost").textContent = pda.totalDues
   document.getElementById("vessel-name").textContent = pda.vessel
+}
+function generatePdf() {
+  const doc = new jsPDF()
 }

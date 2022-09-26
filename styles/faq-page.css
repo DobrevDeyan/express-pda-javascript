@@ -6,7 +6,7 @@ section#faq {
 }
 section#faq .faq-container {
   width: 100%;
-  /* max-width: 1200px; */
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
   --color: hsl(var(--primary-dark-hsl), 0.5);

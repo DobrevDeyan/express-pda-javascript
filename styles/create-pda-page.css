@@ -7,6 +7,7 @@ section#create-pda {
 section#create-pda .pda-container {
   width: 100%;
   margin: 0 auto;
+  max-width: 1100px;
   padding: 0 1.5rem;
   --color: hsl(var(--primary-dark-hsl), 0.5);
   background-color: var(--color);

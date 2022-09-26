@@ -423,6 +423,28 @@ function onRender(pda) {
   document.getElementById("result-total-cost").textContent = pda.totalDues
   document.getElementById("vessel-name").textContent = pda.vessel
 }
-function generatePdf() {
-  const doc = new jsPDF()
+async function generatePdf() {
+  // const pdf = new jsPDF()
+  // const contentToPrint = document.querySelector(".table-wrapper")
+  // const specialElementHandlers = {
+  //   elementH: function (element, renderer) {
+  //     return true
+  //   },
+  // }
+  // pdf.fromHTML(contentToPrint, 15, 15, {
+  //   elementHandlers: specialElementHandlers,
+  // })
+  // pdf.save("proforma.pdf")
+
+  var contentToPrint = document.querySelector(".table-wrapper")
+  var doc = new jsPDF("p", "pt", "a4")
+
+  await html2canvas(contentToPrint, {
+    allowTaint: true,
+    useCORS: true,
+    width: 100,
+  }).then((canvas) => {
+    doc.addImage(canvas.toDataURL("image/png"), "PNG", 2, 2, 800, 900)
+  })
+  doc.save("proforma.pdf")
 }

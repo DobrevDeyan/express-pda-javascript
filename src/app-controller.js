@@ -8,7 +8,6 @@ import { registerPage } from "./views/register-page.js"
 import { dashboardPage } from "./views/user-dashboard-page.js"
 import { createPdaPage } from "./views/create-pda-page.js"
 import { profilePage } from "./views/profile-page.js"
-
 // import { logout } from "./api/api.js"
 // import { detailsPage } from "./views/details.js"
 // import { editPage } from "./views/edit.js"
@@ -19,7 +18,7 @@ document.getElementById("logoutButton").addEventListener("click", onLogout)
 
 page(decorateContext)
 // page("/", homePage)
-page("/", dashboardPage)
+page("/", createPdaPage)
 page("/faq", faqPage)
 page("/login", loginPage)
 page("/register", registerPage)

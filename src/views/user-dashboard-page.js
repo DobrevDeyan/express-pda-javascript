@@ -9,6 +9,11 @@ const dashboardTemplate = (generateUserProformas) => html`
   <section id="dashboard">
     <div class="dashboard-container">
       <h1 class="dashboard-title">Proformas</h1>
+      <p class="dashboard-info">
+        Below you can find a list of all the proformas that are currently stored
+        in your profile history sorted by date in descending order. Press the
+        button below to see more details.
+      </p>
       <button
         @click="${generateUserProformas}"
         type="button"
@@ -131,7 +136,6 @@ export async function dashboardPage(ctx) {
     window.addEventListener("click", (event) => {
       if (event.target.classList.contains(`${proforma.data().proformaId}`)) {
         deleteProforma(proforma.data().proformaId)
-        console.log(event.target)
         event.target.parentNode.parentNode.remove()
       }
     })

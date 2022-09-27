@@ -19,6 +19,7 @@ section#dashboard .proformas-container {
   flex-direction: column;
 }
 section#dashboard .proformas-container {
+  max-width: 1200px;
   margin: 120px auto 0 auto;
   opacity: 0;
   transition: opacity 1.5s;
@@ -63,6 +64,13 @@ section#dashboard .dashboard-container .dashboard-title {
   font-weight: normal;
   color: #fff;
   padding: 40px 0;
+}
+section#dashboard .dashboard-container p.dashboard-info {
+  min-width: 100%;
+  opacity: 0.6;
+  font-size: 13px;
+  text-align: center;
+  padding: 0 0 20px 0;
 }
 section#dashboard .proformas-container #display-stored-proformas {
   display: flex;
@@ -110,70 +118,6 @@ section#dashboard .proformas-container .accordion-item li {
   /* max-width: 150px; */
   font-size: 14px;
 }
-
-/* section#faq .proformas-container .accordion {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 20px;
-  padding: 15px 25px;
-} */
-/* section#dashboard .proformas-container .accordion-link {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  background-color: #283042;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0;
-}
-section#dashboard .proformas-container .accordion-link ion-icon {
-  color: #e7d5ff;
-  padding: 0.5rem;
-}
-section#dashboard .proformas-container .details {
-  overflow: hidden;
-  max-height: 0;
-  position: relative;
-  transition: max-height 650ms;
-}
-section#dashboard .proformas-container .details::before {
-  content: "";
-  position: absolute;
-  width: 0.3rem;
-  height: 90%;
-  background-color: black;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-}
-section#dashboard .proformas-container .details p {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 0rem 1rem;
-}
-section#dashboard .proformas-container .accordion-item:target .details {
-  max-height: 20rem;
-}
-section#dashboard
-  .proformas-container
-  .accordion-item:target
-  .accordion-link
-  ion-icon.add,
-section#dashboard .proformas-container .accordion-link ion-icon.remove {
-  display: none;
-  transition: 2s ease-in-out;
-}
-section#dashboard
-  .proformas-container
-  .accordion-item:target
-  .accordion-link
-  ion-icon.remove {
-  display: block;
-} */
 
 /* LOADING ANIMATION */
 .lds-roller {

@@ -54,11 +54,19 @@ main {
 .col-5 select,
 .col-5 button {
   width: 140px;
-  height: 25px;
   border-radius: 5px;
 }
-button.calculate {
-  background-color: gray;
+button.calculate,
+button.reset {
+  width: 140px;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: lighter;
+  color: white;
+  background-color: hsl(var(--primary-hsl), 0.25);
+  border: 1px solid hsl(var(--primary-hsl));
+  outline: none;
+  cursor: pointer;
 }
 button.reset {
 }
@@ -95,7 +103,7 @@ form select:invalid option:not(:first-child) {
 .active-table {
   display: block;
   opacity: 1;
-  /* animation: slideSection 1.5s ease-out; */
+  animation: slideSection 1.5s ease-out;
 }
 .inactive {
   display: none;

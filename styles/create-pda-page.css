@@ -95,7 +95,7 @@ form select:invalid option:not(:first-child) {
 .active-table {
   display: block;
   opacity: 1;
-  animation: slideSection 1.5s ease-out;
+  /* animation: slideSection 1.5s ease-out; */
 }
 .inactive {
   display: none;

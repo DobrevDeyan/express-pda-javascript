@@ -4,6 +4,7 @@ import {
   generatedVarnaEastProforma,
 } from "../calculator/pda-calculator.js"
 import { createProforma } from "../firebase/firebase-operations.js"
+// import { html2pdf } from "../../node_modules/html2pdf.js/dist/html2pdf.bundle.js"
 
 const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
@@ -375,6 +376,18 @@ export function createPdaPage(ctx) {
       document.querySelector(".table-wrapper").classList.remove("inactive")
       document.querySelector(".table-wrapper").classList.add("active-table")
     }, 1500)
+    document.querySelector(".export-document").addEventListener("click", () => {
+      const pdf = document.querySelector(".table-wrapper")
+
+      const opt = {
+        // margin: 1,
+        filename: "proforma.pdf",
+        image: { type: "jpeg", quality: 1 },
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      }
+      html2pdf().set(opt).from(pdf).save()
+    })
   }
   // RESET USER INPUTS
   window.addEventListener("click", (event) => {
@@ -394,10 +407,6 @@ export function createPdaPage(ctx) {
       }, 1000)
     }
   })
-
-  document
-    .querySelector(".export-document")
-    .addEventListener("click", generatePdf)
 }
 
 function onRender(pda) {
@@ -422,29 +431,4 @@ function onRender(pda) {
   document.getElementById("result-marpol-fee").textContent = pda.marpolDues
   document.getElementById("result-total-cost").textContent = pda.totalDues
   document.getElementById("vessel-name").textContent = pda.vessel
-}
-async function generatePdf() {
-  // const pdf = new jsPDF()
-  // const contentToPrint = document.querySelector(".table-wrapper")
-  // const specialElementHandlers = {
-  //   elementH: function (element, renderer) {
-  //     return true
-  //   },
-  // }
-  // pdf.fromHTML(contentToPrint, 15, 15, {
-  //   elementHandlers: specialElementHandlers,
-  // })
-  // pdf.save("proforma.pdf")
-
-  var contentToPrint = document.querySelector(".table-wrapper")
-  var doc = new jsPDF("p", "pt", "a4")
-
-  await html2canvas(contentToPrint, {
-    allowTaint: true,
-    useCORS: true,
-    width: 100,
-  }).then((canvas) => {
-    doc.addImage(canvas.toDataURL("image/png"), "PNG", 2, 2, 800, 900)
-  })
-  doc.save("proforma.pdf")
 }

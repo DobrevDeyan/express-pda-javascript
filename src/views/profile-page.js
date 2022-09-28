@@ -11,6 +11,11 @@ const profileTemplate = () => html` <section id="profile">
   </div>
   <div class="profile-wrapper">
     <div class="user-container">
+      <img
+        src="../../images/profile-img.png"
+        alt="profile-picture"
+        class="profile-picture"
+      />
       <p class="profile-info">
         Welcome to your user page. Here you can find useful information about
         your stay and usage of the platform.

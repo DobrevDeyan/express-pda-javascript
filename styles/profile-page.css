@@ -27,9 +27,15 @@ section#profile .profile-container .profile-title {
 section#profile .profile-container p.profile-info {
   min-width: 100%;
   opacity: 0.6;
-  font-size: 13px;
+  font-size: 0.8em;
   text-align: center;
   padding: 0 0 20px 0;
+}
+section#profile .profile-wrapper p.profile-info {
+  min-width: 100%;
+  /* opacity: 0.8; */
+  font-size: 0.9em;
+  text-align: center;
 }
 .profile-wrapper {
   margin-top: 30px;
@@ -48,14 +54,45 @@ section#profile .profile-container p.profile-info {
   box-shadow: 0 0 25px var(--color);
   border-radius: 20px;
   color: aliceblue;
-  padding: 40px;
+  padding: 50px;
+}
+.payments-container p,
+.summary-container p {
+  margin-top: 0;
 }
 .user-container {
   grid-column: 1;
   grid-row: 1 / 6;
   display: flex;
   flex-direction: column;
+  min-width: 535px;
 }
+.user-container .misc-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.user-container .profile-picture {
+  width: 230px;
+  height: 240px;
+  border-radius: 15px;
+  align-self: center;
+}
+.user-container .misc-info h1 {
+  margin: 0;
+  font-size: 22px;
+}
+.user-container .misc-info-details p:first-child {
+  margin-top: 7px;
+}
+.user-container .misc-info-details p {
+  opacity: 0.6;
+  font-size: 0.9em;
+}
+.user-container .user-info {
+  margin-top: 40px;
+}
+
 .payments-container {
   grid-column: 2;
   grid-row: 1 / 4;
@@ -65,11 +102,4 @@ section#profile .profile-container p.profile-info {
   grid-column: 2;
   grid-row: 4 / 6;
   padding: 20px;
-}
-
-.profile-picture {
-  width: 230px;
-  height: 240px;
-  border-radius: 15px;
-  align-self: center;
 }

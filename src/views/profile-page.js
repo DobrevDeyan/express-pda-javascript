@@ -5,10 +5,29 @@ const profileTemplate = () => html` <section id="profile">
   <div class="profile-container">
     <h1 class="profile-title">User profile</h1>
     <p class="profile-info">
-      Below you can find a list of all the proformas that are currently stored
-      in your profile history sorted by date in descending order. Press the
-      button below to see more details.
+      Welcome to your user page. Here you can find useful information about your
+      stay and usage of the platform.
     </p>
+  </div>
+  <div class="profile-wrapper">
+    <div class="user-container">
+      <p class="profile-info">
+        Welcome to your user page. Here you can find useful information about
+        your stay and usage of the platform.
+      </p>
+    </div>
+    <div class="payments-container">
+      <p class="profile-info">
+        Welcome to your user page. Here you can find useful information about
+        your stay and usage of the platform.
+      </p>
+    </div>
+    <div class="summary-container">
+      <p class="profile-info">
+        Welcome to your user page. Here you can find useful information about
+        your stay and usage of the platform.
+      </p>
+    </div>
   </div>
 </section>`
 

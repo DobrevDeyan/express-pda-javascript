@@ -3,7 +3,7 @@ section#profile {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 140px;
+  margin-top: 100px;
   /* margin-bottom: 140px; */
 }
 section#profile .profile-container {
@@ -33,11 +33,10 @@ section#profile .profile-container p.profile-info {
 }
 section#profile .profile-wrapper p.profile-info {
   min-width: 100%;
-  /* opacity: 0.8; */
   font-size: 0.9em;
   text-align: center;
 }
-.profile-wrapper {
+section#profile .profile-wrapper {
   margin-top: 30px;
   max-width: 1100px;
   justify-items: center;
@@ -46,9 +45,9 @@ section#profile .profile-wrapper p.profile-info {
   gap: 30px;
   grid-auto-rows: minmax(100px, auto);
 }
-.user-container,
-.payments-container,
-.summary-container {
+.profile-wrapper .user-container,
+.profile-wrapper .payments-container,
+.profile-wrapper .summary-container {
   --color: hsl(var(--primary-dark-hsl), 0.5);
   background-color: var(--color);
   box-shadow: 0 0 25px var(--color);
@@ -56,50 +55,185 @@ section#profile .profile-wrapper p.profile-info {
   color: aliceblue;
   padding: 50px;
 }
-.payments-container p,
-.summary-container p {
+.profile-wrapper .payments-container p,
+.profile-wrapper .summary-container p {
   margin-top: 0;
 }
-.user-container {
+.profile-wrapper .user-container {
   grid-column: 1;
   grid-row: 1 / 6;
   display: flex;
   flex-direction: column;
   min-width: 535px;
 }
-.user-container .misc-info {
+.profile-wrapper .user-container .misc-info {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
 }
-.user-container .profile-picture {
+.profile-wrapper .user-container .profile-picture {
   width: 230px;
   height: 240px;
   border-radius: 15px;
   align-self: center;
 }
-.user-container .misc-info h1 {
+.profile-wrapper .user-container .misc-info h1 {
   margin: 0;
   font-size: 22px;
 }
-.user-container .misc-info-details p:first-child {
-  margin-top: 7px;
+.profile-wrapper .user-container .misc-info-details p:first-child {
+  margin-top: 5px;
 }
-.user-container .misc-info-details p {
+.profile-wrapper .user-container .misc-info-details p {
   opacity: 0.6;
   font-size: 0.9em;
 }
-.user-container .user-info {
+.profile-wrapper .user-container .user-info {
   margin-top: 40px;
 }
+.profile-wrapper .user-container .user-info .misc-user-details form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.profile-wrapper .user-container .user-info .misc-user-details form p {
+  width: 45%;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+}
+.profile-wrapper
+  .user-container
+  .user-info
+  .misc-user-details
+  form
+  p:nth-child(2) {
+  text-align: right;
+}
+.profile-wrapper .user-container .misc-user-details input[type="text"] {
+  color: aliceblue;
+  background: none;
+  border: none;
+  width: 45%;
+  border-bottom: 2px solid;
+  padding-bottom: 5px;
+  height: 25px;
+  align-self: center;
+}
+.profile-wrapper
+  .user-container
+  .misc-user-details
+  form
+  input[type="text"]::placeholder {
+  color: aliceblue;
+  opacity: 1;
+}
+.profile-wrapper .misc-user-details form input[type="text"]:focus {
+  outline: none;
+  --color: hsl(var(--primary-hsl), 1);
+  border-bottom: 2px solid var(--color);
+}
+.profile-wrapper .user-container .user-info .mail {
+  margin: 32px 0;
+  border-bottom: 2px solid;
+  padding-bottom: 5px;
+}
+.profile-wrapper .user-container .user-info .sms {
+  margin: 32px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.profile-wrapper .user-container .user-info .sms label {
+  align-self: center;
+}
 
-.payments-container {
+.profile-wrapper .payments-container {
   grid-column: 2;
   grid-row: 1 / 4;
   padding: 20px;
 }
-.summary-container {
+.profile-wrapper .summary-container {
   grid-column: 2;
   grid-row: 4 / 6;
   padding: 20px;
+}
+
+/*TOGGLER*/
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.user-container .save-btn {
+  width: 140px;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: lighter;
+  color: white;
+  background-color: hsl(var(--primary-hsl), 0.25);
+  border: 1px solid hsl(var(--primary-hsl));
+  outline: none;
+  cursor: pointer;
+  align-self: center;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  /* background-color: #2196f3; */
+  --color: hsl(var(--primary-hsl), 1);
+  background-color: var(--color);
+}
+
+input:focus + .slider {
+  /* box-shadow: 0 0 1px #2196f3; */
+  --color: hsl(var(--primary-hsl), 1);
+  background-color: var(--color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

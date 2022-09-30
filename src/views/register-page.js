@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
 } from "../firebase/firebase-setup.js"
 import { setUserInDatabase } from "../firebase/firebase-authentication.js"
+
 const registerTemplate = (onSubmit) => html` <section id="register">
   <div class="register-container">
     <h1 class="register-title">Register</h1>
@@ -89,7 +90,7 @@ export async function registerPage(ctx) {
       setUserInDatabase(registerUser)
 
       ctx.updateUserNav()
-      ctx.page.redirect("/dashboard")
+      ctx.page.redirect("/profile")
     } catch (error) {
       alert(error.message)
     }

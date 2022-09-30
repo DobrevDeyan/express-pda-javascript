@@ -1,7 +1,8 @@
 import { html } from "../utilities/lib.js"
 import { getUserData } from "../utilities/util.js"
+import { getFirestoreUserData } from "../firebase/firebase-authentication.js"
 
-const profileTemplate = (user) => html` <section id="profile">
+const profileTemplate = (data) => html` <section id="profile">
   <div class="profile-container">
     <h1 class="profile-title">User profile</h1>
     <p class="profile-info">
@@ -21,22 +22,23 @@ const profileTemplate = (user) => html` <section id="profile">
         <h1>My profile</h1>
         <div class="misc-info-details">
           <p>Last login: 11.11.1111 04:54</p>
-          <p>Adress Rozq 25 vh B etaj 2</p>
+          <p>Adress Rozq 25 vh B etaj 2${data.company}</p>
+          <p>Adress Rozq 25 vh B etaj 2${data.address}</p>
         </div>
       </div>
       <div class="user-info">
         <div class="misc-user-details">
           <form class="form-update-user-info">
-            <input type="text" name="name" value="${user.id}" placeholder="" />
+            <input type="text" name="name" value="${data.uid}" placeholder="" />
             <input
               type="text"
               name="name"
               placeholder="+359 888 888 888"
-              value="${user.phone}"
+              value="${data.phone}"
             />
           </form>
         </div>
-        <p class="mail">Registered email: ${user.email}</p>
+        <p class="mail">Registered email: ${data.email}</p>
         <div class="sms">
           <p>SMS alert activation:</p>
           <label class="switch">
@@ -64,5 +66,7 @@ const profileTemplate = (user) => html` <section id="profile">
 
 export async function profilePage(ctx) {
   const user = getUserData()
-  ctx.render(profileTemplate(user))
+  const firebaseId = user.id
+  const data = await getFirestoreUserData(firebaseId)
+  ctx.render(profileTemplate(data))
 }

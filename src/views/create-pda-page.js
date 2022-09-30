@@ -380,7 +380,6 @@ export function createPdaPage(ctx) {
       const pdf = document.querySelector(".table-wrapper")
 
       const opt = {
-        // margin: 1,
         filename: "proforma.pdf",
         image: { type: "jpeg", quality: 1 },
         html2canvas: { scale: 3 },

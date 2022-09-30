@@ -1,7 +1,10 @@
 import { html } from "../utilities/lib.js"
-import { getFirestoreUserData } from "../firebase/firebase-authentication.js"
+import {
+  getFirestoreUserData,
+  updateUserDetails,
+} from "../firebase/firebase-authentication.js"
 
-const profileTemplate = (data) => html` <section id="profile">
+const profileTemplate = (onSubmit, data) => html` <section id="profile">
   <div class="profile-container">
     <h1 class="profile-title">User profile</h1>
     <p class="profile-info">
@@ -19,22 +22,22 @@ const profileTemplate = (data) => html` <section id="profile">
       />
       <div class="misc-info">
         <h1>My profile</h1>
-        <div class="misc-info-details">
+        <!-- <div class="misc-info-details">
           <p>Last login: 11.11.1111 04:54</p>
-        </div>
+        </div> -->
       </div>
       <div class="user-info">
-        <form class="form-update-user-info">
+        <form @submit="${onSubmit}" class="form-update-user-info">
           <div class="misc-user-details">
             <input
               type="text"
-              name="name"
-              value="user-name"
+              name="user-name"
               placeholder="user-name"
+              value="${data.name}"
             />
             <input
               type="text"
-              name="name"
+              name="mobile"
               placeholder="+359 888 888 888"
               value="${data.phone}"
             />
@@ -42,16 +45,19 @@ const profileTemplate = (data) => html` <section id="profile">
           <div class="misc-user-details">
             <input
               type="text"
-              name="name"
+              name="company-name"
               placeholder="company name"
               value="${data.company}"
             />
             <input
               type="text"
-              name="name"
+              name="address"
               placeholder="address"
               value="${data.address}"
             />
+          </div>
+          <div class="misc-user-details button-helper">
+            <button type="submit" class="save-btn">Save</button>
           </div>
         </form>
         <p class="mail">Registered email: ${data.email}</p>
@@ -63,7 +69,6 @@ const profileTemplate = (data) => html` <section id="profile">
           </label>
         </div>
       </div>
-      <button type="button" class="save-btn">Save</button>
     </div>
     <div class="payments-container">
       <p class="profile-info">
@@ -82,5 +87,16 @@ const profileTemplate = (data) => html` <section id="profile">
 
 export async function profilePage(ctx) {
   const data = await getFirestoreUserData()
-  ctx.render(profileTemplate(data))
+  ctx.render(profileTemplate(onSubmit, data))
+
+  async function onSubmit(event) {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    const userName = formData.get("user-name").trim()
+    const phoneNumber = formData.get("mobile").trim()
+    const company = formData.get("company-name").trim()
+    const address = formData.get("address").trim()
+    const userDetails = { userName, phoneNumber, company, address }
+    updateUserDetails(userDetails)
+  }
 }

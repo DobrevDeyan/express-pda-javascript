@@ -18,13 +18,14 @@ export async function setUserInDatabase(registeredUser) {
     name: registeredUser.user.displayName,
     verified: registeredUser.user.emailVerified,
     uid: registeredUser.user.uid,
-  })
-
-  const userRef = doc(db, "users", `${registeredUser.user.uid}`)
-  await updateDoc(userRef, {
-    company: "companyName",
-    phone: "phoneNumber",
-    address: "address",
+  }).then(() => {
+    const userRef = doc(db, "users", `${registeredUser.user.uid}`)
+    updateDoc(userRef, {
+      company: "company-name",
+      phone: "phone-number",
+      address: "company-address",
+      name: "user-name",
+    })
   })
 }
 
@@ -35,6 +36,18 @@ export async function getFirestoreUserData() {
     return docSnap.data()
   })
   return data
+}
+
+export async function updateUserDetails(userDetails) {
+  const user = getUserData()
+  const firebaseId = user.id
+  const userRef = doc(db, "users", `${firebaseId}`)
+  updateDoc(userRef, {
+    name: userDetails.userName,
+    phone: userDetails.phoneNumber,
+    company: userDetails.company,
+    address: userDetails.address,
+  })
 }
 
 // getFirestoreUserData()

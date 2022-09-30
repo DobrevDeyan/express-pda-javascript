@@ -55,10 +55,6 @@ section#profile .profile-wrapper {
   color: aliceblue;
   padding: 50px;
 }
-.profile-wrapper .payments-container p,
-.profile-wrapper .summary-container p {
-  margin-top: 0;
-}
 .profile-wrapper .user-container {
   grid-column: 1;
   grid-row: 1 / 6;
@@ -66,71 +62,23 @@ section#profile .profile-wrapper {
   flex-direction: column;
   min-width: 535px;
 }
-.profile-wrapper .user-container .misc-info {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-}
 .profile-wrapper .user-container .profile-picture {
   width: 230px;
   height: 240px;
   border-radius: 15px;
   align-self: center;
 }
-.profile-wrapper .user-container .misc-info h1 {
-  margin: 0;
-  font-size: 22px;
-}
-.profile-wrapper .user-container .misc-info-details p:first-child {
-  margin-top: 5px;
-}
-.profile-wrapper .user-container .misc-info-details p {
-  opacity: 0.6;
-  font-size: 0.9em;
+.profile-wrapper .user-container .misc-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
 }
 .profile-wrapper .user-container .user-info {
   margin-top: 40px;
 }
-.profile-wrapper .user-container .user-info .misc-user-details form {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
-.profile-wrapper .user-container .user-info .misc-user-details form p {
-  width: 45%;
-  border-bottom: 1px solid;
-  padding-bottom: 5px;
-}
-.profile-wrapper
-  .user-container
-  .user-info
-  .misc-user-details
-  form
-  p:nth-child(2) {
-  text-align: right;
-}
-.profile-wrapper .user-container .misc-user-details input[type="text"] {
-  color: aliceblue;
-  background: none;
-  border: none;
-  width: 45%;
-  border-bottom: 2px solid;
-  padding-bottom: 5px;
-  height: 25px;
-  align-self: center;
-}
-.profile-wrapper
-  .user-container
-  .misc-user-details
-  form
-  input[type="text"]::placeholder {
-  color: aliceblue;
-  opacity: 1;
-}
-.profile-wrapper .misc-user-details form input[type="text"]:focus {
-  outline: none;
-  --color: hsl(var(--primary-hsl), 1);
-  border-bottom: 2px solid var(--color);
+.profile-wrapper .user-container .misc-info h1 {
+  margin: 0;
+  font-size: 22px;
 }
 .profile-wrapper .user-container .user-info .mail {
   margin: 32px 0;
@@ -146,6 +94,59 @@ section#profile .profile-wrapper {
   align-self: center;
 }
 
+.profile-wrapper .user-container .misc-info-details p:first-child {
+  margin-top: 5px;
+}
+.profile-wrapper .user-container .misc-info-details p {
+  opacity: 0.6;
+  font-size: 0.9em;
+}
+
+.profile-wrapper .user-container .user-info .misc-user-details {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.profile-wrapper .user-container .user-info .misc-user-details:first-child {
+  margin-bottom: 32px;
+}
+.profile-wrapper .user-container .user-info .misc-user-details form p {
+  width: 45%;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+}
+.profile-wrapper
+  .user-container
+  .user-info
+  form
+  .misc-user-details
+  input:nth-child(2) {
+  text-align: right;
+}
+.profile-wrapper .user-container .misc-user-details input[type="text"] {
+  color: aliceblue;
+  background: none;
+  border: none;
+  width: 45%;
+  border-bottom: 2px solid;
+  padding-bottom: 5px;
+  height: 25px;
+  align-self: center;
+}
+.profile-wrapper
+  .user-container
+  form
+  .misc-user-details
+  input[type="text"]::placeholder {
+  color: aliceblue;
+  opacity: 1;
+}
+.profile-wrapper .misc-user-details input[type="text"]:focus {
+  outline: none;
+  --color: hsl(var(--primary-hsl), 1);
+  border-bottom: 2px solid var(--color);
+}
+
 .profile-wrapper .payments-container {
   grid-column: 2;
   grid-row: 1 / 4;
@@ -156,7 +157,6 @@ section#profile .profile-wrapper {
   grid-row: 4 / 6;
   padding: 20px;
 }
-
 /*TOGGLER*/
 /* The switch - the box around the slider */
 .switch {
@@ -165,14 +165,12 @@ section#profile .profile-wrapper {
   width: 60px;
   height: 34px;
 }
-
 /* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .user-container .save-btn {
   width: 140px;
   border-radius: 5px;
@@ -185,7 +183,9 @@ section#profile .profile-wrapper {
   cursor: pointer;
   align-self: center;
 }
-
+.user-container .save-btn:hover {
+  background-color: hsl(var(--primary-hsl), 0.4);
+}
 /* The slider */
 .slider {
   position: absolute;
@@ -198,7 +198,6 @@ section#profile .profile-wrapper {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -210,15 +209,12 @@ section#profile .profile-wrapper {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-
 input:checked + .slider {
-  /* background-color: #2196f3; */
   --color: hsl(var(--primary-hsl), 1);
   background-color: var(--color);
 }
 
 input:focus + .slider {
-  /* box-shadow: 0 0 1px #2196f3; */
   --color: hsl(var(--primary-hsl), 1);
   background-color: var(--color);
 }
@@ -228,12 +224,14 @@ input:checked + .slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
-
 .slider.round:before {
   border-radius: 50%;
+}
+.profile-wrapper .payments-container p,
+.profile-wrapper .summary-container p {
+  margin-top: 0;
 }

@@ -57,6 +57,10 @@ section#dashboard .dashboard-container button {
   align-self: center;
   margin-bottom: 20px;
 }
+section#dashboard .dashboard-container button:hover {
+  background-color: hsl(var(--primary-hsl), 0.4);
+}
+
 section#dashboard .dashboard-container .dashboard-title {
   margin: 0;
   text-align: center;

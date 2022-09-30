@@ -9,6 +9,7 @@ import {
   getDoc,
   where,
 } from "./firebase-setup.js"
+import { getUserData } from "../utilities/util.js"
 
 // SET NEWLY REGISTERED USER IN FIRESTORE COLLECTION
 export async function setUserInDatabase(registeredUser) {
@@ -27,7 +28,9 @@ export async function setUserInDatabase(registeredUser) {
   })
 }
 
-export async function getFirestoreUserData(firebaseId) {
+export async function getFirestoreUserData() {
+  const user = getUserData()
+  const firebaseId = user.id
   const data = await getDoc(doc(db, "users", firebaseId)).then((docSnap) => {
     return docSnap.data()
   })

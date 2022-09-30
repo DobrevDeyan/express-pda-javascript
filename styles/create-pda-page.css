@@ -68,7 +68,12 @@ button.reset {
   outline: none;
   cursor: pointer;
 }
+button.calculate:hover,
+button.reset:hover {
+  background-color: hsl(var(--primary-hsl), 0.4);
+}
 button.reset {
+  opacity: 0.6;
 }
 form select:invalid {
   color: gray;

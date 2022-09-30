@@ -1,5 +1,4 @@
 import { html } from "../utilities/lib.js"
-import { getUserData } from "../utilities/util.js"
 import { getFirestoreUserData } from "../firebase/firebase-authentication.js"
 
 const profileTemplate = (data) => html` <section id="profile">
@@ -22,22 +21,39 @@ const profileTemplate = (data) => html` <section id="profile">
         <h1>My profile</h1>
         <div class="misc-info-details">
           <p>Last login: 11.11.1111 04:54</p>
-          <p>Adress Rozq 25 vh B etaj 2${data.company}</p>
-          <p>Adress Rozq 25 vh B etaj 2${data.address}</p>
         </div>
       </div>
       <div class="user-info">
-        <div class="misc-user-details">
-          <form class="form-update-user-info">
-            <input type="text" name="name" value="${data.uid}" placeholder="" />
+        <form class="form-update-user-info">
+          <div class="misc-user-details">
+            <input
+              type="text"
+              name="name"
+              value="user-name"
+              placeholder="user-name"
+            />
             <input
               type="text"
               name="name"
               placeholder="+359 888 888 888"
               value="${data.phone}"
             />
-          </form>
-        </div>
+          </div>
+          <div class="misc-user-details">
+            <input
+              type="text"
+              name="name"
+              placeholder="company name"
+              value="${data.company}"
+            />
+            <input
+              type="text"
+              name="name"
+              placeholder="address"
+              value="${data.address}"
+            />
+          </div>
+        </form>
         <p class="mail">Registered email: ${data.email}</p>
         <div class="sms">
           <p>SMS alert activation:</p>
@@ -65,8 +81,6 @@ const profileTemplate = (data) => html` <section id="profile">
 </section>`
 
 export async function profilePage(ctx) {
-  const user = getUserData()
-  const firebaseId = user.id
-  const data = await getFirestoreUserData(firebaseId)
+  const data = await getFirestoreUserData()
   ctx.render(profileTemplate(data))
 }

@@ -78,6 +78,7 @@ const createPdaTemplate = (onSubmit) => html`
               placeholder="Vessel name"
             />
           </div>
+
           <div class="col-5">
             <input
               type="number"

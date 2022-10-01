@@ -1,8 +1,8 @@
 section#create-pda {
   justify-content: center;
   align-items: center;
-  margin-top: 140px;
-  padding-bottom: 140px;
+  margin-top: 100px;
+  padding-bottom: 100px;
 }
 section#create-pda .pda-container {
   width: 100%;
@@ -75,6 +75,11 @@ button.reset:hover {
 button.reset {
   opacity: 0.6;
 }
+button.calculate:focus,
+button.reset:focus {
+  border-color: aliceblue;
+  border-width: 1.5px;
+}
 form select:invalid {
   color: gray;
 }
@@ -89,7 +94,7 @@ form select:invalid option:not(:first-child) {
 .table-wrapper {
   width: 100%;
   max-width: 800px;
-  margin: 120px auto 0 auto;
+  margin: 30px auto 0 auto;
   padding: 0;
   color: rgba(255, 255, 255, 0.9);
   overflow: hidden;

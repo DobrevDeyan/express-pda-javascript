@@ -4,7 +4,7 @@ section#profile {
   align-items: center;
   flex-direction: column;
   margin-top: 100px;
-  margin-bottom: 140px;
+  margin-bottom: 100px;
 }
 section#profile .profile-container {
   width: 100%;
@@ -183,6 +183,10 @@ section#profile .profile-wrapper {
 }
 .user-container .form-update-user-info .save-btn:hover {
   background-color: hsl(var(--primary-hsl), 0.4);
+}
+.user-container .form-update-user-info .save-btn:focus {
+  border-color: aliceblue;
+  border-width: 1.5px;
 }
 .user-info .form-update-user-info .button-helper {
   min-width: 100%;

@@ -85,24 +85,24 @@ const profileTemplate = (
       <h1>Account statistics</h1>
       <div class="misc-summary-container">
         <div class="misc-summary-details">
-          <p class="">Total proformas generated:</p>
-          <p>${totalProformas}</p>
-        </div>
-        <div class="misc-summary-details">
-          <p class="">Queried vessels over 20k grt:</p>
-          <p>${totalVessels}</p>
+          <p class="">Time of last queried PDA:</p>
+          <p>${lastCreatedPda}</p>
         </div>
         <div class="misc-summary-details">
           <p class="">Queried terminals at recent:</p>
           <p>${terminals}</p>
         </div>
         <div class="misc-summary-details">
-          <p class="">Time of last queried PDA:</p>
-          <p>${lastCreatedPda}</p>
+          <p class="">Queried vessels at recent:</p>
+          <p>${lastQueriedVessels}</p>
+        </div>
+        <div class="misc-summary-details">
+          <p class="">Queried vessels > 20k grt:</p>
+          <p>${totalVessels}</p>
         </div>
         <div class="misc-summary-details">
           <p class="">Total proformas generated:</p>
-          <p>${lastQueriedVessels}</p>
+          <p>${totalProformas}</p>
         </div>
       </div>
       <div class="link-container">
@@ -128,7 +128,6 @@ export async function profilePage(ctx) {
   terminals = terminals.join(", ")
   const lastCreatedPda = await lastRequestedProforma()
   let lastQueriedVessels = await lastRequestedVessels()
-  console.log(lastQueriedVessels);
   lastQueriedVessels = lastQueriedVessels.join(", ")
 
   ctx.render(

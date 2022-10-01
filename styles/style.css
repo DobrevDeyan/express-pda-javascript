@@ -25,12 +25,12 @@ body {
 #full-screen-container {
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("/images/hero.jpg"); */
-  background-color: rgb(28, 110, 80);
+  /* background-color: rgb(28, 110, 80); */
   /* background-color: rgb(56, 64, 62); */
 
-  /* background: #f1f2b5;
+  background: #f1f2b5;
   background: -webkit-linear-gradient(to right, #135058, #f1f2b5);
-  background: linear-gradient(to right, #135058, #f1f2b5); */
+  background: linear-gradient(to right, #135058, #3a6252);
 
   /* background: #232526;
   background: -webkit-linear-gradient(to right, #414345, #232526);

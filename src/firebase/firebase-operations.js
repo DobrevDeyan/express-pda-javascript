@@ -12,6 +12,7 @@ import {
   orderBy,
   limit,
 } from "./firebase-setup.js"
+import { getUserData } from "../utilities/util.js"
 
 export async function createProforma(pdaData, generatedVarnaEastProforma) {
   const user = JSON.parse(sessionStorage.userData)
@@ -75,4 +76,32 @@ export async function deleteProforma(proformaId) {
       // alert("Error deleting document")
     }
   }
+}
+export async function totalUserProformas() {
+  const user = getUserData()
+  const firebaseId = user.id
+
+  let totalProformaCount = 0
+  const q = query(collection(db, "proformas"), where("id", "==", firebaseId))
+  const data = await getDocs(q)
+  data.forEach((doc) => {
+    totalProformaCount += 1
+  })
+  return totalProformaCount
+}
+export async function vesselsAbove20kTons() {
+  const user = getUserData()
+  const firebaseId = user.id
+
+  let totalVesselCount = 0
+  const q = query(
+    collection(db, "proformas"),
+    where("id", "==", firebaseId),
+    where("grt", ">", 20000)
+  )
+  const data = await getDocs(q)
+  data.forEach((doc) => {
+    totalVesselCount += 1
+  })
+  return totalVesselCount
 }

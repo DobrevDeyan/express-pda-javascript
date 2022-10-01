@@ -34,7 +34,7 @@ section#profile .profile-container p.profile-info {
 section#profile .profile-wrapper p.profile-info {
   min-width: 100%;
   font-size: 0.9em;
-  text-align: center;
+  /* text-align: center; */
 }
 section#profile .profile-wrapper {
   margin-top: 30px;
@@ -46,8 +46,8 @@ section#profile .profile-wrapper {
   grid-auto-rows: minmax(100px, auto);
 }
 .profile-wrapper .user-container,
-.profile-wrapper .payments-container,
-.profile-wrapper .summary-container {
+.profile-wrapper .stats-container,
+.profile-wrapper .weather-container {
   --color: hsl(var(--primary-dark-hsl), 0.5);
   background-color: var(--color);
   box-shadow: 0 0 25px var(--color);
@@ -62,16 +62,14 @@ section#profile .profile-wrapper {
   flex-direction: column;
   min-width: 535px;
 }
-.profile-wrapper .user-container .profile-picture {
-  width: 230px;
-  height: 240px;
-  border-radius: 15px;
+.profile-wrapper .user-container .shipping-picture {
+  width: 320px;
+  height: 320px;
   align-self: center;
 }
 .profile-wrapper .user-container .misc-info {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
 }
 .profile-wrapper .user-container .user-info {
   margin-top: 40px;
@@ -147,15 +145,14 @@ section#profile .profile-wrapper {
   border-bottom: 2px solid var(--color);
 }
 
-.profile-wrapper .payments-container {
+.profile-wrapper .stats-container {
   grid-column: 2;
   grid-row: 1 / 4;
-  padding: 20px;
+  min-width: 535px;
 }
-.profile-wrapper .summary-container {
+.profile-wrapper .weather-container {
   grid-column: 2;
   grid-row: 4 / 6;
-  padding: 20px;
 }
 /*TOGGLER*/
 /* The switch - the box around the slider */
@@ -235,7 +232,67 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-.profile-wrapper .payments-container p,
-.profile-wrapper .summary-container p {
-  margin-top: 0;
+.profile-wrapper .stats-container,
+.profile-wrapper .weather-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.profile-wrapper .stats-container h1,
+.profile-wrapper .weather-container h1 {
+  margin: 0 0 1em 0;
+  font-size: 22px;
+}
+
+.profile-wrapper .stats-container .link-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.profile-wrapper .stats-container .link-container:hover {
+  cursor: pointer;
+}
+.profile-wrapper .stats-container .link-to-dashboard {
+  color: aliceblue;
+  display: block;
+  opacity: 0.6;
+  font-size: 0.8em;
+  text-decoration: none;
+  margin-right: 30px;
+}
+.profile-wrapper .stats-container .link-to-dashboard:hover {
+  opacity: 1;
+}
+.profile-wrapper .stats-container ion-icon {
+  vertical-align: middle;
+  font-size: 0.8em;
+  margin-left: 45px;
+  display: none;
+}
+.profile-wrapper .stats-container .link-container:hover ion-icon {
+  display: block;
+  animation-name: slide;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+}
+@keyframes slide {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: -20px;
+  }
+}
+.profile-wrapper .stats-container .misc-summary-details {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  min-width: 100%;
+}
+.profile-wrapper .stats-container .misc-summary-details p {
+  width: 45%;
+}
+.profile-wrapper .stats-container .misc-summary-details > *:nth-child(2) {
+  text-align: right;
 }

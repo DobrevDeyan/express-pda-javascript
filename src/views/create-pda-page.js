@@ -347,9 +347,9 @@ export function createPdaPage(ctx) {
     const type = formData.get("vessel-type").trim()
     const operation = formData.get("operations").trim()
     const condition = formData.get("conditions").trim()
-    const grt = formData.get("grt").trim()
-    const loa = formData.get("loa").trim()
-    const hours = formData.get("hours").trim()
+    const grt = Number(formData.get("grt").trim())
+    const loa = Number(formData.get("loa").trim())
+    const hours = Number(formData.get("hours").trim())
     const company = formData.get("company").trim()
     const vessel = formData.get("vessel").trim()
     const pdaData = {

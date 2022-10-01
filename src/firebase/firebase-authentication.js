@@ -49,7 +49,7 @@ export async function updateUserDetails(userDetails) {
     address: userDetails.address,
   })
 }
-
+export async function accountStatistics() {}
 // getFirestoreUserData()
 // where("id", "==", userId)
 

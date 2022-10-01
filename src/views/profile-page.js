@@ -3,8 +3,16 @@ import {
   getFirestoreUserData,
   updateUserDetails,
 } from "../firebase/firebase-authentication.js"
-
-const profileTemplate = (onSubmit, data) => html` <section id="profile">
+import {
+  totalUserProformas,
+  vesselsAbove20kTons,
+} from "../firebase/firebase-operations.js"
+const profileTemplate = (
+  onSubmit,
+  data,
+  totalProformas,
+  totalVessels
+) => html` <section id="profile">
   <div class="profile-container">
     <h1 class="profile-title">User profile</h1>
     <p class="profile-info">
@@ -16,15 +24,12 @@ const profileTemplate = (onSubmit, data) => html` <section id="profile">
   <div class="profile-wrapper">
     <div class="user-container">
       <img
-        src="../../images/profile-img.png"
-        alt="profile-picture"
-        class="profile-picture"
+        src="../../images/cargo ship-1.1s-200px.svg"
+        alt="shipping-picture"
+        class="shipping-picture"
       />
       <div class="misc-info">
         <h1>My profile</h1>
-        <!-- <div class="misc-info-details">
-          <p>Last login: 11.11.1111 04:54</p>
-        </div> -->
       </div>
       <div class="user-info">
         <form @submit="${onSubmit}" class="form-update-user-info">
@@ -70,13 +75,31 @@ const profileTemplate = (onSubmit, data) => html` <section id="profile">
         </div>
       </div>
     </div>
-    <div class="payments-container">
-      <p class="profile-info">
-        Welcome to your user page. Here you can find useful information about
-        your stay and usage of the platform.
-      </p>
+    <div class="stats-container">
+      <h1>Account statistics</h1>
+      <div class="misc-summary-details">
+        <p class="">Total proformas generated:</p>
+        <p>${totalProformas}</p>
+      </div>
+      <div class="misc-summary-details">
+        <p class="">Recent vessels:</p>
+        <p>${totalVessels}</p>
+      </div>
+      <div class="misc-summary-details">
+        <p class="">Total proformas generated:</p>
+        <p>1321313131</p>
+      </div>
+      <div class="misc-summary-details">
+        <p class="">Total proformas generated:</p>
+        <p>1321313131</p>
+      </div>
+      <div class="link-container">
+        <a class="link-to-dashboard" href="/dashboard">Go to dashboard </a>
+        <ion-icon name="arrow-back"></ion-icon>
+      </div>
     </div>
-    <div class="summary-container">
+    <div class="weather-container">
+      <h1>Weather statistics</h1>
       <p class="profile-info">
         Welcome to your user page. Here you can find useful information about
         your stay and usage of the platform.
@@ -87,7 +110,10 @@ const profileTemplate = (onSubmit, data) => html` <section id="profile">
 
 export async function profilePage(ctx) {
   const data = await getFirestoreUserData()
-  ctx.render(profileTemplate(onSubmit, data))
+  const totalProformas = await totalUserProformas()
+  const totalVessels = await vesselsAbove20kTons()
+
+  ctx.render(profileTemplate(onSubmit, data, totalProformas, totalVessels))
 
   async function onSubmit(event) {
     event.preventDefault()

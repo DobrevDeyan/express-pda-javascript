@@ -6,12 +6,18 @@ import {
 import {
   totalUserProformas,
   vesselsAbove20kTons,
+  queriedTerminals,
+  lastRequestedProforma,
+  lastRequestedVessels,
 } from "../firebase/firebase-operations.js"
 const profileTemplate = (
   onSubmit,
   data,
   totalProformas,
-  totalVessels
+  totalVessels,
+  terminals,
+  lastCreatedPda,
+  lastQueriedVessels
 ) => html` <section id="profile">
   <div class="profile-container">
     <h1 class="profile-title">User profile</h1>
@@ -77,21 +83,27 @@ const profileTemplate = (
     </div>
     <div class="stats-container">
       <h1>Account statistics</h1>
-      <div class="misc-summary-details">
-        <p class="">Total proformas generated:</p>
-        <p>${totalProformas}</p>
-      </div>
-      <div class="misc-summary-details">
-        <p class="">Recent vessels:</p>
-        <p>${totalVessels}</p>
-      </div>
-      <div class="misc-summary-details">
-        <p class="">Total proformas generated:</p>
-        <p>1321313131</p>
-      </div>
-      <div class="misc-summary-details">
-        <p class="">Total proformas generated:</p>
-        <p>1321313131</p>
+      <div class="misc-summary-container">
+        <div class="misc-summary-details">
+          <p class="">Total proformas generated:</p>
+          <p>${totalProformas}</p>
+        </div>
+        <div class="misc-summary-details">
+          <p class="">Queried vessels over 20k grt:</p>
+          <p>${totalVessels}</p>
+        </div>
+        <div class="misc-summary-details">
+          <p class="">Queried terminals at recent:</p>
+          <p>${terminals}</p>
+        </div>
+        <div class="misc-summary-details">
+          <p class="">Time of last queried PDA:</p>
+          <p>${lastCreatedPda}</p>
+        </div>
+        <div class="misc-summary-details">
+          <p class="">Total proformas generated:</p>
+          <p>${lastQueriedVessels}</p>
+        </div>
       </div>
       <div class="link-container">
         <a class="link-to-dashboard" href="/dashboard">Go to dashboard </a>
@@ -112,8 +124,24 @@ export async function profilePage(ctx) {
   const data = await getFirestoreUserData()
   const totalProformas = await totalUserProformas()
   const totalVessels = await vesselsAbove20kTons()
+  let terminals = await queriedTerminals()
+  terminals = terminals.join(", ")
+  const lastCreatedPda = await lastRequestedProforma()
+  let lastQueriedVessels = await lastRequestedVessels()
+  console.log(lastQueriedVessels);
+  lastQueriedVessels = lastQueriedVessels.join(", ")
 
-  ctx.render(profileTemplate(onSubmit, data, totalProformas, totalVessels))
+  ctx.render(
+    profileTemplate(
+      onSubmit,
+      data,
+      totalProformas,
+      totalVessels,
+      terminals,
+      lastCreatedPda,
+      lastQueriedVessels
+    )
+  )
 
   async function onSubmit(event) {
     event.preventDefault()

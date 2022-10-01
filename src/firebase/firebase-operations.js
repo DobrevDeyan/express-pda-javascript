@@ -105,3 +105,56 @@ export async function vesselsAbove20kTons() {
   })
   return totalVesselCount
 }
+export async function queriedTerminals() {
+  const user = getUserData()
+  const firebaseId = user.id
+
+  let queriedTerminals = []
+  const q = query(
+    collection(db, "proformas"),
+    where("id", "==", firebaseId),
+    limit(2)
+  )
+  const data = await getDocs(q)
+  data.forEach((doc) => {
+    queriedTerminals.push(doc.data().terminal)
+  })
+  return queriedTerminals
+}
+export async function lastRequestedProforma() {
+  const user = getUserData()
+  const firebaseId = user.id
+
+  const q = query(
+    collection(db, "proformas"),
+    where("id", "==", firebaseId),
+    orderBy("created", "desc"),
+    limit(1)
+  )
+
+  let lastCreatedInquiry = ""
+  const search = await getDocs(q)
+  search.forEach((doc) => {
+    lastCreatedInquiry = doc.data().created.toDate().toUTCString()
+
+    // console.log(doc.data().created.toDate().toUTCString())
+  })
+  lastCreatedInquiry = lastCreatedInquiry.slice(5)
+  return lastCreatedInquiry
+}
+export async function lastRequestedVessels() {
+  const user = getUserData()
+  const firebaseId = user.id
+
+  let queriedVessels = []
+  const q = query(
+    collection(db, "proformas"),
+    where("id", "==", firebaseId),
+    limit(2)
+  )
+  const data = await getDocs(q)
+  data.forEach((doc) => {
+    queriedVessels.push(doc.data().vessel)
+  })
+  return queriedVessels
+}

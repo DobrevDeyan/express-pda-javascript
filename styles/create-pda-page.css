@@ -54,7 +54,7 @@ main {
 .col-5 select,
 .col-5 button {
   width: 140px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 button.calculate,
 button.reset {

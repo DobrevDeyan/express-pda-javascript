@@ -5,8 +5,8 @@ section#dashboard {
   flex-direction: column;
   margin-top: 100px;
 }
-section#dashboard .dashboard-container,
-section#dashboard .proformas-container {
+/* section#dashboard .proformas-container,  */
+section#dashboard .dashboard-container {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -18,28 +18,7 @@ section#dashboard .proformas-container {
   display: flex;
   flex-direction: column;
 }
-section#dashboard .proformas-container {
-  margin: 30px auto 0 auto;
-  opacity: 0;
-  transition: opacity 1.5s;
-}
-.active-proformas {
-  display: block;
-  padding: 1.5rem;
-  opacity: 1;
-  animation: slideSection1 1.5s ease-out;
-}
-.inactive {
-  display: none;
-}
-@keyframes slideSection1 {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
+
 section#dashboard .proformas-container button,
 section#dashboard .dashboard-container button {
   width: 140px;
@@ -59,7 +38,6 @@ section#dashboard .dashboard-container button {
 section#dashboard .dashboard-container button:hover {
   background-color: hsl(var(--primary-hsl), 0.4);
 }
-
 section#dashboard .dashboard-container .dashboard-title {
   margin: 0;
   text-align: center;
@@ -68,45 +46,26 @@ section#dashboard .dashboard-container .dashboard-title {
   color: #fff;
   padding: 40px 0;
 }
-section#dashboard .dashboard-container p.dashboard-info {
+.dashboard-container p {
   min-width: 100%;
-  opacity: 0.6;
+  opacity: 1;
   font-size: 13px;
   text-align: center;
-  padding: 0 0 20px 0;
 }
-section#dashboard .proformas-container #display-stored-proformas {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 15px;
-}
-section#dashboard .proformas-container ul {
+section#dashboard ul.list {
   min-width: 100%;
-  display: flex;
   padding: 25px;
   list-style: none;
-  background-color: #283042;
+  /* background-color: #283042; */
   border-radius: 0.4rem;
   margin-bottom: 1rem;
-  /* padding: 0 1rem; */
-  box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-around;
-}
-section#dashboard .proformas-container ul li {
-  margin-right: 20px;
-}
-.col-1,
-.col-2,
-.col-3,
-.col-4 {
+  padding: 0 1rem;
+  /* box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1); */
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
-
-section#dashboard .proformas-container .accordion-item {
+section#dashboard ul.list .list-container .list-item {
   background-color: #283042;
   border-radius: 0.4rem;
   box-shadow: 0.5rem 2px 0.5rem rgba(0, 0, 0, 0.1);
@@ -115,12 +74,107 @@ section#dashboard .proformas-container .accordion-item {
   width: 100%;
   flex-direction: row;
   justify-content: space-around;
+  margin-bottom: 1rem;
 }
-section#dashboard .proformas-container .accordion-item li {
+section#dashboard .list .list-container .list-item li {
   list-style: none;
-  /* max-width: 150px; */
   font-size: 14px;
 }
+.list-item-col {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/*Тхирд аниматион */
+
+.list-container {
+  cursor: pointer;
+  font-size: 1rem;
+  /* height: 0; */
+  list-style: none;
+  position: relative;
+  text-align: center;
+  /* width: 300px; */
+  margin-bottom: 20px;
+}
+.list-container.show:not(:first-child) {
+  margin-top: 10px;
+}
+.list-container .list-item {
+  background-color: #d3d3d3;
+  /* left: 0; */
+  /* opacity: 0; */
+  padding: 2rem 0;
+  position: absolute;
+  /* top: 0; */
+  /* transform: translateX(300px); */
+  transition: all 1s ease-out;
+  /* width: 100%; */
+}
+.list-container .list-item.show {
+  opacity: 1;
+  /* transform: translateX(0); */
+}
+
+/*фирст аним*/
+
+/* .list-container {
+  cursor: pointer;
+  font-size: 3.5rem;
+  height: 0;
+  list-style: none;
+  position: relative;
+  text-align: center;
+  width: 300px;
+}
+.list-container.show:not(:first-child) {
+  margin-top: 10px;
+}
+.list-container .list-item {
+  background-color: #d3d3d3;
+  left: 0;
+  opacity: 0;
+  padding: 2rem 0;
+  position: absolute;
+  top: 0;
+  transform: translateY(-300px);
+  transition: all 0.6s ease-out;
+  width: 100%;
+}
+.list-container .list-item.show {
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+/* second animation */
+
+/* .list-container {
+  cursor: pointer;
+  font-size: 3.5rem;
+  height: 0;
+  overflow: hidden;
+  list-style: none;
+  position: relative;
+  text-align: center;
+  width: 300px;
+}
+.list-container.show:not(:first-child) {
+  margin-top: 10px;
+}
+.list-container .list-item {
+  background-color: #d3d3d3;
+  left: 0;
+  opacity: 0;
+  padding: 2rem 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.6s ease-out;
+  width: 100%;
+}
+.list-container .list-item.show {
+  opacity: 1;
+} */
 
 /* LOADING ANIMATION */
 .lds-roller {
@@ -209,3 +263,32 @@ section#dashboard .proformas-container .accordion-item li {
     transform: rotate(360deg);
   }
 }
+
+/* section#dashboard .proformas-container {
+  margin: 30px auto 0 auto;
+  opacity: 0;
+  transition: opacity 1.5s;
+} */
+/* .active-proformas {
+  padding: 1.5rem;
+  animation: slideSection1 1.5s ease-out;
+} */
+/* .inactive {
+  display: none;
+}
+@keyframes slideSection1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes slideSection {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+} */

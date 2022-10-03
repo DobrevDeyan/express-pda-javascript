@@ -28,7 +28,6 @@ export async function setUserInDatabase(registeredUser) {
     })
   })
 }
-
 export async function getFirestoreUserData() {
   const user = getUserData()
   const firebaseId = user.id
@@ -37,7 +36,6 @@ export async function getFirestoreUserData() {
   })
   return data
 }
-
 export async function updateUserDetails(userDetails) {
   const user = getUserData()
   const firebaseId = user.id
@@ -49,7 +47,6 @@ export async function updateUserDetails(userDetails) {
     address: userDetails.address,
   })
 }
-export async function accountStatistics() {}
 // getFirestoreUserData()
 // where("id", "==", userId)
 

@@ -61,6 +61,10 @@ section#dashboard .dashboard-container .dashboard-title {
   margin: 30px 0 0 0;
   padding: 0;
 }
+.list h2 {
+  text-align: center;
+  color: aliceblue;
+}
 .list-container {
   list-style: none;
   font-size: 1em;
@@ -84,11 +88,14 @@ section#dashboard .dashboard-container .dashboard-title {
 .list-item-col {
   display: flex;
 }
-.list-item-col .hidden {
-  /* display: none; */
+.list-item-col #hidden {
+  display: none;
 }
 .fade-in {
-  animation: fadeIn 1.6s;
+  animation: fadeIn 1.5s;
+}
+.fade-out {
+  animation: fadeOut 1.5s;
 }
 @keyframes fadeIn {
   0% {
@@ -96,6 +103,14 @@ section#dashboard .dashboard-container .dashboard-title {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

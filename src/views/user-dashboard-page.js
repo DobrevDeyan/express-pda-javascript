@@ -9,7 +9,7 @@ const dashboardTemplate = (proformas) => html`
   <section id="dashboard">
     <div class="dashboard-container">
       <h1 class="dashboard-title">Proformas</h1>
-      <div class="lds-ellipsis">
+      <div class="lds-ellipsis fade-out">
         <div></div>
         <div></div>
         <div></div>
@@ -24,7 +24,7 @@ const dashboardTemplate = (proformas) => html`
 
     <ul class="list">
       ${proformas.length == 0
-        ? html`<h2>No PDA entries in database.</h2>`
+        ? html`<h2 class="fade-in">No PDA entries in database.</h2>`
         : html`${proformas.map(proformaTemplate)}`}
     </ul>
   </section>
@@ -88,7 +88,7 @@ export async function dashboardPage(ctx) {
   setTimeout(() => {
     document.querySelector(".lds-ellipsis").style.display = "none"
     document.querySelector(".dashboard-title").style.paddingBottom = "40px"
-  }, 1500)
+  }, 1200)
 
   ///
 

@@ -24,7 +24,7 @@ const dashboardTemplate = (proformas) => html`
 
     <ul class="list">
       ${proformas.length == 0
-        ? html`<h2 class="fade-in">No PDA entries in database.</h2>`
+        ? html`<h2 class="fade-in"><span class="typing"></span></h2>`
         : html`${proformas.map(proformaTemplate)}`}
     </ul>
   </section>
@@ -90,8 +90,6 @@ export async function dashboardPage(ctx) {
     document.querySelector(".dashboard-title").style.paddingBottom = "40px"
   }, 1200)
 
-  ///
-
   const selectors = document.querySelectorAll(".list-container")
   selectors.forEach((el) => {
     el.addEventListener("click", clicks)
@@ -143,4 +141,16 @@ export async function dashboardPage(ctx) {
       generateUserProformas()
     }
   }
+  let typed = new Typed(".typing", {
+    strings: [
+      "",
+      "No PDAs in database.",
+      "Please visit the PDA page and submit your vessel details.",
+    ],
+    typeSpeed: 70,
+    BackSpeed: 60,
+    loop: false,
+    showCursor: false,
+    // cursorChar: "|",
+  })
 }

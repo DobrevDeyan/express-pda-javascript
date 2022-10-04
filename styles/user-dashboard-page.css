@@ -64,6 +64,8 @@ section#dashboard .dashboard-container .dashboard-title {
 .list h2 {
   text-align: center;
   color: aliceblue;
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 .list-container {
   list-style: none;

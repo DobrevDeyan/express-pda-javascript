@@ -3,7 +3,6 @@ import { getUserData } from "../utilities/util.js"
 import {
   readProformasByUserId,
   deleteProforma,
-  checkIfUserHasAnyProformas,
 } from "../firebase/firebase-operations.js"
 
 const dashboardTemplate = (proformas) => html`
@@ -64,6 +63,7 @@ const proformaTemplate = (proforma) => html`
         <p>Hours at berth: ${proforma.hours}</p>
         <p>Terminal: ${proforma.terminal}</p>
         <p>Ship name: ${proforma.vessel}</p>
+        <p id="hidden">PDA ID: ${proforma.proformaId}</p>
       </div>
     </div>
   </li>
@@ -92,7 +92,28 @@ export async function dashboardPage(ctx) {
 
   ///
 
-  function removeListItem(e) {
+  const selectors = document.querySelectorAll(".list-container")
+  selectors.forEach((el) => {
+    el.addEventListener("click", clicks)
+  })
+
+  let clickCount = 0
+  const timeout = 400
+  // HANDLE CLICK EVENT FOR REMOVING A SINGLE LISTING FROM VIEW OR FROM DATABASE
+  function clicks(e) {
+    clickCount++
+    if (clickCount == 1) {
+      setTimeout(function () {
+        if (clickCount == 1) {
+          removeListItemFromDoM(e)
+        } else {
+          removeProformaItemFromDatabase(e)
+        }
+        clickCount = 0
+      }, timeout || 300)
+    }
+  }
+  function removeListItemFromDoM(e) {
     let container = e.target
     while (!container.classList.contains("list-container")) {
       container = container.parentElement
@@ -104,11 +125,22 @@ export async function dashboardPage(ctx) {
       container.remove()
     }
   }
-
-  //DOCUMENT LOAD
-  document
-    .querySelectorAll(".list .list-container")
-    .forEach(function (container) {
-      container.onclick = removeListItem
-    })
+  function removeProformaItemFromDatabase(e) {
+    let container = e.target
+    while (!container.classList.contains("list-container")) {
+      container = container.parentElement
+    }
+    container.classList.remove("show")
+    const listItem = container.querySelector(".list-item")
+    listItem.classList.remove("show")
+    const pdaRef = listItem
+      .querySelectorAll(".list-item-col")[3]
+      .querySelector("p#hidden")
+      .innerText.slice(8)
+    container.ontransitionend = function () {
+      container.remove()
+      deleteProforma(pdaRef)
+      generateUserProformas()
+    }
+  }
 }

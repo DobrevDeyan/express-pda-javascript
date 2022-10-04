@@ -71,7 +71,6 @@ export async function deleteProforma(proformaId) {
   if (confirmation) {
     try {
       await deleteDoc(doc(db, "proformas", proformaId))
-      checkIfUserHasAnyProformas()
     } catch (error) {
       console.log(error)
     }
@@ -158,17 +157,17 @@ export async function lastRequestedVessels() {
   })
   return queriedVessels
 }
-export async function checkIfUserHasAnyProformas() {
-  const userData = getUserData()
-  const userProformas = await readProformasByUserId(userData.id)
-  if (userProformas.empty) {
-    const parent = document.querySelector(".proformas-container")
-    parent.replaceChildren()
-    const subParent = document.createElement("div")
-    subParent.classList.add(".display-stored-proformas")
-    const p = document.createElement("p")
-    p.textContent = "No PDAs stored"
-    subParent.appendChild(p)
-    parent.appendChild(subParent)
-  }
-}
+// export async function checkIfUserHasAnyProformas() {
+//   const userData = getUserData()
+//   const userProformas = await readProformasByUserId(userData.id)
+//   if (userProformas.empty) {
+//     const parent = document.querySelector(".proformas-container")
+//     parent.replaceChildren()
+//     const subParent = document.createElement("div")
+//     subParent.classList.add(".display-stored-proformas")
+//     const p = document.createElement("p")
+//     p.textContent = "No PDAs stored"
+//     subParent.appendChild(p)
+//     parent.appendChild(subParent)
+//   }
+// }

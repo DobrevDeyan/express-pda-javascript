@@ -33,38 +33,86 @@ const proformaTemplate = (proforma) => html`
   <li class="list-container fade-in">
     <div class="list-item show">
       <div class="list-item-col">
-        <p>Tonnage dues: ${proforma.tonnageDues}</p>
-        <p>Berth dues: ${proforma.berthDues}</p>
-        <p>Pilotage in: ${proforma.pilotageInDues}</p>
-        <p>Pilotage out: ${proforma.pilotageOutDues}</p>
-        <p>Towage in: ${proforma.towageInDues}</p>
-        <p>Towage out: ${proforma.towageOutDues}</p>
+        <div class="pda-summary">
+          
+        </div>
+        <p>
+          Created:
+          <span class="separation"
+            >${proforma.created.toDate().toUTCString().slice(6)}</span
+          >
+        </p>
+        <p>Ship name: <span class="separation">${proforma.vessel}</span></p>
+        <p>Ship type: <span class="separation">${proforma.type}</span></p>
+        <p>Terminal: <span class="separation">${proforma.terminal}</span></p>
+        <p>Operations: <span class="separation">${proforma.operation}</span></p>
+        <p>
+          Special state: <span class="separation">${proforma.condition}</span>
+        </p>
+        <p>Gross tonnage: <span class="separation">${proforma.grt}</span></p>
+        <p>LOA:<span class="separation">${proforma.loa}</span></p>
+        <p>Hours at berth: <span class="separation">${proforma.hours}</span></p>
+        <p id="hidden">
+          PDA ID: <span class="separation">${proforma.proformaId}</span>
+        </p>
       </div>
       <div class="list-item-col">
-        <p>Mooring dues: ${proforma.mooringDues}</p>
-        <p>Unmooring dues: ${proforma.unmooringDues}</p>
-        <p>Channel dues: ${proforma.channelDues}</p>
-        <p>Light dues: ${proforma.lightDues}</p>
-        <p>Cargo plan dues: ${proforma.cargoPlanDues}</p>
-        <p>Oil booming dues: ${proforma.oilBoomingDues}</p>
+        <p>
+          Mooring dues: <span class="separation"></span>${proforma.mooringDues}
+          EUR
+        </p>
+        <p>
+          Unmooring dues:
+          <span class="separation">${proforma.unmooringDues} EUR</span>
+        </p>
+        <p>
+          Channel dues:
+          <span class="separation">${proforma.channelDues} EUR</span>
+        </p>
+        <p>
+          Light dues: <span class="separation">${proforma.lightDues} EUR</span>
+        </p>
+        <p>
+          Cargo plan dues:
+          <span class="separation">${proforma.cargoPlanDues} EUR</span>
+        </p>
+        <p>
+          Oil booming dues:
+          <span class="separation">${proforma.oilBoomingDues} EUR</span>
+        </p>
+        <p>
+          Tonnage dues:
+          <span class="separation">${proforma.tonnageDues} EUR</span>
+        </p>
+        <p>
+          Berth dues: <span class="separation">${proforma.berthDues} EUR</span>
+        </p>
+        <p>
+          Pilotage in:
+          <span class="separation">${proforma.pilotageInDues} EUR</span>
+        </p>
+        <p>
+          Pilotage out:
+          <span class="separation">${proforma.pilotageOutDues} EUR</span>
+        </p>
+        <p>
+          Towage in:
+          <span class="separation">${proforma.towageInDues} EUR</span>
+        </p>
+        <p>
+          Towage out:
+          <span class="separation">${proforma.towageOutDues} EUR</span>
+        </p>
+        <p>
+          Sailing permission dues:
+          <span class="separation">${proforma.sailingPermissionDues} EUR</span>
+        </p>
+        <p>
+          Total dues: <span class="separation">${proforma.totalDues} EUR</span>
+        </p>
       </div>
-      <div class="list-item-col">
-        <p>Sailing permission dues: ${proforma.sailingPermissionDues}</p>
-        <p>Total dues: ${proforma.total}</p>
-        <p>Company: ${proforma.company}</p>
-        <p>Created at: ${proforma.created.toDate().toUTCString()}</p>
-        <p>Ship type: ${proforma.type}</p>
-        <p>Operations: ${proforma.operation}</p>
-      </div>
-      <div class="list-item-col">
-        <p>Special state: ${proforma.condition}</p>
-        <p>Gross tonnage: ${proforma.grt}</p>
-        <p>LOA: ${proforma.loa}</p>
-        <p>Hours at berth: ${proforma.hours}</p>
-        <p>Terminal: ${proforma.terminal}</p>
-        <p>Ship name: ${proforma.vessel}</p>
-        <p id="hidden">PDA ID: ${proforma.proformaId}</p>
-      </div>
+      <!-- <div class="list-item-col"></div>
+      <div class="list-item-col"></div> -->
     </div>
   </li>
 `
@@ -131,17 +179,16 @@ export async function dashboardPage(ctx) {
     container.classList.remove("show")
     const listItem = container.querySelector(".list-item")
     listItem.classList.remove("show")
-    const pdaRef = listItem
-      .querySelectorAll(".list-item-col")[3]
-      .querySelector("p#hidden")
-      .innerText.slice(8)
+    const pdaRef = listItem.querySelector("#hidden").innerText.slice(8)
+    // .querySelectorAll(".list-item-col")[3]
+    // .querySelector("p#hidden")
+    // .innerText.slice(8)
     container.ontransitionend = function () {
       container.remove()
       deleteProforma(pdaRef)
       generateUserProformas()
     }
   }
-
   window.onload = function () {
     let typed = new Typed(".typing-animation", {
       strings: [

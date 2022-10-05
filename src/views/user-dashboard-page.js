@@ -8,23 +8,29 @@ import {
 const dashboardTemplate = (proformas) => html`
   <section id="dashboard">
     <div class="dashboard-container">
-      <h1 class="dashboard-title">Proformas</h1>
-      <div class="lds-ellipsis fade-out">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <h1 class="dashboard-title">
+        Proformas
+        <div class="lds-ellipsis fade-out">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </h1>
       <p>
         Below you can find a list of all the proformas that are currently stored
-        in your profile history sorted by date in descending order. Press the
-        button below to see more details.
+        in your profile history sorted by date. <br />
+        If you desire to remove a listing from view, just tap once within it's
+        container. Furthermore if you want to remove the listing from view and
+        in addition from your database, double tap and confirm accordingly.
       </p>
     </div>
-
     <ul class="list">
       ${proformas.length == 0
-        ? html`<h2 class="fade-in"><span class="typing-animation"></span></h2>`
+        ? html`<h2 class="fade-in">
+            <span class="typing"></span>
+            <!-- No PDAs available. -->
+          </h2>`
         : html`${proformas.map(proformaTemplate)}`}
     </ul>
   </section>
@@ -34,7 +40,7 @@ const proformaTemplate = (proforma) => html`
     <div class="list-item show">
       <div class="list-item-col">
         <div class="pda-summary">
-          
+          <h3>${proforma.vessel}, ID ${proforma.proformaId}</h3>
         </div>
         <p>
           Created:
@@ -52,67 +58,80 @@ const proformaTemplate = (proforma) => html`
         <p>Gross tonnage: <span class="separation">${proforma.grt}</span></p>
         <p>LOA:<span class="separation">${proforma.loa}</span></p>
         <p>Hours at berth: <span class="separation">${proforma.hours}</span></p>
-        <p id="hidden">
-          PDA ID: <span class="separation">${proforma.proformaId}</span>
+        <p>
+          PDA ID:
+          <span class="separation" id="hidden">${proforma.proformaId}</span>
         </p>
       </div>
       <div class="list-item-col">
-        <p>
-          Mooring dues: <span class="separation"></span>${proforma.mooringDues}
-          EUR
-        </p>
-        <p>
-          Unmooring dues:
-          <span class="separation">${proforma.unmooringDues} EUR</span>
-        </p>
-        <p>
-          Channel dues:
-          <span class="separation">${proforma.channelDues} EUR</span>
-        </p>
-        <p>
-          Light dues: <span class="separation">${proforma.lightDues} EUR</span>
-        </p>
-        <p>
-          Cargo plan dues:
-          <span class="separation">${proforma.cargoPlanDues} EUR</span>
-        </p>
-        <p>
-          Oil booming dues:
-          <span class="separation">${proforma.oilBoomingDues} EUR</span>
-        </p>
-        <p>
-          Tonnage dues:
-          <span class="separation">${proforma.tonnageDues} EUR</span>
-        </p>
-        <p>
-          Berth dues: <span class="separation">${proforma.berthDues} EUR</span>
-        </p>
-        <p>
-          Pilotage in:
-          <span class="separation">${proforma.pilotageInDues} EUR</span>
-        </p>
-        <p>
-          Pilotage out:
-          <span class="separation">${proforma.pilotageOutDues} EUR</span>
-        </p>
-        <p>
-          Towage in:
-          <span class="separation">${proforma.towageInDues} EUR</span>
-        </p>
-        <p>
-          Towage out:
-          <span class="separation">${proforma.towageOutDues} EUR</span>
-        </p>
-        <p>
-          Sailing permission dues:
-          <span class="separation">${proforma.sailingPermissionDues} EUR</span>
-        </p>
-        <p>
-          Total dues: <span class="separation">${proforma.totalDues} EUR</span>
-        </p>
+        <div class="pda-summary">
+          <h3>PROFORMA DISBURSEMENT ACCOUNT</h3>
+        </div>
+        <div class="pda-col-container">
+          <div class="pda-col">
+            <p>
+              Mooring dues:
+              <span class="separation"></span>${proforma.mooringDues} EUR
+            </p>
+            <p>
+              Unmooring dues:
+              <span class="separation">${proforma.unmooringDues} EUR</span>
+            </p>
+            <p>
+              Channel dues:
+              <span class="separation">${proforma.channelDues} EUR</span>
+            </p>
+            <p>
+              Light dues:
+              <span class="separation">${proforma.lightDues} EUR</span>
+            </p>
+            <p>
+              Cargo plan dues:
+              <span class="separation">${proforma.cargoPlanDues} EUR</span>
+            </p>
+            <p>
+              Oil booming dues:
+              <span class="separation">${proforma.oilBoomingDues} EUR</span>
+            </p>
+            <p>
+              Tonnage dues:
+              <span class="separation">${proforma.tonnageDues} EUR</span>
+            </p>
+          </div>
+          <div class="pda-col">
+            <p>
+              Berth dues:
+              <span class="separation">${proforma.berthDues} EUR</span>
+            </p>
+            <p>
+              Pilotage in:
+              <span class="separation">${proforma.pilotageInDues} EUR</span>
+            </p>
+            <p>
+              Pilotage out:
+              <span class="separation">${proforma.pilotageOutDues} EUR</span>
+            </p>
+            <p>
+              Towage in:
+              <span class="separation">${proforma.towageInDues} EUR</span>
+            </p>
+            <p>
+              Towage out:
+              <span class="separation">${proforma.towageOutDues} EUR</span>
+            </p>
+            <p>
+              Sailing permission:
+              <span class="separation"
+                >${proforma.sailingPermissionDues} EUR</span
+              >
+            </p>
+            <p>
+              Total dues:
+              <span class="separation">${proforma.totalDues} EUR</span>
+            </p>
+          </div>
+        </div>
       </div>
-      <!-- <div class="list-item-col"></div>
-      <div class="list-item-col"></div> -->
     </div>
   </li>
 `
@@ -172,6 +191,7 @@ export async function dashboardPage(ctx) {
     }
   }
   function removeProformaItemFromDatabase(e) {
+    console.log(e.target.parentElement)
     let container = e.target
     while (!container.classList.contains("list-container")) {
       container = container.parentElement
@@ -179,26 +199,23 @@ export async function dashboardPage(ctx) {
     container.classList.remove("show")
     const listItem = container.querySelector(".list-item")
     listItem.classList.remove("show")
-    const pdaRef = listItem.querySelector("#hidden").innerText.slice(8)
-    // .querySelectorAll(".list-item-col")[3]
-    // .querySelector("p#hidden")
-    // .innerText.slice(8)
+    const pdaRef = document.querySelector("#hidden").innerText
     container.ontransitionend = function () {
-      container.remove()
+      // container.remove()
       deleteProforma(pdaRef)
       generateUserProformas()
     }
   }
   window.onload = function () {
-    let typed = new Typed(".typing-animation", {
+    var typed = new Typed(".list h2 span.typing", {
       strings: [
-        "",
+        // "",
         "No PDAs in database.",
         "Please visit the PDA page and submit your vessel details.",
       ],
       typeSpeed: 70,
       BackSpeed: 60,
-      loop: false,
+      loop: true,
       showCursor: false,
       // cursorChar: "|",
     })

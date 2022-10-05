@@ -17,8 +17,9 @@ section#dashboard .dashboard-container {
   color: aliceblue;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
-section#dashboard .proformas-container button,
+/* section#dashboard .proformas-container button,
 section#dashboard .dashboard-container button {
   width: 140px;
   border-radius: 5px;
@@ -36,7 +37,7 @@ section#dashboard .dashboard-container button {
 }
 section#dashboard .dashboard-container button:hover {
   background-color: hsl(var(--primary-hsl), 0.4);
-}
+} */
 section#dashboard .dashboard-container .dashboard-title {
   margin: 0;
   text-align: center;
@@ -44,6 +45,7 @@ section#dashboard .dashboard-container .dashboard-title {
   font-weight: normal;
   color: #fff;
   padding: 40px 0 0 0;
+  /* display: inline-block; */
 }
 .dashboard-container p {
   min-width: 100%;
@@ -91,7 +93,6 @@ section#dashboard .dashboard-container .dashboard-title {
   opacity: 1;
 }
 .list-container .list-item .list-item-col {
-  /* justify-content: center; */
   min-width: 47%;
   border-radius: 4px;
   border: 3px solid black;
@@ -99,18 +100,31 @@ section#dashboard .dashboard-container .dashboard-title {
   padding: 1em;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .list-container .list-item .list-item-col p {
   margin: 10px 0;
   border-bottom: 2px solid;
   padding-bottom: 5px;
-  max-width: 47%;
   display: flex;
   justify-content: space-between;
 }
-.list-container .list-item .list-item-col p span {
+.list-container .list-item .list-item-col .pda-summary h3 {
+  text-align: center;
 }
+.list-container .list-item .list-item-col .pda-col-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.list-container .list-item .list-item-col .pda-col {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-width: 45%;
+}
+/* .list-container .list-item .list-item-col p span {
+} */
 .list-item-col #hidden {
   display: none;
 }
@@ -151,6 +165,8 @@ section#dashboard .dashboard-container .dashboard-title {
 
 .lds-ellipsis {
   position: relative;
+  /* top: 50px; */
+  /* left: 35vw; */
   top: 20px;
   width: 80px;
   height: 80px;

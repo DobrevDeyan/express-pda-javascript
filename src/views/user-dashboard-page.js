@@ -8,28 +8,38 @@ import {
 const dashboardTemplate = (proformas) => html`
   <section id="dashboard">
     <div class="dashboard-container">
-      <h1 class="dashboard-title">
-        Proformas
+      <div class="dashboard-heading-container">
+        <h2 class="dashboard-title">Dashboard</h2>
         <div class="lds-ellipsis fade-out">
           <div></div>
           <div></div>
           <div></div>
           <div></div>
         </div>
-      </h1>
-      <p>
-        Below you can find a list of all the proformas that are currently stored
-        in your profile history sorted by date. <br />
-        If you desire to remove a listing from view, just tap once within it's
-        container. Furthermore if you want to remove the listing from view and
-        in addition from your database, double tap and confirm accordingly.
-      </p>
+      </div>
+      <ul>
+        <li>
+          Below you can find a list of all the PDA's that are currently stored
+          in your company profile.
+        </li>
+        <li>
+          If you desire to remove a listing from view, just tap once within it's
+          container.
+        </li>
+        <li>
+          If you decide to return in view any discarded listings reload the
+          page.
+        </li>
+        <li>
+          If you wish to delete a listing from database, double tap and confirm.
+        </li>
+      </ul>
     </div>
     <ul class="list">
       ${proformas.length == 0
         ? html`<h2 class="fade-in">
-            <span class="typing"></span>
-            <!-- No PDAs available. -->
+            <span id="typed"></span>
+            No PDAs available.
           </h2>`
         : html`${proformas.map(proformaTemplate)}`}
     </ul>
@@ -40,38 +50,54 @@ const proformaTemplate = (proforma) => html`
     <div class="list-item show">
       <div class="list-item-col">
         <div class="pda-summary">
-          <h3>${proforma.vessel}, ID ${proforma.proformaId}</h3>
+          <h3>${proforma.vessel}</h3>
+          <img src="../../images/calc.svg" alt="calculator" id="calculator" />
         </div>
-        <p>
-          Created:
-          <span class="separation"
-            >${proforma.created.toDate().toUTCString().slice(6)}</span
-          >
-        </p>
-        <p>Ship name: <span class="separation">${proforma.vessel}</span></p>
-        <p>Ship type: <span class="separation">${proforma.type}</span></p>
-        <p>Terminal: <span class="separation">${proforma.terminal}</span></p>
-        <p>Operations: <span class="separation">${proforma.operation}</span></p>
-        <p>
-          Special state: <span class="separation">${proforma.condition}</span>
-        </p>
-        <p>Gross tonnage: <span class="separation">${proforma.grt}</span></p>
-        <p>LOA:<span class="separation">${proforma.loa}</span></p>
-        <p>Hours at berth: <span class="separation">${proforma.hours}</span></p>
-        <p>
-          PDA ID:
-          <span class="separation" id="hidden">${proforma.proformaId}</span>
-        </p>
+        <div class="pda-col-container">
+          <div class="pda-col">
+            <p id="hidden">
+              PDA ID:
+              <span class="separation">${proforma.proformaId}</span>
+            </p>
+            <p>
+              Created:
+              <span class="separation"
+                >${proforma.created.toDate().toUTCString().slice(6)}</span
+              >
+            </p>
+            <p>Ship name: <span class="separation">${proforma.vessel}</span></p>
+            <p>Ship type: <span class="separation">${proforma.type}</span></p>
+            <p>
+              Terminal: <span class="separation">${proforma.terminal}</span>
+            </p>
+          </div>
+          <div class="pda-col">
+            <p>
+              Operations: <span class="separation">${proforma.operation}</span>
+            </p>
+            <p>
+              Special state:
+              <span class="separation">${proforma.condition}</span>
+            </p>
+            <p>
+              Gross tonnage: <span class="separation">${proforma.grt}</span>
+            </p>
+            <p>LOA:<span class="separation">${proforma.loa}</span></p>
+            <p>
+              Hours at berth: <span class="separation">${proforma.hours}</span>
+            </p>
+          </div>
+        </div>
       </div>
       <div class="list-item-col">
         <div class="pda-summary">
           <h3>PROFORMA DISBURSEMENT ACCOUNT</h3>
         </div>
         <div class="pda-col-container">
-          <div class="pda-col">
+          <div class="pda-col font-shrink">
             <p>
               Mooring dues:
-              <span class="separation"></span>${proforma.mooringDues} EUR
+              <span class="separation">${proforma.mooringDues} EUR</span>
             </p>
             <p>
               Unmooring dues:
@@ -154,7 +180,7 @@ export async function dashboardPage(ctx) {
   document.querySelector(".lds-ellipsis").style.display = "flex"
   setTimeout(() => {
     document.querySelector(".lds-ellipsis").style.display = "none"
-    document.querySelector(".dashboard-title").style.paddingBottom = "40px"
+    // document.querySelector(".dashboard-title").style.paddingBottom = "40px"
   }, 1200)
 
   const selectors = document.querySelectorAll(".list-container")
@@ -191,7 +217,6 @@ export async function dashboardPage(ctx) {
     }
   }
   function removeProformaItemFromDatabase(e) {
-    console.log(e.target.parentElement)
     let container = e.target
     while (!container.classList.contains("list-container")) {
       container = container.parentElement
@@ -202,12 +227,12 @@ export async function dashboardPage(ctx) {
     const pdaRef = document.querySelector("#hidden").innerText
     container.ontransitionend = function () {
       // container.remove()
-      deleteProforma(pdaRef)
+      deleteProforma(pdaRef, e)
       generateUserProformas()
     }
   }
   window.onload = function () {
-    var typed = new Typed(".list h2 span.typing", {
+    var typed = new Typed("#typed", {
       strings: [
         // "",
         "No PDAs in database.",

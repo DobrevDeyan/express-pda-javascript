@@ -17,7 +17,7 @@ section#dashboard .dashboard-container {
   color: aliceblue;
   display: flex;
   flex-direction: column;
-  position: relative;
+  /* position: relative; */
 }
 /* section#dashboard .proformas-container button,
 section#dashboard .dashboard-container button {
@@ -38,21 +38,42 @@ section#dashboard .dashboard-container button {
 section#dashboard .dashboard-container button:hover {
   background-color: hsl(var(--primary-hsl), 0.4);
 } */
-section#dashboard .dashboard-container .dashboard-title {
+section#dashboard .dashboard-container .dashboard-heading-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+section#dashboard
+  .dashboard-container
+  .dashboard-heading-container
+  h2.dashboard-title {
   margin: 0;
   text-align: center;
   font-size: 1.5rem;
   font-weight: normal;
   color: #fff;
   padding: 40px 0 0 0;
-  /* display: inline-block; */
+  display: inline-flex;
 }
-.dashboard-container p {
+.dashboard-container ul {
   min-width: 100%;
-  opacity: 1;
-  font-size: 13px;
+  opacity: 0.6;
+  font-size: 0.9em;
+  /* text-align: center; */
+  padding: 20px 0;
+}
+.dashboard-container ul li {
   text-align: center;
-  padding-bottom: 23px;
+  /* list-style: none; */
+  list-style: none;
+}
+.dashboard-container ul li::before {
+  margin-bottom: -4px;
+  content: "";
+  display: inline-block;
+  height: 19px;
+  width: 19px;
+  background-image: url("../images/link2.svg");
 }
 
 /* DASHBOARD CONTENT */
@@ -82,7 +103,7 @@ section#dashboard .dashboard-container .dashboard-title {
   margin-bottom: 30px;
 }
 .list-container .list-item {
-  padding: 2em;
+  padding: 1.2em;
   min-width: 100%;
   display: flex;
   justify-content: space-between;
@@ -102,6 +123,10 @@ section#dashboard .dashboard-container .dashboard-title {
   flex-direction: column;
   justify-content: space-between;
 }
+.list-container .list-item .list-item-col #calculator {
+  width: 120px;
+  height: 120px;
+}
 .list-container .list-item .list-item-col p {
   margin: 10px 0;
   border-bottom: 2px solid;
@@ -109,6 +134,13 @@ section#dashboard .dashboard-container .dashboard-title {
   display: flex;
   justify-content: space-between;
 }
+
+.list-container .list-item .list-item-col .pda-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .list-container .list-item .list-item-col .pda-summary h3 {
   text-align: center;
 }
@@ -123,11 +155,17 @@ section#dashboard .dashboard-container .dashboard-title {
   flex-direction: column;
   min-width: 45%;
 }
-/* .list-container .list-item .list-item-col p span {
-} */
-.list-item-col #hidden {
-  display: none;
+.list-container .list-item .list-item-col .pda-col p span {
+  color: hsl(var(--primary-hsl));
 }
+.list-container .list-item .list-item-col:first-of-type .pda-col p span {
+  color: #83a79d;
+}
+.list-container .list-item .list-item-col:nth-child(2) .pda-col-container {
+  /* color: #83a79d; */
+  font-size: 0.8em;
+}
+
 .fade-in {
   animation: fadeIn 1.5s;
 }
@@ -165,16 +203,17 @@ section#dashboard .dashboard-container .dashboard-title {
 
 .lds-ellipsis {
   position: relative;
-  /* top: 50px; */
+  /* display: flex; */
+  top: 50px;
   /* left: 35vw; */
-  top: 20px;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
+  /* top: 0px; */
+  /* width: 80px;
+  height: 80px; */
+  /* margin: 0 auto; */
 }
 .lds-ellipsis div {
   position: absolute;
-  top: 33px;
+  /* top: 33px; */
   width: 13px;
   height: 13px;
   border-radius: 50%;

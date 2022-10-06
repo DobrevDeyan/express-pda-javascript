@@ -28,7 +28,9 @@ html {
 
   /* background-color: rgb(28, 110, 80); */
   /* background-color: #31aa72; */
-  background-color: #333333;
+  /* background-color: #333333; */
+
+  background-color: #dbb081;
 
   background-position: center;
   background-repeat: no-repeat;
@@ -46,7 +48,7 @@ html {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 80px;
+  margin-bottom: 120px;
 }
 header {
   display: flex;

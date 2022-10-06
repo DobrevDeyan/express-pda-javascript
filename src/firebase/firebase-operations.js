@@ -57,8 +57,8 @@ export async function readProformasByUserId(userId) {
   const q = query(
     collection(db, "proformas"),
     where("id", "==", userId),
-    orderBy("created", "desc"),
-    limit(2)
+    orderBy("created", "desc")
+    // limit(2)
   )
   return await getDocs(q)
   // const q = query(collection(db, "proformas"), where("id", "==", userId))

@@ -19,40 +19,34 @@ html {
   margin: 0;
   width: 100%;
 }
-body {
-  min-height: 100vh;
+html {
+  height: 100%;
 }
 #full-screen-container {
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/images/hero.jpg"); */
 
-  /* background-color: #31aa72;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%232b9564' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23257f55' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%231e6a47' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23185438' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23123F2A' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E"); */
-  /* background-attachment: fixed;
-    background-size: cover; */
-
-  /* background-color: rgb(28, 110, 80);
-  background-color: rgb(56, 64, 62); */
-
-  background: #f1f2b5;
-  background: -webkit-linear-gradient(to right, #135058, #f1f2b5);
-  background: linear-gradient(to right, #135058, #3a6252);
-
-  /* background: #232526;
-  background: -webkit-linear-gradient(to right, #414345, #232526);
-  background: linear-gradient(to right, #414345, #232526); */
+  /* background-color: rgb(28, 110, 80); */
+  /* background-color: #31aa72; */
+  background-color: #333333;
 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .container {
   width: 1280px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
 }
 header {
   display: flex;
@@ -108,4 +102,111 @@ nav .user .marker {
 nav .separator {
   margin: 0;
   padding: 0;
+}
+
+/* FOOTER */
+
+footer#site-footer {
+  position: relative;
+  width: 100%;
+  background: #3586ff;
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+footer .social-icons,
+footer .social-menu {
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+footer .social-icons li,
+footer .social-menu li {
+  list-style: none;
+}
+footer .social-icons li a {
+  font-size: 2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+footer .social-icons li a:hover {
+  transform: translateY(-10px);
+}
+footer .social-menu li a {
+  font-size: 1.2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+  text-decoration: none;
+  opacity: 0.75;
+}
+footer .social-menu li a:hover {
+  opacity: 1;
+}
+footer p {
+  color: #fff;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+footer .wave {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("../images/wave.png");
+  background-size: 1000px 100px;
+}
+footer .wave#wave1 {
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animateWave 4s linear infinite;
+}
+footer .wave#wave2 {
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10px;
+  animation: animateWave-2 4s linear infinite;
+}
+footer .wave#wave3 {
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15px;
+  animation: animateWave 3s linear infinite;
+}
+footer .wave#wave4 {
+  z-index: 1000;
+  opacity: 0.7;
+  bottom: 20px;
+  animation: animateWave-2 3s linear infinite;
+}
+@keyframes animateWave {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0px;
+  }
+}
+@keyframes animateWave-2 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
 }

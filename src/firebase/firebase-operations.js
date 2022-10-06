@@ -77,12 +77,12 @@ export async function deleteProforma(proformaId, e) {
   } else if (confirmation === false) {
     console.log(confirmation)
     let container = e.target
-    while (!container.classList.contains("list-container")) {
-      container = container.parentElement
-    }
-    // container.classList.add("show")
-    const listItem = container.querySelector(".list-item")
-    listItem.classList.add("show")
+    // while (!container.classList.contains("list-container")) {
+    //   container = container.parentElement
+    // }
+    container.classList.add("show")
+    // const listItem = container.querySelector(".list-item")
+    // listItem.classList.add("show")
   }
 }
 export async function totalUserProformas() {

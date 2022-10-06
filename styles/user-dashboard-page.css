@@ -157,6 +157,7 @@ section#dashboard
 }
 .list-container .list-item .list-item-col .pda-col p span {
   color: hsl(var(--primary-hsl));
+  color: #689cc5;
 }
 .list-container .list-item .list-item-col:first-of-type .pda-col p span {
   color: #83a79d;

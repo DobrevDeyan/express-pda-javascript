@@ -50,7 +50,7 @@ const proformaTemplate = (proforma) => html`
     <div class="list-item show">
       <div class="list-item-col">
         <div class="pda-summary">
-          <h3>${proforma.vessel}</h3>
+          <h3>m/v ${proforma.vessel}</h3>
           <img src="../../images/calc.svg" alt="calculator" id="calculator" />
         </div>
         <div class="pda-col-container">
@@ -92,6 +92,7 @@ const proformaTemplate = (proforma) => html`
       <div class="list-item-col">
         <div class="pda-summary">
           <h3>PROFORMA DISBURSEMENT ACCOUNT</h3>
+          <img src="../../images/financial.svg" alt="payment" id="payment" />
         </div>
         <div class="pda-col-container">
           <div class="pda-col font-shrink">

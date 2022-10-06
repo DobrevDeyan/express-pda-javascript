@@ -186,8 +186,7 @@ export async function dashboardPage(ctx) {
   document.querySelector(".lds-ellipsis").style.display = "flex"
   setTimeout(() => {
     document.querySelector(".lds-ellipsis").style.display = "none"
-    // document.querySelector(".dashboard-title").style.paddingBottom = "40px"
-  }, 1200)
+  }, 1500)
 
   const selectors = document.querySelectorAll(".list-container")
   selectors.forEach((el) => {
@@ -222,19 +221,13 @@ export async function dashboardPage(ctx) {
       container.remove()
     }
   }
-  function removeProformaItemFromDatabase(e) {
-    let container = e.target
-    while (!container.classList.contains("list-container")) {
-      container = container.parentElement
-    }
-    container.classList.remove("show")
-    const listItem = container.querySelector(".list-item")
-    listItem.classList.remove("show")
+  async function removeProformaItemFromDatabase(e) {
     const pdaRef = document.querySelector("#hidden").innerText
-    container.ontransitionend = function () {
-      // container.remove()
-      deleteProforma(pdaRef, e)
-      generateUserProformas()
+    deleteProforma(pdaRef, e)
+
+    const proformas = await generateUserProformas()
+    if (proformas.length === 0) {
+      noPDAmessage()
     }
   }
   function noPDAmessage() {

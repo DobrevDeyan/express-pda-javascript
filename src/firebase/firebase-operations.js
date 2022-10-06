@@ -68,9 +68,20 @@ export async function deleteProforma(proformaId, e) {
   let confirmation = window.confirm("Do you want to delete this document ?")
   if (confirmation === true) {
     try {
+      let container = e.target
+      while (!container.classList.contains("list-container")) {
+        container = container.parentElement
+      }
       await deleteDoc(doc(db, "proformas", proformaId))
+      container.classList.remove("show")
+      const listItem = container.querySelector(".list-item")
+      listItem.classList.remove("show")
+      container.ontransitionend = function () {
+        container.remove()
+      }
+      location.reload()
     } catch (error) {
-      console.log(error)
+      alert(error.message)
     }
   } else {
     return

@@ -126,6 +126,7 @@ section#dashboard
 .list-container .list-item .list-item-col #calculator {
   width: 120px;
   height: 120px;
+  user-select: none;
 }
 .list-container .list-item .list-item-col p {
   margin: 10px 0;
@@ -143,6 +144,7 @@ section#dashboard
 
 .list-container .list-item .list-item-col .pda-summary h3 {
   text-align: center;
+  user-select: none;
 }
 .list-container .list-item .list-item-col .pda-col-container {
   display: flex;
@@ -204,6 +206,7 @@ section#dashboard
 /*LOADING ANIMATION*/
 
 .lds-ellipsis {
+  display: flex;
   position: relative;
   top: 50px;
 }

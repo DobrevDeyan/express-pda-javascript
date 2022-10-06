@@ -183,7 +183,7 @@ export async function dashboardPage(ctx) {
   }
   ctx.render(dashboardTemplate(proformas))
 
-  document.querySelector(".lds-ellipsis").style.display = "flex"
+  // document.querySelector(".lds-ellipsis").style.display = "flex"
   setTimeout(() => {
     document.querySelector(".lds-ellipsis").style.display = "none"
   }, 1500)

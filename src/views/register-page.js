@@ -34,7 +34,7 @@ const registerTemplate = (onSubmit) => html` <section id="register">
         <input type="password" name="repass" id="password" />
       </div>
       <button type="submit" class="register-button">Register</button>
-      <p class="message">Already have an account? <a href="/login">Login</a></p>
+      <p class="message">Already have an account? <a href="/login" class="nav-link">Login</a></p>
     </form>
     </div>
   </div>
@@ -45,18 +45,6 @@ export async function registerPage(ctx) {
   ctx.render(registerTemplate(onSubmit))
   // EMAIL VALIDATION INPUT
   validEmailCheck()
-
-  // HANDLER FOR REGISTER CONTAINER LINK
-  const marker = document.querySelector("nav .guest .marker")
-  function indicator(e) {
-    marker.style.left = "108px"
-    marker.style.width = "54px"
-  }
-  const link = document.querySelector("p.message a")
-  link.addEventListener("click", (e) => {
-    if (!e.target.href.includes("login")) return
-    indicator(e)
-  })
 
   // USER REGISTER FUNCTION
   async function onSubmit(event) {

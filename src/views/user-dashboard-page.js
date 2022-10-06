@@ -39,7 +39,7 @@ const dashboardTemplate = (proformas) => html`
       ${proformas.length == 0
         ? html`<h2 class="fade-in">
             <span id="typed"></span>
-            No PDAs available.
+            <!-- No PDAs available. -->
           </h2>`
         : html`${proformas.map(proformaTemplate)}`}
     </ul>
@@ -55,9 +55,9 @@ const proformaTemplate = (proforma) => html`
         </div>
         <div class="pda-col-container">
           <div class="pda-col">
-            <p id="hidden">
+            <p>
               PDA ID:
-              <span class="separation">${proforma.proformaId}</span>
+              <span class="separation" id="hidden">${proforma.proformaId}</span>
             </p>
             <p>
               Created:
@@ -176,6 +176,11 @@ export async function dashboardPage(ctx) {
   }
 
   const proformas = await generateUserProformas()
+
+  if (proformas.length === 0) {
+    ctx.render(dashboardTemplate(proformas))
+    noPDAmessage()
+  }
   ctx.render(dashboardTemplate(proformas))
 
   document.querySelector(".lds-ellipsis").style.display = "flex"
@@ -232,16 +237,16 @@ export async function dashboardPage(ctx) {
       generateUserProformas()
     }
   }
-  window.onload = function () {
+  function noPDAmessage() {
     var typed = new Typed("#typed", {
       strings: [
         // "",
-        "No PDAs in database.",
-        "Please visit the PDA page and submit your vessel details.",
+        "PDA storage is empty.",
+        "Please visit the PDA page.",
       ],
-      typeSpeed: 70,
+      typeSpeed: 80,
       BackSpeed: 60,
-      loop: true,
+      loop: false,
       showCursor: false,
       // cursorChar: "|",
     })

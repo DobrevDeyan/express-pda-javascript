@@ -22,7 +22,7 @@ const loginTemplate = (onSubmit) => html` <section id="login">
       <button type="submit" class="login-button">Login</button>
       <p class="message">
         Don't have an account?
-        <a href="/register">Register</a>
+        <a href="/register" class="nav-link">Register</a>
       </p>
     </form>
   </div>
@@ -33,18 +33,6 @@ export function loginPage(ctx) {
   ctx.render(loginTemplate(onSubmit))
   // EMAIL VALIDATION INPUT
   validEmailCheck()
-
-  // HANDLER FOR LOGIN CONTAINER LINK
-  const marker = document.querySelector("nav .guest .marker")
-  function indicator(e) {
-    marker.style.left = "164px"
-    marker.style.width = "73px"
-  }
-  const link = document.querySelector("p.message a")
-  link.addEventListener("click", (e) => {
-    if (!e.target.href.includes("register")) return
-    indicator(e)
-  })
 
   // USER LOGIN FUNCTION
   async function onSubmit(event) {

@@ -65,24 +65,15 @@ export async function readProformasByUserId(userId) {
   // return await getDocs(q)
 }
 export async function deleteProforma(proformaId, e) {
-  let confirmation = window.confirm(
-    "Are you sure you want to delete the document ?"
-  )
+  let confirmation = window.confirm("Do you want to delete this document ?")
   if (confirmation === true) {
     try {
       await deleteDoc(doc(db, "proformas", proformaId))
     } catch (error) {
       console.log(error)
     }
-  } else if (confirmation === false) {
-    console.log(confirmation)
-    let container = e.target
-    // while (!container.classList.contains("list-container")) {
-    //   container = container.parentElement
-    // }
-    container.classList.add("show")
-    // const listItem = container.querySelector(".list-item")
-    // listItem.classList.add("show")
+  } else {
+    return
   }
 }
 export async function totalUserProformas() {

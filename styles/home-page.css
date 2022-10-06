@@ -5,14 +5,15 @@ section#home h1 {
   font-family: "Montserrat", sans-serif;
   color: aliceblue;
 
-  background: rgb(47, 97, 68);
+  /* background: rgb(47, 97, 68);
   background: linear-gradient(
     90deg,
     rgba(47, 97, 68, 1) 33%,
     rgba(134, 155, 146, 1) 100%
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  
   font-size: 7.5rem;
   margin: 110px 0 20px;
 }

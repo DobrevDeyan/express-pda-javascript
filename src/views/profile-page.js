@@ -111,11 +111,23 @@ const profileTemplate = (
       </div>
     </div>
     <div class="weather-container">
-      <h1>Weather statistics</h1>
-      <p class="profile-info">
-        Welcome to your user page. Here you can find useful information about
-        your stay and usage of the platform.
-      </p>
+      <h1>Account status</h1>
+      <div class="account-status-container">
+        <div class="account-status">
+          <p>Subscribe and renew payment plan:</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="account-status">
+          <p>Expiration date:</p>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 </section>`

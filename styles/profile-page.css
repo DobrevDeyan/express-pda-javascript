@@ -153,6 +153,21 @@ section#profile .profile-wrapper {
 .profile-wrapper .weather-container {
   grid-column: 2;
   grid-row: 4 / 6;
+  width: 100%;
+}
+
+.profile-wrapper .weather-container .account-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.profile-wrapper .weather-container .account-status {
+  /* margin: 32px 0; */
+  display: flex;
+  justify-content: space-between;
+}
+.profile-wrapper .weather-container .account-status .switch {
+  align-self: center;
 }
 /*TOGGLER*/
 /* The switch - the box around the slider */

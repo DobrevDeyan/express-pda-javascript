@@ -1,4 +1,5 @@
 import { html } from "../utilities/lib.js"
+import Select from "../utilities/dropdown.js"
 import {
   calculateProforma,
   generatedVarnaEastProforma,
@@ -16,7 +17,8 @@ const createPdaTemplate = (onSubmit) => html`
           <div class="col-5">
             <fieldset>
               <!-- <legend>Terminal</legend> -->
-              <select id="terminal" name="terminal" required>
+              <!-- <select data-custom></select> -->
+              <select data-custom id="terminal" name="terminal" required>
                 <option>Designated facility</option>
                 <option value="Varna East" id="tanker">Varna East</option>
                 <option value="Varna West" id="other">Varna West</option>
@@ -24,7 +26,7 @@ const createPdaTemplate = (onSubmit) => html`
             </fieldset>
             <fieldset>
               <!-- <legend>Ship type</legend> -->
-              <select id="vessel-type" name="vessel-type" required>
+              <select data-custom id="vessel-type" name="vessel-type" required>
                 <option>Ship Type</option>
                 <option value="Bulk carrier" id="bulk-carrier">
                   Bulk carrier
@@ -37,7 +39,7 @@ const createPdaTemplate = (onSubmit) => html`
             </fieldset>
             <fieldset>
               <!-- <legend>Operation</legend> -->
-              <select id="operations" name="operations" required>
+              <select data-custom id="operations" name="operations" required>
                 <option>Select activity</option>
                 <option value="Loading" id="loading">Loading</option>
                 <option value="Discharging" id="discharging">
@@ -50,7 +52,7 @@ const createPdaTemplate = (onSubmit) => html`
             </fieldset>
             <fieldset>
               <!-- <legend>Condition</legend> -->
-              <select id="conditions" name="conditions" required>
+              <select data-custom id="conditions" name="conditions" required>
                 <option>None</option>
                 <option value="DG cargo inward" id="dg-cargo-in">
                   DG cargo inward
@@ -335,7 +337,6 @@ const createPdaTemplate = (onSubmit) => html`
     </main>
   </section>
 `
-
 export function createPdaPage(ctx) {
   ctx.render(createPdaTemplate(onSubmit))
 
@@ -372,11 +373,14 @@ export function createPdaPage(ctx) {
       await createProforma(pdaData, generatedVarnaEastProforma)
     }
 
+    // HANDLE TABLE APPEARANCE ANIMATION
     setTimeout(() => {
       document.querySelector(".lds-roller").style.display = "none"
       document.querySelector(".table-wrapper").classList.remove("inactive")
       document.querySelector(".table-wrapper").classList.add("active-table")
     }, 1500)
+
+    // HANDLE EXPORT PDA TO PDF
     document.querySelector(".export-document").addEventListener("click", () => {
       const pdf = document.querySelector(".table-wrapper")
 
@@ -389,7 +393,7 @@ export function createPdaPage(ctx) {
       html2pdf().set(opt).from(pdf).save()
     })
   }
-  // RESET USER INPUTS
+  // RESET USER INPUTS AND REMOVE LAST RENDERED PROFORMA
   window.addEventListener("click", (event) => {
     if (event.target.classList.contains("reset")) {
       const options = document.getElementsByTagName("select")
@@ -407,8 +411,15 @@ export function createPdaPage(ctx) {
       }, 1000)
     }
   })
+
+  // HANDLE REPLACEMENT OF THE DEFAULT BROWSER SELECT AND INPUT ELEMENTS
+  const selectElements = document.querySelectorAll("[data-custom]")
+  selectElements.forEach((selectElement) => {
+    new Select(selectElement)
+  })
 }
 
+// HANDLE THE POPULATION OF DOM ELEMENTS WITH THE GENERATED DATA
 function onRender(pda) {
   document.getElementById("port-name").textContent = pda.terminal
   document.getElementById("company-name").textContent = pda.company

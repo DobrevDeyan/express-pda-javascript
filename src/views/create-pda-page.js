@@ -16,16 +16,13 @@ const createPdaTemplate = (onSubmit) => html`
         <form @submit="${onSubmit}" class="form-wrapper">
           <div class="col-5">
             <fieldset>
-              <!-- <legend>Terminal</legend> -->
-              <!-- <select data-custom></select> -->
               <select data-custom id="terminal" name="terminal" required>
                 <option>Designated facility</option>
                 <option value="Varna East" id="tanker">Varna East</option>
                 <option value="Varna West" id="other">Varna West</option>
               </select>
             </fieldset>
-            <fieldset>
-              <!-- <legend>Ship type</legend> -->
+            <!-- <fieldset>
               <select data-custom id="vessel-type" name="vessel-type" required>
                 <option>Ship Type</option>
                 <option value="Bulk carrier" id="bulk-carrier">
@@ -38,7 +35,6 @@ const createPdaTemplate = (onSubmit) => html`
               </select>
             </fieldset>
             <fieldset>
-              <!-- <legend>Operation</legend> -->
               <select data-custom id="operations" name="operations" required>
                 <option>Select activity</option>
                 <option value="Loading" id="loading">Loading</option>
@@ -51,7 +47,6 @@ const createPdaTemplate = (onSubmit) => html`
               </select>
             </fieldset>
             <fieldset>
-              <!-- <legend>Condition</legend> -->
               <select data-custom id="conditions" name="conditions" required>
                 <option>None</option>
                 <option value="DG cargo inward" id="dg-cargo-in">
@@ -65,9 +60,8 @@ const createPdaTemplate = (onSubmit) => html`
                 </option>
                 <option value="Overtime" id="overtime">Overtime</option>
               </select>
-            </fieldset>
-            <!-- <label for="name">Gt/Rgt:</label><br /> -->
-            <input
+            </fieldset> -->
+            <!-- <input
               type="text"
               id="company-name"
               name="company"
@@ -78,7 +72,7 @@ const createPdaTemplate = (onSubmit) => html`
               id="vessel-name"
               name="vessel"
               placeholder="Vessel name"
-            />
+            /> -->
           </div>
 
           <div class="col-5">

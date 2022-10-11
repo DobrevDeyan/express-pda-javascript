@@ -15,7 +15,7 @@ export default class Select {
 
   selectValue(value) {
     const newSelectedOption = this.options.find((option) => {
-      option.value === value
+      return option.value === value
     })
     const prevSelectedOption = this.selectedOption
     prevSelectedOption.selected = false
@@ -44,7 +44,9 @@ function setupCustomElement(select) {
     optionElement.innerText = option.label
     optionElement.dataset.value = option.value
     optionElement.addEventListener("click", () => {
-      select.selectedValue(option.value)
+      select.selectedOption.element.classList.remove("selected")
+      select.selectValue(option.value)
+      optionElement.classList.add("selected")
       select.optionsCustomElement.classList.remove("show")
     })
 

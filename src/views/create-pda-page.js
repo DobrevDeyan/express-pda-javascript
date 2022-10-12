@@ -17,9 +17,12 @@ const createPdaTemplate = (onSubmit) => html`
           <div class="col-5">
             <fieldset>
               <select data-custom id="terminal" name="terminal" required>
-                <option></option>
+                <option>Designate terminal</option>
                 <option value="Varna East" id="tanker">Varna East</option>
                 <option value="Varna West" id="other">Varna West</option>
+                <option value="Burgas" id="other">Burgas</option>
+                <option value="VIhren" id="other">Vihren</option>
+                <option value="Sofia" id="other">Sofia</option>
               </select>
             </fieldset>
             <!-- <fieldset>

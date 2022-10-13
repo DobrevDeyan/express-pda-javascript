@@ -33,9 +33,11 @@ export default class Select {
     this.optionsCustomElement
       .querySelector(`[data-value="${prevSelectedOption.value}"]`)
       .classList.remove("selected")
-    this.optionsCustomElement
-      .querySelector(`[data-value="${newSelectedOption.value}"]`)
-      .classList.add("selected")
+    const newCustomElement = this.optionsCustomElement.querySelector(
+      `[data-value="${newSelectedOption.value}"]`
+    )
+    newCustomElement.classList.add("selected")
+    newCustomElement.scrollIntoView({ block: "nearest" })
   }
 }
 
@@ -70,19 +72,43 @@ function setupCustomElement(select) {
     select.optionsCustomElement.classList.remove("show")
   })
 
+  let debounceTimeout
+  let searchTerm = ""
   select.customElement.addEventListener("keydown", (event) => {
+    event.preventDefault()
     switch (event.code) {
       case "Space":
         select.optionsCustomElement.classList.toggle("show")
         break
-
       case "ArrowUp":
         const prevOption = select.options[select.selectedOptionIndex - 1]
-        if (prevOption) select.selectValue(prevOption.value)
+        if (prevOption) {
+          select.selectValue(prevOption.value)
+        }
         break
       case "ArrowDown":
         const nextOption = select.options[select.selectedOptionIndex + 1]
+        if (nextOption) {
+          select.selectValue(nextOption.value)
+        }
         break
+      case "Enter":
+        select.optionsCustomElement.classList.toggle("show")
+        break
+      case "Escape":
+        select.optionsCustomElement.classList.remove("show")
+        break
+      default:
+        clearTimeout(debounceTimeout)
+        searchTerm += event.key
+        debounceTimeout = setTimeout(() => {
+          searchTerm = ""
+        }, 500)
+
+        const searchedOptions = select.options.find((option) => {
+          return option.label.toLowerCase().startsWith(searchTerm)
+        })
+        if (searchedOptions) select.selectValue(searchedOptions.value)
     }
   })
 }

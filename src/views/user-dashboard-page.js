@@ -62,7 +62,7 @@ const proformaTemplate = (proforma) => html`
             <p>
               Created:
               <span class="separation"
-                >${proforma.created.toDate().toUTCString().slice(6)}</span
+                >${proforma.created.toDate().toUTCString().slice(5)}</span
               >
             </p>
             <p>Ship name: <span class="separation">${proforma.vessel}</span></p>

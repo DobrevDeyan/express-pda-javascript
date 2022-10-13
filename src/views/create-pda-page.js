@@ -20,12 +20,9 @@ const createPdaTemplate = (onSubmit) => html`
                 <option>Designate terminal</option>
                 <option value="Varna East" id="tanker">Varna East</option>
                 <option value="Varna West" id="other">Varna West</option>
-                <option value="Burgas" id="other">Burgas</option>
-                <option value="VIhren" id="other">Vihren</option>
-                <option value="Sofia" id="other">Sofia</option>
               </select>
             </fieldset>
-            <!-- <fieldset>
+            <fieldset>
               <select data-custom id="vessel-type" name="vessel-type" required>
                 <option>Ship Type</option>
                 <option value="Bulk carrier" id="bulk-carrier">
@@ -63,8 +60,8 @@ const createPdaTemplate = (onSubmit) => html`
                 </option>
                 <option value="Overtime" id="overtime">Overtime</option>
               </select>
-            </fieldset> -->
-            <!-- <input
+            </fieldset>
+            <input
               type="text"
               id="company-name"
               name="company"
@@ -75,7 +72,7 @@ const createPdaTemplate = (onSubmit) => html`
               id="vessel-name"
               name="vessel"
               placeholder="Vessel name"
-            /> -->
+            />
           </div>
 
           <div class="col-5">
@@ -413,6 +410,7 @@ export function createPdaPage(ctx) {
   const selectElements = document.querySelectorAll("[data-custom]")
   selectElements.forEach((selectElement) => {
     new Select(selectElement)
+    console.log(selectElement)
   })
 }
 

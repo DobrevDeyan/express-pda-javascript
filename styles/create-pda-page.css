@@ -506,6 +506,8 @@ input[type="number"] {
   margin-top: 5px;
 }
 .custom-select-options {
+  background-color: #952f12;
+  z-index: 10000;
   display: none;
   position: absolute;
   padding: 0;

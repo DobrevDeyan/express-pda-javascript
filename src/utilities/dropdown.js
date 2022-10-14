@@ -41,11 +41,11 @@ export default class Select {
   }
 }
 
-var tabindex = 0
+var tab = 0
 function setupCustomElement(select) {
-  tabindex++
+  tab++
   select.customElement.classList.add("custom-select-container")
-  select.customElement.tabIndex = tabindex
+  select.customElement.tabIndex = tab
 
   select.labelElement.classList.add("custom-select-value")
   select.labelElement.innerText = select.selectedOption.label

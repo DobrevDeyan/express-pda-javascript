@@ -15,52 +15,50 @@ const createPdaTemplate = (onSubmit) => html`
         <!-- <div class="form-wrapper"> -->
         <form @submit="${onSubmit}" class="form-wrapper">
           <div class="col-5">
-            <fieldset>
-              <select data-custom id="terminal" name="terminal" required>
-                <option>Designate terminal</option>
-                <option value="Varna East" id="tanker">Varna East</option>
-                <option value="Varna West" id="other">Varna West</option>
-              </select>
-            </fieldset>
-            <fieldset>
-              <select data-custom id="vessel-type" name="vessel-type" required>
-                <option>Ship Type</option>
-                <option value="Bulk carrier" id="bulk-carrier">
-                  Bulk carrier
-                </option>
-                <option value="Tanker" id="tanker">Tanker</option>
-                <option value="Container" id="container">Container</option>
-                <option value="Passenger" id="passenger">Passenger</option>
-                <option value="Navy" id="navy">Navy</option>
-              </select>
-            </fieldset>
-            <fieldset>
-              <select data-custom id="operations" name="operations" required>
-                <option>Select activity</option>
-                <option value="Loading" id="loading">Loading</option>
-                <option value="Discharging" id="discharging">
-                  Discharging
-                </option>
-                <option value="Docking-repairs" id="docking-repairs">
-                  Docking/Repairs
-                </option>
-              </select>
-            </fieldset>
-            <fieldset>
-              <select data-custom id="conditions" name="conditions" required>
-                <option>None</option>
-                <option value="DG cargo inward" id="dg-cargo-in">
-                  DG cargo inward
-                </option>
-                <option value="DG cargo outward" id="dg-cargo-out">
-                  DG cargo outward
-                </option>
-                <option value="DG cargo in/out" id="dg-cargo-in-out">
-                  DG cargo in/out
-                </option>
-                <option value="Overtime" id="overtime">Overtime</option>
-              </select>
-            </fieldset>
+            <!-- <fieldset> -->
+            <select data-custom id="terminal" name="terminal" required>
+              <option>Designate terminal</option>
+              <option value="Varna East" id="tanker">Varna East</option>
+              <option value="Varna West" id="other">Varna West</option>
+            </select>
+            <!-- </fieldset> -->
+            <!-- <fieldset> -->
+            <select data-custom id="vessel-type" name="vessel-type" required>
+              <option>Ship Type</option>
+              <option value="Bulk carrier" id="bulk-carrier">
+                Bulk carrier
+              </option>
+              <option value="Tanker" id="tanker">Tanker</option>
+              <option value="Container" id="container">Container</option>
+              <option value="Passenger" id="passenger">Passenger</option>
+              <option value="Navy" id="navy">Navy</option>
+            </select>
+            <!-- </fieldset> -->
+            <!-- <fieldset> -->
+            <select data-custom id="operations" name="operations" required>
+              <option>Select activity</option>
+              <option value="Loading" id="loading">Loading</option>
+              <option value="Discharging" id="discharging">Discharging</option>
+              <option value="Docking-repairs" id="docking-repairs">
+                Docking/Repairs
+              </option>
+            </select>
+            <!-- </fieldset> -->
+            <!-- <fieldset> -->
+            <select data-custom id="conditions" name="conditions" required>
+              <option>None</option>
+              <option value="DG cargo inward" id="dg-cargo-in">
+                DG cargo inward
+              </option>
+              <option value="DG cargo outward" id="dg-cargo-out">
+                DG cargo outward
+              </option>
+              <option value="DG cargo in/out" id="dg-cargo-in-out">
+                DG cargo in/out
+              </option>
+              <option value="Overtime" id="overtime">Overtime</option>
+            </select>
+            <!-- </fieldset> -->
             <input
               type="text"
               id="company-name"
@@ -410,7 +408,6 @@ export function createPdaPage(ctx) {
   const selectElements = document.querySelectorAll("[data-custom]")
   selectElements.forEach((selectElement) => {
     new Select(selectElement)
-    console.log(selectElement)
   })
 }
 

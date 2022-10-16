@@ -10,7 +10,7 @@ section#dashboard .dashboard-container {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  --color: hsl(var(--primary-dark-hsl), 0.5);
+  --color: hsl(var(--background-hsl), 1);
   background-color: var(--color);
   box-shadow: 0 0 25px var(--color);
   border-radius: 20px;
@@ -96,7 +96,7 @@ section#dashboard
   font-size: 1em;
   cursor: pointer;
   overflow: hidden;
-  --color: hsl(var(--primary-dark-hsl), 0.5);
+  --color: hsl(var(--background-hsl), 1);
   background-color: var(--color);
   box-shadow: 0 0 25px var(--color);
   border-radius: 20px;

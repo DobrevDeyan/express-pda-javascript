@@ -94,9 +94,8 @@ nav span:focus {
 }
 
 nav a:hover {
-  background: #201f1f;
+  background: hsl(var(--background-hsl), 1);
   color: aliceblue;
-
   border-radius: 8px;
 }
 

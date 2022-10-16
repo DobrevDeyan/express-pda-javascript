@@ -120,8 +120,7 @@ button.reset:focus {
   color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
   position: relative;
-  --color: hsl(var(--primary-dark-hsl), 0.5);
-  background-color: var(--color);
+  background-color: hsl(var(--background-hsl), 1);
   box-shadow: 0 0 25px var(--color);
   border-radius: 15px;
   color: aliceblue;

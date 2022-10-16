@@ -153,9 +153,11 @@ footer .social-icons li a {
 footer .social-icons li a:hover {
   transform: translateY(-10px);
 }
+footer .social-icons li a:visited {
+  color: #fff;
+}
 footer .social-menu li a {
   font-size: 1.2em;
-
   margin: 0 10px;
   display: inline-block;
   transition: 0.5s;

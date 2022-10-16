@@ -25,16 +25,17 @@ intelligence as soon as possible.
 - Login/register page to set your account or use the placeholder one for easy access. 
 - Profile page in which you can update your profile information and see some usefull statistics.
 - PDA page where you can enter ships details and basis the provided characteristics get a proforma disbursement account which
-is based on tariffs from local service providers and in force legislations. Functionality for pdf export in pdf is available. 
+is based on tariffs from local service providers and in force legislations. Functionality for export in pdf is available. 
 - Dashboard page where you can see all of the generated PDAs to date with a summary view of their contents. With a single tap 
-on a individual entry, the before mentioned can be removed from view or if double tap can be removed from DB as well. 
+on a individual entry, the beforementioned can be removed from view or if double tapped can be removed from database as well. 
 
 ## Dependencies 
 
-- Firabase
-- html2cancas
-- html2pdf
-- jspdf
+- firabase/firestore
 - lit-html lib
 - page.js lib 
 - typed.js lib 
+- html2cancas
+- html2pdf
+- jspdf
+

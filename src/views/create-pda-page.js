@@ -5,7 +5,6 @@ import {
   generatedVarnaEastProforma,
 } from "../calculator/pda-calculator.js"
 import { createProforma } from "../firebase/firebase-operations.js"
-// import { html2pdf } from "../../node_modules/html2pdf.js/dist/html2pdf.bundle.js"
 
 const createPdaTemplate = (onSubmit) => html`
   <section id="create-pda">
@@ -16,14 +15,14 @@ const createPdaTemplate = (onSubmit) => html`
         <form @submit="${onSubmit}" class="form-wrapper">
           <div class="col-5">
             <!-- <fieldset> -->
-            <select data-custom id="terminal" name="terminal" required>
-              <option>Designate terminal</option>
+            <select id="terminal" name="terminal" required>
+              <option>Terminal</option>
               <option value="Varna East" id="tanker">Varna East</option>
               <option value="Varna West" id="other">Varna West</option>
             </select>
             <!-- </fieldset> -->
             <!-- <fieldset> -->
-            <select data-custom id="vessel-type" name="vessel-type" required>
+            <select id="vessel-type" name="vessel-type" required>
               <option>Ship Type</option>
               <option value="Bulk carrier" id="bulk-carrier">
                 Bulk carrier
@@ -35,7 +34,7 @@ const createPdaTemplate = (onSubmit) => html`
             </select>
             <!-- </fieldset> -->
             <!-- <fieldset> -->
-            <select data-custom id="operations" name="operations" required>
+            <select id="operations" name="operations" required>
               <option>Select activity</option>
               <option value="Loading" id="loading">Loading</option>
               <option value="Discharging" id="discharging">Discharging</option>
@@ -45,7 +44,7 @@ const createPdaTemplate = (onSubmit) => html`
             </select>
             <!-- </fieldset> -->
             <!-- <fieldset> -->
-            <select data-custom id="conditions" name="conditions" required>
+            <select id="conditions" name="conditions" required>
               <option>None</option>
               <option value="DG cargo inward" id="dg-cargo-in">
                 DG cargo inward
@@ -130,7 +129,7 @@ const createPdaTemplate = (onSubmit) => html`
           <li>Price in EUR</li>
         </div>
         <!-- Row Tonnage dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Tonnage dues</li>
             <li id="result-tonnage-dues"></li>
@@ -143,7 +142,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Berth dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Berth dues</li>
             <li id="result-berth-dues"></li>
@@ -156,7 +155,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Pilotage in dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Pilotage In</li>
             <li id="result-pilotage-in"></li>
@@ -170,7 +169,7 @@ const createPdaTemplate = (onSubmit) => html`
         </article>
 
         <!-- Row Pilotage out dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Pilotage out</li>
             <li id="result-pilotage-out"></li>
@@ -183,7 +182,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Towage in dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Towage in</li>
             <li id="result-towage-in"></li>
@@ -196,7 +195,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Towage out dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Towage out</li>
             <li id="result-towage-out"></li>
@@ -209,7 +208,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Mooring dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Mooring</li>
             <li id="result-mooring"></li>
@@ -222,7 +221,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Unmooring dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Unmooring</li>
             <li id="result-unmooring"></li>
@@ -235,7 +234,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Channel dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Channel dues</li>
             <li id="result-channel-dues"></li>
@@ -248,7 +247,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Light dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Light dues</li>
             <li id="result-light-dues"></li>
@@ -261,7 +260,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Sailing permission dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Sailing permission</li>
             <li id="result-sailing-permission"></li>
@@ -274,7 +273,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Marpol dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Marpol 73/78 fee</li>
             <li id="result-marpol-fee"></li>
@@ -287,7 +286,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Cargo plan dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Cargo plan verification</li>
             <li id="cargo-plan-verification"></li>
@@ -300,7 +299,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Oil booming dues -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Laying of oil booms</li>
             <li id="result-oil-booming"></li>
@@ -313,7 +312,7 @@ const createPdaTemplate = (onSubmit) => html`
           </ul>
         </article>
         <!-- Row Total cost -->
-        <article class="row mlb">
+        <article class="row nfl">
           <ul>
             <li>Total:</li>
             <li id="result-total-cost"></li>
@@ -404,11 +403,11 @@ export function createPdaPage(ctx) {
     }
   })
 
-  // HANDLE REPLACEMENT OF THE DEFAULT BROWSER SELECT AND INPUT ELEMENTS
-  const selectElements = document.querySelectorAll("[data-custom]")
-  selectElements.forEach((selectElement) => {
-    new Select(selectElement)
-  })
+  // HANDLE REPLACEMENT OF THE DEFAULT BROWSER SELECT // OBSOLETE
+  // const selectElements = document.querySelectorAll("[data-custom]")
+  // selectElements.forEach((selectElement) => {
+  //   new Select(selectElement)
+  // })
 }
 
 // HANDLE THE POPULATION OF DOM ELEMENTS WITH THE GENERATED DATA

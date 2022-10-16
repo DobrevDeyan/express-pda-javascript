@@ -55,12 +55,12 @@ function updateUserNav() {
     document.querySelector(".guest").style.display = "none"
     // document.querySelector(".user span").textContent = userData.email
     // document.querySelector(".user span").style.color = "alice"
-    const target = document.querySelector("nav .user .marker")
-    navigationSlider(target)
+    // const target = document.querySelector("nav .user .marker")
+    // navigationSlider(target)
   } else {
     document.querySelector(".user").style.display = "none"
     document.querySelector(".guest").style.display = "inline-block"
-    const target = document.querySelector("nav .guest .marker")
-    navigationSlider(target)
+    // const target = document.querySelector("nav .guest .marker")
+    // navigationSlider(target)
   }
 }

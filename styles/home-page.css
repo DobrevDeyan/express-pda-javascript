@@ -3,7 +3,7 @@ font-family: "Montserrat", sans-serif; */
 
 section#home h1 {
   font-family: "Montserrat", sans-serif;
-  color: aliceblue;
+  /* color: aliceblue; */
 
   /* background: rgb(47, 97, 68);
   background: linear-gradient(
@@ -19,12 +19,12 @@ section#home h1 {
 }
 section#home h1 span {
   font-family: "Montserrat", sans-serif;
-  color: #201f1f;
+  /* color: #201f1f; */
 }
 section#home h2,
 section#home h2 span {
   font-family: "Caveat", cursive;
-  color: aliceblue;
+  /* color: aliceblue; */
   font-size: 3rem;
   margin: 0;
 }
